@@ -18,5 +18,13 @@ namespace Persistencia
             this.nombre = n;
             this.apellido = a;
         }
+
+        public string Codigo
+        {
+            get
+            {
+                return this.codigo;
+            }
+        }
     }
 }
