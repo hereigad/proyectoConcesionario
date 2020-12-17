@@ -41,13 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BD.cs" />
     <Compile Include="TablaVehiculo.cs" />
     <Compile Include="VehiculoDato.cs" />
     <Compile Include="ClienteDatos.cs" />
     <Compile Include="ColCliente.cs" />
-	<Compile Include="PresupuestoDato.cs" />
-	<Compile Include="Presupuesto_VehiculosDato.cs" />
-	<Compile Include="Vehiculos_VendidosDato.cs" />
+    <Compile Include="PresupuestoDato.cs" />
+    <Compile Include="Presupuesto_VehiculosDato.cs" />
+    <Compile Include="Vehiculos_VendidosDato.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

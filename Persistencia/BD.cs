@@ -8,5 +8,9 @@ namespace Persistencia
 {
     class BD
     {
+        private static ColCliente clientes;
+        private static TablaVehiculo vehiculos;
+
+
     }
 }
