@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    class Cliente
+    public class Cliente
     {
         private string Dni;
         private string nombre;

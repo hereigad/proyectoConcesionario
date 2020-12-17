@@ -52,6 +52,7 @@
     <Compile Include="Vehiculos_VendidosDato.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
 	<Compile Include="ComercialDato.cs" />
+	<Compile Include="TablaPresupuesto.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModeloDominio\ModeloDominio.csproj">
