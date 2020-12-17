@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModeloDominio
+namespace PersistenciaPresupuesto
 {
-    public enum Categoria
+    public class Class1
     {
-        A = 5,
-        B = 10,
-        C = 15
     }
 }
