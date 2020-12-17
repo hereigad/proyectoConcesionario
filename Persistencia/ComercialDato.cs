@@ -12,19 +12,11 @@ namespace Persistencia
         private string nombre;
         private string apellido;
 
-        public ComercialDato(string cod, string nom, string appel)
+        public ComercialDato(string c, string n, string a)
         {
-            this.codigo = cod;
-            this.nombre = nom;
-            this.apellido = appel;
-        }
-
-        public string Codigo
-        {
-            get
-            {
-                return this.codigo;
-            }
+            this.codigo = c;
+            this.nombre = n;
+            this.apellido = a;
         }
     }
 }
