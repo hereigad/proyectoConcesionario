@@ -12,15 +12,15 @@ namespace ModeloDominio
         private string marca;
         private string modelo;
         private string potencia;
-        private int pvp;
+        private double pvp;
 
-        public Vehiculo(string numBastidor, string marca, string modelo, string potencia, int pvp)
+        public Vehiculo(string numBastidor, string marca, string modelo, string potencia, double pvp)
         {
             this.numBastidor = numBastidor;
             this.marca = marca;
             this.modelo = modelo;
             this.potencia = potencia;
-            this.pvp = pvp;
+            this.pvp = pvp * 1.21;
         }
 
         public string NumBastidor
@@ -55,11 +55,15 @@ namespace ModeloDominio
             }
         }
 
-        public int Pvp
+        public double Pvp
         {
             get
             {
                 return this.pvp;
+            }
+            set
+            {
+                this.pvp = value;
             }
         }
     }

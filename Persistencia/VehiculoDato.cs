@@ -13,7 +13,9 @@ namespace Persistencia
         private string marca;
         private string modelo;
         private string potencia;
-        private int pvp;
+        private double pvp;
+        private bool nuevo;
+        private List<Extra> extras;
 
         public VehiculoDato(Vehiculo v)
         {
@@ -22,6 +24,16 @@ namespace Persistencia
             this.modelo = v.Modelo;
             this.potencia = v.Potencia;
             this.pvp = v.Pvp;
+            if(v.GetType() == typeof(VehiculoNuevo))
+            {
+                VehiculoNuevo vn = (VehiculoNuevo)v;
+                nuevo = true;
+                extras = vn.Extras;
+            }
+            else
+            {
+                extras = null;
+            }
         }
 
         public string NumBastidor

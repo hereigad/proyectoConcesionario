@@ -50,6 +50,7 @@
     <Compile Include="Presupuesto_VehiculosDato.cs" />
     <Compile Include="Vehiculos_VendidosDato.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+	<Compile Include="ComercialDato.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModeloDominio\ModeloDominio.csproj">

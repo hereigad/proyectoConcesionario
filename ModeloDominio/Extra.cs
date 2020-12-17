@@ -6,9 +6,23 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    class Extra
+    public class Extra
     {
         private string nombre;
-        private int pvp;
+        private double pvp;
+
+        public Extra(string nombre, double pvp)
+        {
+            this.nombre = nombre;
+            this.pvp = pvp * 1.21;
+        }
+
+        public double Pvp
+        {
+            get
+            {
+                return this.pvp;
+            }
+        }
     }
 }
