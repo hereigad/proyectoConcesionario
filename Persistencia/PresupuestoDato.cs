@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ModeloDominio;
 
 namespace Persistencia
 {
@@ -14,13 +15,24 @@ namespace Persistencia
         private string estado;
         private string fecahRealizacion;
 
-        public PresupuestoDato(string id, string dni, string cod, string estado, string fecha)
+        public PresupuestoDato(Presupuesto presupuesto)
         {
-            this.id = id;
-            this.dni = dni;
-            this.codigo = cod;
-            this.estado = estado;
-            this.fecahRealizacion = fecha;
+            this.id = presupuesto.ID;
+            this.dni = presupuesto.Cliente.DNI;
+            this.codigo = presupuesto.Comercial.Codigo;
+            if(presupuesto.Estado == EstadoPresupuesto.Aceptado)
+            {
+                this.estado = "Aceptado";
+            }
+            else if(presupuesto.Estado == EstadoPresupuesto.Desestimado)
+            {
+                this.estado = "Desestimado";
+            }
+            else if(presupuesto.Estado == EstadoPresupuesto.Pendiente)
+            {
+                this.estado = "Pendiente";
+            }
+            this.fecahRealizacion = presupuesto.FechaRealizacion.ToString();
         }
 
         public string ID

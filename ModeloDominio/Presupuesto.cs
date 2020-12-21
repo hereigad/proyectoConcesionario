@@ -34,11 +34,35 @@ namespace ModeloDominio
             }
         }
 
+        public Comercial Comercial
+        {
+            get
+            {
+                return this.comercial;
+            }
+        }
+
         public EstadoPresupuesto Estado
         {
             get
             {
                 return this.estado;
+            }
+        }
+
+        public Vehiculo[] Vehiculos
+        {
+            get
+            {
+                return this.vehiculos;
+            }
+        }
+
+        public DateTime FechaRealizacion
+        {
+            get
+            {
+                return this.fechaRealizacion;
             }
         }
 
