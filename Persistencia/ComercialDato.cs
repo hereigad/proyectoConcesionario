@@ -17,6 +17,7 @@ namespace Persistencia
         {
             this.codigo = c.Codigo;
             this.nombre = c.Nombre;
+            this.apellido = c.Apellido;
         }
 
         public string Codigo

@@ -12,8 +12,21 @@ namespace Persistencia
         private static ColCliente clientes;
         private static TablaVehiculo vehiculos;
         private static TablaPresupuesto presupuestos;
+        private static TablaComercial comercial;
 
         public BD() { }
+
+        public static TablaComercial Comercial
+        {
+            get
+            {
+                if(comercial == null)
+                {
+                    comercial = new TablaComercial();
+                }
+                return comercial;
+            }
+        }
 
         public static ColCliente Clientes
         {
@@ -229,6 +242,49 @@ namespace Persistencia
                 p.Borrado = true;
                 INSERT_Presupuesto(p);
             }
+        }
+
+        // COMERCIAL
+
+        /// <summary>
+        /// pre:
+        /// post:
+        /// </summary>
+        /// <param name="c"></param>
+        public static void INSERT_Comercial(Comercial c)
+        {
+
+        }
+
+        /// <summary>
+        /// pre:
+        /// post:
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static bool EXISTE_Comercial(Comercial c)
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// pre:
+        /// post:
+        /// </summary>
+        /// <param name="c"></param>
+        private static void UPDATE_Comercial(Comercial c)
+        {
+
+        }
+
+        /// <summary>
+        /// pre:
+        /// post:
+        /// </summary>
+        /// <param name="c"></param>
+        private static void DELETE_Comercial(Comercial c)
+        {
+
         }
     }
 }
