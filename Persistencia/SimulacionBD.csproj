@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BD.cs" />
+    <Compile Include="TablaComercial.cs" />
     <Compile Include="TablaVehiculo.cs" />
     <Compile Include="VehiculoDato.cs" />
     <Compile Include="ClienteDatos.cs" />
