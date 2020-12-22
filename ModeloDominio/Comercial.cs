@@ -26,5 +26,21 @@ namespace ModeloDominio
                 return this.codigo;
             }
         }
+
+        public String Nombre
+        {
+            get
+            {
+                return this.nombre;
+            }
+        }
+
+        public string Apellido
+        {
+            get
+            {
+                return this.apellido;
+            }
+        }
     }
 }
