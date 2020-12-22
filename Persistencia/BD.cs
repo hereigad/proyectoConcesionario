@@ -16,6 +16,7 @@ namespace Persistencia
 
         public BD() { }
 
+        ///////////////////////////////////////////////////////////////////////////// TABLAS //////////////////////////////////////////////////////////////////////////////////////
         public static TablaComercial Comercial
         {
             get
@@ -64,7 +65,12 @@ namespace Persistencia
             }
         }
 
-        // CLIENTES
+        //////////////////////////////////////////////////////////////////////////////////// CLIENTES /////////////////////////////////////////////////////////////////////////
+
+        public static ClienteDatos SELECT_Cliente(Cliente c)
+        {
+            return Clientes[c.DNI];
+        }
 
         /// <summary>
         /// pre: el cliente no existe en la base de datos y c es distinto de null
@@ -122,7 +128,7 @@ namespace Persistencia
             }
         }
 
-        // VEHICULOS
+        //////////////////////////////////////////////////////////////////////////////////// VEHICULOS ///////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
         /// pre: v distinto de null y el vehiculo v no existe en la base de datos
@@ -182,7 +188,7 @@ namespace Persistencia
             }
         }
 
-        // PRESUPUESTOS
+        ///////////////////////////////////////////////////////////////////////////////// PRESUPUESTOS //////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
         /// pre: p distinto de null y no existe en la base de datos
@@ -225,7 +231,7 @@ namespace Persistencia
             if(EXISTE_Presupuesto(p))
             {
                 Presupuestos.Remove(new PresupuestoDato(p).ID);
-                INSERT_Presupuesto(p);
+                BD.INSERT_Presupuesto(p);
             }
         }
 
@@ -240,51 +246,68 @@ namespace Persistencia
             {
                 Presupuestos.Remove(new PresupuestoDato(p).ID);
                 p.Borrado = true;
-                INSERT_Presupuesto(p);
+                BD.INSERT_Presupuesto(p);
             }
         }
 
-        // COMERCIAL
+        ////////////////////////////////////////////////////////////////////////// COMERCIAL //////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
-        /// pre:
-        /// post:
+        /// pre: el comercial c no existe en la base de datos y c distinto de null
+        /// post: añade un nuevo comercial a la base de datos
         /// </summary>
         /// <param name="c"></param>
         public static void INSERT_Comercial(Comercial c)
         {
-
+            Comercial.Add(new ComercialDato(c));
         }
 
         /// <summary>
-        /// pre:
-        /// post:
+        /// pre: c distinto de null
+        /// post: devuelve TRUE si el comercial c existe en la base de datos; FALSE en caso contrario
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
         public static bool EXISTE_Comercial(Comercial c)
         {
-            return false;
+            bool existe = false;
+            int i = 0;
+            while(i<Comercial.Count)
+            {
+                if(Comercial.ElementAt(i).Codigo.Equals(c.Codigo))
+                {
+                    existe = true;
+                }
+                i++;
+            }
+            return existe;
         }
 
         /// <summary>
-        /// pre:
-        /// post:
+        /// pre: c distinto de null
+        /// post: si el comercial c existe en la base de datos, actualiza sus datos con los datos que vienen en el parametro
         /// </summary>
         /// <param name="c"></param>
         private static void UPDATE_Comercial(Comercial c)
         {
-
+            if(EXISTE_Comercial(c))
+            {
+                Comercial.Remove(new ComercialDato(c).Codigo);
+                BD.INSERT_Comercial(c);
+            }
         }
 
         /// <summary>
-        /// pre:
-        /// post:
+        /// pre: c distinto de null
+        /// post: si el comercial c existe en la base de datos, lo borra
         /// </summary>
         /// <param name="c"></param>
         private static void DELETE_Comercial(Comercial c)
         {
-
+            if(EXISTE_Comercial(c))
+            {
+                Comercial.Remove(new ComercialDato(c).Codigo);
+            }
         }
     }
 }
