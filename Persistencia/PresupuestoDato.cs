@@ -14,6 +14,7 @@ namespace Persistencia
         private string codigo;
         private string estado;
         private string fecahRealizacion;
+        private bool borrado;
 
         public PresupuestoDato(Presupuesto presupuesto)
         {
@@ -33,6 +34,7 @@ namespace Persistencia
                 this.estado = "Pendiente";
             }
             this.fecahRealizacion = presupuesto.FechaRealizacion.ToString();
+            this.borrado = presupuesto.Borrado;
         }
 
         public string ID

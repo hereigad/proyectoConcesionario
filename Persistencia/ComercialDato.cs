@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ModeloDominio;
 
 namespace Persistencia
 {
@@ -12,11 +13,10 @@ namespace Persistencia
         private string nombre;
         private string apellido;
 
-        public ComercialDato(string c, string n, string a)
+        public ComercialDato(Comercial c)
         {
-            this.codigo = c;
-            this.nombre = n;
-            this.apellido = a;
+            this.codigo = c.Codigo;
+            this.nombre = c.Nombre;
         }
 
         public string Codigo
