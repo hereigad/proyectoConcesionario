@@ -13,10 +13,24 @@ namespace Persistencia
         private static TablaVehiculo vehiculos;
         private static TablaPresupuesto presupuestos;
         private static TablaComercial comercial;
+        private static Tabla_PresupuestoVehiculo presupuesto_vehiculo;
 
         public BD() { }
 
         ///////////////////////////////////////////////////////////////////////////// TABLAS //////////////////////////////////////////////////////////////////////////////////////
+        
+        public static Tabla_PresupuestoVehiculo Presupuesto_Vehiculos
+        {
+            get
+            {
+                if(presupuesto_vehiculo == null)
+                {
+                    presupuesto_vehiculo = new Tabla_PresupuestoVehiculo();
+                }
+                return presupuesto_vehiculo;
+            }
+        }
+
         public static TablaComercial Comercial
         {
             get
@@ -204,6 +218,7 @@ namespace Persistencia
             if(EXISTE_Vehiculo(v))
             {
                 Vehiculos.Remove(new VehiculoDato(v).NumBastidor);
+
             }
         }
 
@@ -351,6 +366,70 @@ namespace Persistencia
             {
                 Comercial.Remove(new ComercialDato(c).Codigo);
             }
+        }
+
+        //////////////////////////////////////////////////////////////////// Presupuesto_Vehiculos //////////////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// pre: p distinto de null
+        /// post: devuelve una lista de vehiculos que tienen un presupuesto p
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static List<Vehiculo> SELECT_PresupuestoVehiculos(Presupuesto p)
+        {
+            Presupuesto pres = BD.SELECT_Presupuesto(p);
+            return pres.Vehiculos;
+        }
+
+        /// <summary>
+        /// pre: el presupuesto p y vehiculo v, existen en la base de datos y p, v, distintos de null
+        /// post: añade el vehiculo v al presupuesto p
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="v"></param>
+        public static void INSERT_PresupuestoVehiculos(Presupuesto p, Vehiculo v)
+        {
+            Presupuesto p1 = BD.SELECT_Presupuesto(p);
+            Vehiculo v1 = BD.SELECT_Vehiculo(v);
+            p1.Vehiculos.Add(v1);
+            UPDATE_Presupuesto(p1);
+            Presupuesto_Vehiculos.Add(new Presupuesto_VehiculosDato(p1, v1));
+        }
+
+        /// <summary>
+        /// pre: p y v distintos de null
+        /// post: devuelve TRUE si existe el par p,v en la base de datos, es decir si un vehiculo pertenece a un presupuesto determinado; FALSE en caso contrario
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static bool EXISTE_PresupuestoVehiculo(Presupuesto p, Vehiculo v)
+        {
+            bool existe = false;
+            if(EXISTE_Presupuesto(p) && EXISTE_Vehiculo(v))
+            {
+                Presupuesto p1 = BD.SELECT_Presupuesto(p);
+                Vehiculo v1 = BD.SELECT_Vehiculo(v);
+                if(Presupuesto_Vehiculos.Contains(new Presupuesto_VehiculosDato(p1, v1).ID))
+                {
+                    existe = true;
+                }
+            }
+            return existe;
+        }
+
+        /// <summary>
+        /// pre: el presupuesto p y el vehiculo v existen en la base de datos
+        /// post: borran el par p,v de la base de datos
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="v"></param>
+        public static void DELETE_PresupuestoVehiculos(Presupuesto p, Vehiculo v)
+        {
+            Presupuesto p1 = BD.SELECT_Presupuesto(p);
+            Vehiculo v1 = BD.SELECT_Vehiculo(v);
+            Presupuesto_Vehiculos.Remove(new Presupuesto_VehiculosDato(p1, v1).ID);
         }
     }
 }

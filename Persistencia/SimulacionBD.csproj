@@ -44,6 +44,7 @@
     <Compile Include="BD.cs" />
     <Compile Include="TablaComercial.cs" />
     <Compile Include="TablaVehiculo.cs" />
+    <Compile Include="Tabla_PresupuestoVehiculo.cs" />
     <Compile Include="VehiculoDato.cs" />
     <Compile Include="ClienteDatos.cs" />
     <Compile Include="ColCliente.cs" />
