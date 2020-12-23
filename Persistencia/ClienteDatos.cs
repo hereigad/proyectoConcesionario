@@ -14,14 +14,11 @@ namespace Persistencia
         private string Telefono;
         private int Categoria;
 
-        private Cliente cliente;
-
         public ClienteDatos(Cliente c) {
             this.Dni = c.DNI;
             this.Nombre = c.Nombre;
             this.Telefono = c.Telefono;
             this.Categoria = (int)c.Categoria;
-            this.cliente = c;
         }
         public string DNI {
             get {
@@ -29,12 +26,8 @@ namespace Persistencia
             }
         }
 
-        public Cliente Cliente
-        {
-            get
-            {
-                return this.cliente;
-            }
-        }
+        public string NombreCliente { get { return this.Nombre; } }
+        public string TlfCliente { get { return this.Telefono; } }
+        public int CategoriaCliente { get { return this.Categoria; } }
     }
 }

@@ -29,5 +29,9 @@ namespace Persistencia
                 return this.id;
             }
         }
+
+        public string DNICliente { get { return this.dni; } }
+        public string CodigoComercial { get { return this.codigo; } }
+        public string NumBastidor { get { return this.numBastidor; } }
     }
 }

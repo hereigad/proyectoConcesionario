@@ -13,10 +13,8 @@ namespace Persistencia
         private string dni;
         private string codigo;
         private string estado;
-        private string fecahRealizacion;
+        private DateTime fechaRealizacion;
         private bool borrado;
-
-        private Presupuesto pr;
 
         public PresupuestoDato(Presupuesto presupuesto)
         {
@@ -35,9 +33,8 @@ namespace Persistencia
             {
                 this.estado = "Pendiente";
             }
-            this.fecahRealizacion = presupuesto.FechaRealizacion.ToString();
+            this.fechaRealizacion = presupuesto.FechaRealizacion;
             this.borrado = presupuesto.Borrado;
-            this.pr = presupuesto;
         }
 
         public string ID
@@ -48,6 +45,29 @@ namespace Persistencia
             }
         }
 
-        public Presupuesto Presupuesto { get { return this.pr; } }
+        public string DNI { get { return this.dni; } }
+        public string Codigo { get { return this.codigo; } }
+        public EstadoPresupuesto Estado
+        {
+            get
+            {
+                if(this.estado.Equals("Aceptado"))
+                {
+                    return EstadoPresupuesto.Aceptado;
+                }
+                else if(this.estado.Equals("Desestimado"))
+                {
+                    return EstadoPresupuesto.Desestimado;
+                }
+                else
+                {
+                    return EstadoPresupuesto.Pendiente;
+                }
+            }
+        }
+
+        public DateTime FechaRealizacion { get { return this.fechaRealizacion; } }
+        public bool Borrado { get { return this.borrado; } }
+
     }
 }

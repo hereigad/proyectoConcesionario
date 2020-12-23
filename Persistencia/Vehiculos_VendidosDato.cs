@@ -25,5 +25,7 @@ namespace Persistencia
                 return this.numBastidor;
             }
         }
+
+        public string Codigo { get { return this.codigo; } }
     }
 }

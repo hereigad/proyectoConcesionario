@@ -13,14 +13,11 @@ namespace Persistencia
         private string nombre;
         private string apellido;
 
-        private Comercial comercial;
-
         public ComercialDato(Comercial c)
         {
             this.codigo = c.Codigo;
             this.nombre = c.Nombre;
             this.apellido = c.Apellido;
-            this.comercial = c;
         }
 
         public string Codigo
@@ -31,6 +28,7 @@ namespace Persistencia
             }
         }
 
-        public Comercial Comercial { get { return this.comercial; } }
+        public string Nombre { get { return this.nombre; } }
+        public string Apellido { get { return this.apellido; } }
     }
 }
