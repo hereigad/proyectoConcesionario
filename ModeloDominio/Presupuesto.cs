@@ -12,12 +12,12 @@ namespace ModeloDominio
         private string id;
 
         private EstadoPresupuesto estado;
-        private Vehiculo[] vehiculos;
+        private List<Vehiculo> vehiculos;
         private Cliente cliente;
         private Comercial comercial;
         private bool borrado;
 
-        public Presupuesto(string id, DateTime fecha, EstadoPresupuesto estado, Comercial comercial, Cliente cliente, Vehiculo[] vehiculos, bool borrado)
+        public Presupuesto(string id, DateTime fecha, EstadoPresupuesto estado, Comercial comercial, Cliente cliente, List<Vehiculo> vehiculos, bool borrado)
         {
             this.fechaRealizacion = fecha;
             this.id = id;
@@ -64,7 +64,7 @@ namespace ModeloDominio
             }
         }
 
-        public Vehiculo[] Vehiculos
+        public List<Vehiculo> Vehiculos
         {
             get
             {
