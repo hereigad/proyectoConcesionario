@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ModeloDominio;
 
 namespace Persistencia
 {
@@ -11,10 +12,10 @@ namespace Persistencia
         private string codigo;
         private string numBastidor;
 
-        public Vehiculos_VendidosDato(string cod, string numB)
+        public Vehiculos_VendidosDato(Comercial comercial, Vehiculo vehiculo)
         {
-            this.codigo = cod;
-            this.numBastidor = numB;
+            this.codigo = comercial.Codigo;
+            this.numBastidor = vehiculo.NumBastidor;
         }
 
         public string NumeroBastidor

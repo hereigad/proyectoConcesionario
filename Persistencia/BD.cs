@@ -14,11 +14,24 @@ namespace Persistencia
         private static TablaPresupuesto presupuestos;
         private static TablaComercial comercial;
         private static Tabla_PresupuestoVehiculo presupuesto_vehiculo;
+        private static Tabla_VehiculoVendido vehiculos_vendidos;
 
         public BD() { }
 
         ///////////////////////////////////////////////////////////////////////////// TABLAS //////////////////////////////////////////////////////////////////////////////////////
         
+        public static Tabla_VehiculoVendido Vehiculos_Vendidos
+        {
+            get
+            {
+                if(vehiculos_vendidos == null)
+                {
+                    vehiculos_vendidos = new Tabla_VehiculoVendido();
+                }
+                return vehiculos_vendidos;
+            }
+        }
+
         public static Tabla_PresupuestoVehiculo Presupuesto_Vehiculos
         {
             get
@@ -430,6 +443,38 @@ namespace Persistencia
             Presupuesto p1 = BD.SELECT_Presupuesto(p);
             Vehiculo v1 = BD.SELECT_Vehiculo(v);
             Presupuesto_Vehiculos.Remove(new Presupuesto_VehiculosDato(p1, v1).ID);
+        }
+
+        ////////////////////////////////////////////////////////////////////////// VEHICULOS VENDIDOS ///////////////////////////////////////////////////////////////////////////////
+        
+        /// <summary>
+        /// pre: c y v existen la base de datos cada uno en su tabla correspondiente
+        /// post: añade el par c,v en la tabla VehiculosVendidos
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="v"></param>
+        public static void INSERT_VehiculosVendidos(Comercial c, Vehiculo v)
+        {
+            Comercial c1 = BD.SELECT_Comercial(c);
+            Vehiculo v1 = BD.SELECT_Vehiculo(v);
+            Vehiculos_Vendidos.Add(new Vehiculos_VendidosDato(c1, v1));
+        }
+
+        /// <summary>
+        /// pre: c y v existen en la base de datos cada uno en su tabla correspondiente
+        /// post: devuelve TRUE si existe el par c,v; FALSE en caso contrario
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static bool EXISTE_VehiculosVendidos(Comercial c, Vehiculo v)
+        {
+            bool existe = false;
+            if(Vehiculos_Vendidos.Contains(new Vehiculos_VendidosDato(c,v).NumeroBastidor))
+            {
+                existe = true;
+            }
+            return existe;
         }
     }
 }
