@@ -67,9 +67,16 @@ namespace Persistencia
 
         //////////////////////////////////////////////////////////////////////////////////// CLIENTES /////////////////////////////////////////////////////////////////////////
 
-        public static ClienteDatos SELECT_Cliente(Cliente c)
+        /// <summary>
+        /// pre: c distinto de null y el cliente con el dni de c existe en la base de datos
+        /// post: devuelve el cliente según el DNI pasado en el paramatro c
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static Cliente SELECT_Cliente(Cliente c)
         {
-            return Clientes[c.DNI];
+            ClienteDatos cd = Clientes[c.DNI];
+            return cd.Cliente;
         }
 
         /// <summary>
@@ -129,6 +136,18 @@ namespace Persistencia
         }
 
         //////////////////////////////////////////////////////////////////////////////////// VEHICULOS ///////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// pre: v distinto de null y el vehiculo con el numBastidor de v existe en la base de datos
+        /// post: devuelve el vehiculo según el numBastidor pasado en el paramatro v
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static Vehiculo SELECT_Vehiculo(Vehiculo v)
+        {
+            VehiculoDato vd = Vehiculos[v.NumBastidor];
+            return vd.Vehiculo;
+        }
 
         /// <summary>
         /// pre: v distinto de null y el vehiculo v no existe en la base de datos
@@ -191,6 +210,18 @@ namespace Persistencia
         ///////////////////////////////////////////////////////////////////////////////// PRESUPUESTOS //////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
+        /// pre: p distinto de null y el presupuesto con el ID de p existe en la base de datos
+        /// post: devuelve el presupuesto según el ID pasado en el paramatro p
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static Presupuesto SELECT_Presupuesto(Presupuesto p)
+        {
+            PresupuestoDato pd = Presupuestos[p.ID];
+            return pd.Presupuesto;
+        }
+
+        /// <summary>
         /// pre: p distinto de null y no existe en la base de datos
         /// post: añade el presupuesto p en la base de datos
         /// </summary>
@@ -251,6 +282,18 @@ namespace Persistencia
         }
 
         ////////////////////////////////////////////////////////////////////////// COMERCIAL //////////////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// pre: c distinto de null y el comercial con el codigo de c existe en la base de datos
+        /// post: devuelve el comercial según el codigo pasado en el paramatro c
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static Comercial SELECT_Comercial(Comercial c)
+        {
+            ComercialDato cd = Comercial[c.Codigo];
+            return cd.Comercial;
+        }
 
         /// <summary>
         /// pre: el comercial c no existe en la base de datos y c distinto de null

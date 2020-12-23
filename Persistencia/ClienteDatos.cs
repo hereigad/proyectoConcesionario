@@ -14,16 +14,26 @@ namespace Persistencia
         private string Telefono;
         private int Categoria;
 
+        private Cliente cliente;
 
         public ClienteDatos(Cliente c) {
             this.Dni = c.DNI;
             this.Nombre = c.Nombre;
             this.Telefono = c.Telefono;
             this.Categoria = (int)c.Categoria;
+            this.cliente = c;
         }
         public string DNI {
             get {
                 return this.DNI;
+            }
+        }
+
+        public Cliente Cliente
+        {
+            get
+            {
+                return this.cliente;
             }
         }
     }

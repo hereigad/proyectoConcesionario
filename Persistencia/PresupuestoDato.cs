@@ -16,6 +16,8 @@ namespace Persistencia
         private string fecahRealizacion;
         private bool borrado;
 
+        private Presupuesto pr;
+
         public PresupuestoDato(Presupuesto presupuesto)
         {
             this.id = presupuesto.ID;
@@ -35,6 +37,7 @@ namespace Persistencia
             }
             this.fecahRealizacion = presupuesto.FechaRealizacion.ToString();
             this.borrado = presupuesto.Borrado;
+            this.pr = presupuesto;
         }
 
         public string ID
@@ -44,5 +47,7 @@ namespace Persistencia
                 return this.id;
             }
         }
+
+        public Presupuesto Presupuesto { get { return this.pr; } }
     }
 }

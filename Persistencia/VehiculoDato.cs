@@ -17,6 +17,8 @@ namespace Persistencia
         private bool nuevo;
         private List<Extra> extras;
 
+        private Vehiculo vehiculo;
+
         public VehiculoDato(Vehiculo v)
         {
             this.numBastidor = v.NumBastidor;
@@ -34,6 +36,7 @@ namespace Persistencia
             {
                 extras = null;
             }
+            this.vehiculo = v;
         }
 
         public string NumBastidor
@@ -43,5 +46,7 @@ namespace Persistencia
                 return this.numBastidor;
             }
         }
+
+        public Vehiculo Vehiculo { get { return this.vehiculo; } }
     }
 }
