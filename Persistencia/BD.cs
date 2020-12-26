@@ -435,14 +435,20 @@ namespace Persistencia
         //////////////////////////////////////////////////////////////////// Presupuesto_Vehiculos //////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
-        /// pre: p distinto de null
-        /// post: devuelve los datos de la tabla Presupuesto_Vehiculos
+        /// pre: ID, identificador de un presupuesto presente en la base de datos, distinto de null
+        /// post: devuelve una lista con las claves de los vehiculos (el numero de bastidor) que tienen el presupuesto con el ID dado
         /// </summary>
-        /// <param name="p"></param>
+        /// <param name="ID"></param>
         /// <returns></returns>
-        public static Presupuesto_VehiculosDato SELECT_PresupuestoVehiculos(String ID)
+        public static List<string> SELECT_PresupuestoVehiculos(String ID)
         {
-            return Presupuesto_Vehiculos[ID];
+            List<string> clavesVehiculos = new List<string>();
+            Presupuesto presupuesto = BD.SELECT_Presupuesto(ID);
+            foreach(Vehiculo v in presupuesto.Vehiculos)
+            {
+                clavesVehiculos.Add(v.NumBastidor);
+            }
+            return clavesVehiculos;
         }
 
         
@@ -468,10 +474,9 @@ namespace Persistencia
         {
             bool existe = false;
             if(EXISTE_Presupuesto(p))
-            { 
-                Presupuesto_VehiculosDato pv = SELECT_PresupuestoVehiculos(p.ID);
-                Vehiculo vd = SELECT_Vehiculo(pv.NumBastidor);
-                if(vd != null)
+            {
+                List<string> numBastidores = BD.SELECT_PresupuestoVehiculos(p.ID);
+                if(numBastidores.Contains(v.NumBastidor))
                 {
                     existe = true;
                 }
@@ -493,14 +498,21 @@ namespace Persistencia
         ////////////////////////////////////////////////////////////////////////// VEHICULOS VENDIDOS ///////////////////////////////////////////////////////////////////////////////
         
         /// <summary>
-        /// pre: v distinto de null y existente en la base de datos
-        /// post: devuelve los datos de la tabla Vehiculos_Vendidos
+        /// pre: c distinto de null y existente en la base de datos
+        /// post: devuelve un listado con las claves de los vehiculos vendidos por el comercial c
         /// </summary>
-        /// <param name="v"></param>
+        /// <param name="c"></param>
         /// <returns></returns>
-        public static Vehiculos_VendidosDato SELECT_VehiculosVendidos(Vehiculo v)
+        public static List<string> SELECT_VehiculosVendidos(Comercial c)
         {
-            return Vehiculos_Vendidos[v.NumBastidor];
+            //return Vehiculos_Vendidos[v.NumBastidor];
+            List<string> numBastidores = new List<string>();
+            c = BD.SELECT_Comercial(c.Codigo);
+            foreach (string v in c.Vehiculos)
+            {
+                numBastidores.Add(v);
+            }
+            return numBastidores;
         }
 
         /// <summary>
@@ -512,6 +524,9 @@ namespace Persistencia
         public static void INSERT_VehiculosVendidos(Comercial c, Vehiculo v)
         {
             Vehiculos_Vendidos.Add(new Vehiculos_VendidosDato(c, v));
+            c = BD.SELECT_Comercial(c.Codigo);
+            c.Vehiculos.Add(v.NumBastidor);
+            BD.UPDATE_Comercial(c);
         }
 
         /// <summary>
@@ -524,7 +539,7 @@ namespace Persistencia
         public static bool EXISTE_VehiculosVendidos(Comercial c, Vehiculo v)
         {
             bool existe = false;
-            if(Vehiculos_Vendidos.Contains(new Vehiculos_VendidosDato(c,v).NumeroBastidor))
+            if(Vehiculos_Vendidos.Contains(new Vehiculos_VendidosDato(c,v).Codigo))
             {
                 existe = true;
             }
@@ -539,7 +554,10 @@ namespace Persistencia
         /// <param name="v"></param>
         public static void DELETE_VehiculosVendidos(Comercial c, Vehiculo v)
         {
-            Vehiculos_Vendidos.Remove(new Vehiculos_VendidosDato(c, v).NumeroBastidor);
+            Vehiculos_Vendidos.Remove(new Vehiculos_VendidosDato(c, v).Codigo);
+            c = SELECT_Comercial(c.Codigo);
+            c.Vehiculos.Remove(v.NumBastidor);
+            UPDATE_Comercial(c);
         }
     }
 }

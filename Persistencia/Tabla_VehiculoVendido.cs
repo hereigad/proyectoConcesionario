@@ -11,7 +11,7 @@ namespace Persistencia
     {
         protected override string GetKeyForItem(Vehiculos_VendidosDato item)
         {
-            return item.NumeroBastidor;
+            return item.Codigo;
         }
     }
 }
