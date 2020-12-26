@@ -95,14 +95,21 @@ namespace Persistencia
         //////////////////////////////////////////////////////////////////////////////////// CLIENTES /////////////////////////////////////////////////////////////////////////
 
         /// <summary>
-        /// pre: c distinto de null y el cliente con el dni de c existe en la base de datos
+        /// pre: DNI debe de corresponder con el DNI de un cliente almacenado
         /// post: devuelve el cliente según el DNI pasado en el paramatro c
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        public static ClienteDatos SELECT_Cliente(Cliente c)
+        public static Cliente SELECT_Cliente(String DNI)
         {
-            return Clientes[c.DNI];
+            ClienteDatos dev = Clientes[DNI];
+            if (dev.Borrado == false)
+            {
+                return dev.PasoACliente();
+            }
+            else {
+                return null;
+            }
         }
 
         /// <summary>
@@ -127,7 +134,10 @@ namespace Persistencia
             int i = 0;
             while (i<Clientes.Count) {
                 if (Clientes.ElementAt(i).DNI.Equals(c.DNI)) {
-                    existe = true;
+                    if (Clientes.ElementAt(i).Borrado == false)
+                    {
+                        existe = true;
+                    }
                 }
                 i++;
             }
@@ -157,21 +167,33 @@ namespace Persistencia
         {
             if(EXISTE_Cliente(c))
             {
-                Clientes.Remove(new ClienteDatos(c).DNI);
+                ClienteDatos cd = new ClienteDatos(c);
+                Clientes.Remove(cd.DNI);
+                cd.Borrado = true;
+                Clientes.Add(cd);
+                
             }
         }
 
         //////////////////////////////////////////////////////////////////////////////////// VEHICULOS ///////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
-        /// pre: v distinto de null y el vehiculo con el numBastidor de v existe en la base de datos
-        /// post: devuelve el vehiculo según el numBastidor pasado en el paramatro v
+        /// pre: numBast corresponde a un numero de bastidor existente en la base de datos
+        /// post: devuelve el vehiculo según el numBastidor pasado en el paramatro numBast
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static VehiculoDato SELECT_Vehiculo(Vehiculo v)
+        public static Vehiculo SELECT_Vehiculo(String numBast)
         {
-            return Vehiculos[v.NumBastidor];
+            VehiculoDato dev = Vehiculos[numBast];
+            if (dev.Borrado == false)
+            {
+                return dev.PasoAVehiculo();
+            }
+            else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -196,9 +218,13 @@ namespace Persistencia
             int i = 0;
             while(i<Vehiculos.Count)
             {
-                if(Vehiculos.ElementAt(i).NumBastidor.Equals(v.NumBastidor))
+                VehiculoDato act = Vehiculos.ElementAt(i);
+                if (act.NumBastidor.Equals(v.NumBastidor))
                 {
-                    existe = true;
+                    if (act.Borrado == false)
+                    {
+                        existe = true;
+                    }
                 }
                 i++;
             }
@@ -229,6 +255,9 @@ namespace Persistencia
             if(EXISTE_Vehiculo(v))
             {
                 Vehiculos.Remove(new VehiculoDato(v).NumBastidor);
+                VehiculoDato ins = new VehiculoDato(v);
+                ins.Borrado = true;
+                Vehiculos.Add(ins);
 
             }
         }
@@ -241,9 +270,15 @@ namespace Persistencia
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        public static PresupuestoDato SELECT_Presupuesto(Presupuesto p)
+        public static Presupuesto SELECT_Presupuesto(String ID)
         {
-            return Presupuestos[p.ID];
+            PresupuestoDato pd = Presupuestos[ID];
+            Comercial c = SELECT_Comercial(pd.Codigo);
+            Cliente cli = SELECT_Cliente(pd.DNI);
+            //Aqui añadir el select de presupuestoVehiculos
+            List<Vehiculo> listVeh = null;
+
+            return pd.PasoAPresupuesto(listVeh,c,cli);
             /*Comercial c = SELECT_Comercial(new Comercial(pd.Codigo, "", ""));
             Cliente cl = SELECT_Cliente(new Cliente(pd.DNI, "", "", Categoria.A));
             List<Vehiculo> vehiculos = SELECT_PresupuestoVehiculos(p);
@@ -302,25 +337,34 @@ namespace Persistencia
         /// <param name="p"></param>
         public static void DELETE_Presupuesto(Presupuesto p)
         {
-            if(EXISTE_Presupuesto(p) && !p.Borrado)
+            if(EXISTE_Presupuesto(p))
             {
+
                 Presupuestos.Remove(new PresupuestoDato(p).ID);
-                p.Borrado = true;
-                BD.INSERT_Presupuesto(p);
+                PresupuestoDato pd = new PresupuestoDato(p);
+                Presupuestos.Add(pd);
             }
         }
 
         ////////////////////////////////////////////////////////////////////////// COMERCIAL //////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
-        /// pre: c distinto de null y el comercial con el codigo de c existe en la base de datos
-        /// post: devuelve el comercial según el codigo pasado en el paramatro c
+        /// pre:codigo debe ser el codigo de un comercial guardado en la base de datos
+        /// post: devuelve el comercial según el codigo pasado en el paramatro codigo
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        public static ComercialDato SELECT_Comercial(Comercial c)
+        public static Comercial SELECT_Comercial(String codigo)
         {
-            return Comercial[c.Codigo];
+            ComercialDato dev = Comercial[codigo];
+            if (dev.Borrado == false)
+            {
+                return dev.PasoAComercial();
+            }
+            else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -345,9 +389,13 @@ namespace Persistencia
             int i = 0;
             while(i<Comercial.Count)
             {
-                if(Comercial.ElementAt(i).Codigo.Equals(c.Codigo))
+                ComercialDato cd = Comercial.ElementAt(i);
+                if (cd.Codigo.Equals(c.Codigo))
                 {
-                    existe = true;
+                    if (cd.Borrado == false)
+                    {
+                        existe = true;
+                    }
                 }
                 i++;
             }
@@ -378,6 +426,9 @@ namespace Persistencia
             if(EXISTE_Comercial(c))
             {
                 Comercial.Remove(new ComercialDato(c).Codigo);
+                ComercialDato cd = new ComercialDato(c);
+                cd.Borrado = true;
+                Comercial.Add(cd);
             }
         }
 
@@ -389,9 +440,9 @@ namespace Persistencia
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        public static Presupuesto_VehiculosDato SELECT_PresupuestoVehiculos(Presupuesto p)
+        public static Presupuesto_VehiculosDato SELECT_PresupuestoVehiculos(String ID)
         {
-            return Presupuesto_Vehiculos[p.ID];
+            return Presupuesto_Vehiculos[ID];
         }
 
         
@@ -417,9 +468,9 @@ namespace Persistencia
         {
             bool existe = false;
             if(EXISTE_Presupuesto(p))
-            {
-                Presupuesto_VehiculosDato pv = SELECT_PresupuestoVehiculos(p);
-                VehiculoDato vd = SELECT_Vehiculo(new Vehiculo(pv.NumBastidor, "","","",0.0));
+            { 
+                Presupuesto_VehiculosDato pv = SELECT_PresupuestoVehiculos(p.ID);
+                Vehiculo vd = SELECT_Vehiculo(pv.NumBastidor);
                 if(vd != null)
                 {
                     existe = true;

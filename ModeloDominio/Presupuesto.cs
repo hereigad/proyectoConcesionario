@@ -15,9 +15,9 @@ namespace ModeloDominio
         private List<Vehiculo> vehiculos;
         private Cliente cliente;
         private Comercial comercial;
-        private bool borrado;
+      
 
-        public Presupuesto(string id, DateTime fecha, EstadoPresupuesto estado, Comercial comercial, Cliente cliente, List<Vehiculo> vehiculos, bool borrado)
+        public Presupuesto(string id, DateTime fecha, EstadoPresupuesto estado, Comercial comercial, Cliente cliente, List<Vehiculo> vehiculos)
         {
             this.fechaRealizacion = fecha;
             this.id = id;
@@ -25,7 +25,7 @@ namespace ModeloDominio
             this.cliente = cliente;
             this.vehiculos = vehiculos;
             this.estado = estado;
-            this.borrado = borrado;
+          
         }
 
         public Cliente Cliente
@@ -36,17 +36,7 @@ namespace ModeloDominio
             }
         }
 
-        public bool Borrado
-        {
-            get
-            {
-                return this.borrado == true;
-            }
-            set
-            {
-                this.borrado = value;
-            }
-        }
+      
 
         public Comercial Comercial
         {

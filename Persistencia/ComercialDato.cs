@@ -12,6 +12,7 @@ namespace Persistencia
         private string codigo;
         private string nombre;
         private string apellido;
+        private bool borrado = false;
 
         public ComercialDato(Comercial c)
         {
@@ -30,5 +31,13 @@ namespace Persistencia
 
         public string Nombre { get { return this.nombre; } }
         public string Apellido { get { return this.apellido; } }
+        public bool Borrado
+        {
+            get { return this.borrado; }
+            set { this.borrado = value; }
+        }
+        public Comercial PasoAComercial() {
+            return new Comercial(this.Codigo, this.Nombre, this.Apellido);
+        }
     }
 }

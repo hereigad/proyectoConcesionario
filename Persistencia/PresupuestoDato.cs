@@ -14,7 +14,8 @@ namespace Persistencia
         private string codigo;
         private string estado;
         private DateTime fechaRealizacion;
-        private bool borrado;
+        private String codComercial;
+        private bool borrado = false;
 
         public PresupuestoDato(Presupuesto presupuesto)
         {
@@ -34,7 +35,8 @@ namespace Persistencia
                 this.estado = "Pendiente";
             }
             this.fechaRealizacion = presupuesto.FechaRealizacion;
-            this.borrado = presupuesto.Borrado;
+            
+           
         }
 
         public string ID
@@ -46,6 +48,7 @@ namespace Persistencia
         }
 
         public string DNI { get { return this.dni; } }
+       
         public string Codigo { get { return this.codigo; } }
         public EstadoPresupuesto Estado
         {
@@ -67,7 +70,21 @@ namespace Persistencia
         }
 
         public DateTime FechaRealizacion { get { return this.fechaRealizacion; } }
-        public bool Borrado { get { return this.borrado; } }
+        public bool Borrado
+        {
+            get
+            {
+                return this.borrado == true;
+            }
+            set
+            {
+                this.borrado = value;
+            }
+        }
 
+    
+    public Presupuesto PasoAPresupuesto(List<Vehiculo> vehi, Comercial c,Cliente cli) {
+        return new Presupuesto(this.ID,this.FechaRealizacion,this.Estado,c,cli,vehi);
     }
 }
+    }

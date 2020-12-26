@@ -15,6 +15,7 @@ namespace Persistencia
         private string potencia;
         private double pvp;
         private bool nuevo;
+        private bool borrado = false;
         private List<Extra> extras;
 
         public VehiculoDato(Vehiculo v)
@@ -49,7 +50,15 @@ namespace Persistencia
         public string Potencia { get { return this.potencia; } }
         public double PVP { get { return this.pvp; } }
         public bool Nuevo { get { return this.nuevo; } }
+
+        public bool Borrado { get { return this.borrado; }
+            set { this.borrado = value; }
+        }
         public List<Extra> Extras { get { return this.extras; } }
+        
+        public Vehiculo PasoAVehiculo() {
+            return new Vehiculo(this.NumBastidor,this.Marca,this.Modelo,this.Potencia,this.PVP);
+        }
 
     }
 }
