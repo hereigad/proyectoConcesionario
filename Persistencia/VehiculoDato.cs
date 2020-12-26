@@ -14,9 +14,10 @@ namespace Persistencia
         private string modelo;
         private string potencia;
         private double pvp;
-        private bool nuevo;
+        private bool nuevo = false;
         private bool borrado = false;
-        private List<Extra> extras;
+        private string matricula;
+        private DateTime? fechaMatricula;
 
         public VehiculoDato(Vehiculo v)
         {
@@ -29,11 +30,14 @@ namespace Persistencia
             {
                 VehiculoNuevo vn = (VehiculoNuevo)v;
                 nuevo = true;
-                extras = vn.Extras;
+                matricula = null;
+                fechaMatricula = null;
             }
             else
             {
-                extras = null;
+                VehiculoSegundaMano vsm = (VehiculoSegundaMano)v;
+                matricula = vsm.Matricula;
+                fechaMatricula = vsm.FechaMatricula;
             }
         }
 

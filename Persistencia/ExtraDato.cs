@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ModeloDominio;
 
-namespace ModeloDominio
+namespace Persistencia
 {
-    public class Extra
+    public class ExtraDato
     {
         private string nombre;
         private double pvp;
 
-        public Extra(string nombre, double pvp)
+        public ExtraDato(Extra e)
         {
-            this.nombre = nombre;
-            this.pvp = pvp * 1.21;
+            this.nombre = e.Nombre;
+            this.pvp = e.Pvp;
         }
 
         public string Nombre
@@ -22,14 +23,6 @@ namespace ModeloDominio
             get
             {
                 return this.nombre;
-            }
-        }
-
-        public double Pvp
-        {
-            get
-            {
-                return this.pvp;
             }
         }
     }

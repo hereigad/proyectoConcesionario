@@ -42,7 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BD.cs" />
+    <Compile Include="ExtraDato.cs" />
+    <Compile Include="ExtraVehiculoDato.cs" />
     <Compile Include="TablaComercial.cs" />
+    <Compile Include="TablaExtra.cs" />
+    <Compile Include="TablaExtraVehiculo.cs" />
     <Compile Include="TablaVehiculo.cs" />
     <Compile Include="Tabla_PresupuestoVehiculo.cs" />
     <Compile Include="Tabla_VehiculoVendido.cs" />
