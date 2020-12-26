@@ -13,12 +13,14 @@ namespace Persistencia
         private string nombre;
         private string apellido;
         private bool borrado = false;
+        private List<string> vehiculos;
 
         public ComercialDato(Comercial c)
         {
             this.codigo = c.Codigo;
             this.nombre = c.Nombre;
             this.apellido = c.Apellido;
+            this.vehiculos = c.Vehiculos;
         }
 
         public string Codigo
@@ -31,13 +33,14 @@ namespace Persistencia
 
         public string Nombre { get { return this.nombre; } }
         public string Apellido { get { return this.apellido; } }
+        public List<string> Vehiculos { get { return this.vehiculos; } }
         public bool Borrado
         {
             get { return this.borrado; }
             set { this.borrado = value; }
         }
         public Comercial PasoAComercial() {
-            return new Comercial(this.Codigo, this.Nombre, this.Apellido);
+            return new Comercial(this.Codigo, this.Nombre, this.Apellido, this.Vehiculos);
         }
     }
 }
