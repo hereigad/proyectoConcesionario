@@ -100,9 +100,9 @@ namespace Persistencia
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        public static Cliente SELECT_Cliente(String DNI)
+        public static Cliente SELECT_Cliente(Cliente c)
         {
-            ClienteDatos dev = Clientes[DNI];
+            ClienteDatos dev = Clientes[c.DNI];
             if (dev.Borrado == false)
             {
                 return dev.PasoACliente();
@@ -183,9 +183,9 @@ namespace Persistencia
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static Vehiculo SELECT_Vehiculo(String numBast)
+        public static Vehiculo SELECT_Vehiculo(Vehiculo v)
         {
-            VehiculoDato dev = Vehiculos[numBast];
+            VehiculoDato dev = Vehiculos[v.NumBastidor];
             if (dev.Borrado == false)
             {
                 return dev.PasoAVehiculo();
@@ -270,11 +270,11 @@ namespace Persistencia
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        public static Presupuesto SELECT_Presupuesto(String ID)
+        public static Presupuesto SELECT_Presupuesto(Presupuesto p)
         {
-            PresupuestoDato pd = Presupuestos[ID];
-            Comercial c = SELECT_Comercial(pd.Codigo);
-            Cliente cli = SELECT_Cliente(pd.DNI);
+            PresupuestoDato pd = Presupuestos[p.ID];
+            Comercial c = SELECT_Comercial(new Comercial(pd.Codigo,"","",null));
+            Cliente cli = SELECT_Cliente(new Cliente(pd.DNI,"","",Categoria.A));
             //Aqui añadir el select de presupuestoVehiculos
             List<Vehiculo> listVeh = null;
 
@@ -354,9 +354,9 @@ namespace Persistencia
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        public static Comercial SELECT_Comercial(String codigo)
+        public static Comercial SELECT_Comercial(Comercial c)
         {
-            ComercialDato dev = Comercial[codigo];
+            ComercialDato dev = Comercial[c.Codigo];
             if (dev.Borrado == false)
             {
                 return dev.PasoAComercial();
@@ -443,7 +443,7 @@ namespace Persistencia
         public static List<string> SELECT_PresupuestoVehiculos(String ID)
         {
             List<string> clavesVehiculos = new List<string>();
-            Presupuesto presupuesto = BD.SELECT_Presupuesto(ID);
+            Presupuesto presupuesto = BD.SELECT_Presupuesto(new Presupuesto(ID,DateTime.Now,EstadoPresupuesto.Aceptado,null,null,null));
             foreach(Vehiculo v in presupuesto.Vehiculos)
             {
                 clavesVehiculos.Add(v.NumBastidor);
@@ -507,7 +507,7 @@ namespace Persistencia
         {
             //return Vehiculos_Vendidos[v.NumBastidor];
             List<string> numBastidores = new List<string>();
-            c = BD.SELECT_Comercial(c.Codigo);
+            c = BD.SELECT_Comercial(new Comercial(c.Codigo,"","",null));
             foreach (string v in c.Vehiculos)
             {
                 numBastidores.Add(v);
@@ -524,7 +524,7 @@ namespace Persistencia
         public static void INSERT_VehiculosVendidos(Comercial c, Vehiculo v)
         {
             Vehiculos_Vendidos.Add(new Vehiculos_VendidosDato(c, v));
-            c = BD.SELECT_Comercial(c.Codigo);
+            c = BD.SELECT_Comercial(new Comercial(c.Codigo, "", "", null));
             c.Vehiculos.Add(v.NumBastidor);
             BD.UPDATE_Comercial(c);
         }
@@ -555,7 +555,7 @@ namespace Persistencia
         public static void DELETE_VehiculosVendidos(Comercial c, Vehiculo v)
         {
             Vehiculos_Vendidos.Remove(new Vehiculos_VendidosDato(c, v).Codigo);
-            c = SELECT_Comercial(c.Codigo);
+            c = SELECT_Comercial(new Comercial(c.Codigo, "", "", null));
             c.Vehiculos.Remove(v.NumBastidor);
             UPDATE_Comercial(c);
         }
