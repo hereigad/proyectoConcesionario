@@ -167,11 +167,10 @@ namespace Persistencia
         {
             if(EXISTE_Cliente(c))
             {
-                ClienteDatos cd = new ClienteDatos(c);
+                ClienteDatos cd = Clientes[c.DNI];
                 Clientes.Remove(cd.DNI);
                 cd.Borrado = true;
                 Clientes.Add(cd);
-                
             }
         }
 
@@ -254,11 +253,10 @@ namespace Persistencia
         {
             if(EXISTE_Vehiculo(v))
             {
+                VehiculoDato ins = Vehiculos[v.NumBastidor];//new VehiculoDato(v);
                 Vehiculos.Remove(new VehiculoDato(v).NumBastidor);
-                VehiculoDato ins = new VehiculoDato(v);
                 ins.Borrado = true;
                 Vehiculos.Add(ins);
-
             }
         }
 
@@ -339,9 +337,9 @@ namespace Persistencia
         {
             if(EXISTE_Presupuesto(p))
             {
-
+                PresupuestoDato pd = Presupuestos[p.ID];
                 Presupuestos.Remove(new PresupuestoDato(p).ID);
-                PresupuestoDato pd = new PresupuestoDato(p);
+                pd.Borrado = true;
                 Presupuestos.Add(pd);
             }
         }
@@ -425,8 +423,8 @@ namespace Persistencia
         {
             if(EXISTE_Comercial(c))
             {
+                ComercialDato cd = Comercial[c.Codigo];//new ComercialDato(c);
                 Comercial.Remove(new ComercialDato(c).Codigo);
-                ComercialDato cd = new ComercialDato(c);
                 cd.Borrado = true;
                 Comercial.Add(cd);
             }
@@ -435,15 +433,15 @@ namespace Persistencia
         //////////////////////////////////////////////////////////////////// Presupuesto_Vehiculos //////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
-        /// pre: ID, identificador de un presupuesto presente en la base de datos, distinto de null
+        /// pre: p distinto de null y es un presupuesto presente en la base de datos en el cual se le puede pasar solo el identificador
         /// post: devuelve una lista con las claves de los vehiculos (el numero de bastidor) que tienen el presupuesto con el ID dado
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="p"></param>
         /// <returns></returns>
-        public static List<string> SELECT_PresupuestoVehiculos(String ID)
+        public static List<string> SELECT_PresupuestoVehiculos(Presupuesto p)
         {
             List<string> clavesVehiculos = new List<string>();
-            Presupuesto presupuesto = BD.SELECT_Presupuesto(new Presupuesto(ID,DateTime.Now,EstadoPresupuesto.Aceptado,null,null,null));
+            Presupuesto presupuesto = BD.SELECT_Presupuesto(p);
             foreach(Vehiculo v in presupuesto.Vehiculos)
             {
                 clavesVehiculos.Add(v.NumBastidor);
@@ -475,7 +473,7 @@ namespace Persistencia
             bool existe = false;
             if(EXISTE_Presupuesto(p))
             {
-                List<string> numBastidores = BD.SELECT_PresupuestoVehiculos(p.ID);
+                List<string> numBastidores = BD.SELECT_PresupuestoVehiculos(p);
                 if(numBastidores.Contains(v.NumBastidor))
                 {
                     existe = true;
