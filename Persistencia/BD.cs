@@ -128,14 +128,16 @@ namespace Persistencia
         /// <returns></returns>
         public static Cliente SELECT_Cliente(Cliente c)
         {
-            ClienteDatos dev = Clientes[c.DNI];
-            if (dev.Borrado == false)
+            if(EXISTE_Cliente(c))
             {
-                return dev.PasoACliente();
-            }
-            else {
+                ClienteDatos dev = Clientes[c.DNI];
+                if (dev.Borrado == false)
+                {
+                    return dev.PasoACliente();
+                }
                 return null;
             }
+            return null;
         }
 
         /// <summary>
@@ -145,7 +147,10 @@ namespace Persistencia
         /// <param name="c"></param>
         public static void INSERT_Cliente(Cliente c)
         {
-            Clientes.Add(new ClienteDatos(c));
+            if(!EXISTE_Cliente(c))
+            {
+                Clientes.Add(new ClienteDatos(c));
+            }
         }
 
         /// <summary>
@@ -300,17 +305,21 @@ namespace Persistencia
         /// <returns></returns>
         public static Presupuesto SELECT_Presupuesto(Presupuesto p)
         {
-            PresupuestoDato pd = Presupuestos[p.ID];
-            Comercial c = SELECT_Comercial(new Comercial(pd.Codigo,"","",null));
-            Cliente cli = SELECT_Cliente(new Cliente(pd.DNI,"","",Categoria.A));
-            //Aqui añadir el select de presupuestoVehiculos
-            List<Vehiculo> listVeh = null;
+            if(EXISTE_Presupuesto(p))
+            {
+                PresupuestoDato pd = Presupuestos[p.ID];
+                Comercial c = SELECT_Comercial(new Comercial(pd.Codigo, "", "", null));
+                Cliente cli = SELECT_Cliente(new Cliente(pd.DNI, "", "", Categoria.A));
+                //Aqui añadir el select de presupuestoVehiculos
+                List<Vehiculo> listVeh = null;
 
-            return pd.PasoAPresupuesto(listVeh,c,cli);
-            /*Comercial c = SELECT_Comercial(new Comercial(pd.Codigo, "", ""));
-            Cliente cl = SELECT_Cliente(new Cliente(pd.DNI, "", "", Categoria.A));
-            List<Vehiculo> vehiculos = SELECT_PresupuestoVehiculos(p);
-            return new Presupuesto(pd.ID, pd.FechaRealizacion, pd.Estado, c, cl, vehiculos, pd.Borrado);*/
+                return pd.PasoAPresupuesto(listVeh, c, cli);
+                /*Comercial c = SELECT_Comercial(new Comercial(pd.Codigo, "", ""));
+                Cliente cl = SELECT_Cliente(new Cliente(pd.DNI, "", "", Categoria.A));
+                List<Vehiculo> vehiculos = SELECT_PresupuestoVehiculos(p);
+                return new Presupuesto(pd.ID, pd.FechaRealizacion, pd.Estado, c, cl, vehiculos, pd.Borrado);*/
+            }
+            return null;
         }
 
         /// <summary>
@@ -320,7 +329,10 @@ namespace Persistencia
         /// <param name="p"></param>
         public static void INSERT_Presupuesto(Presupuesto p)
         {
-            Presupuestos.Add(new PresupuestoDato(p));
+            if(!EXISTE_Presupuesto(p))
+            {
+                Presupuestos.Add(new PresupuestoDato(p));
+            }
         }
 
         /// <summary>
@@ -384,15 +396,16 @@ namespace Persistencia
         /// <returns></returns>
         public static Comercial SELECT_Comercial(Comercial c)
         {
-            ComercialDato dev = Comercial[c.Codigo];
-            if (dev.Borrado == false)
+            if(EXISTE_Comercial(c))
             {
-                return dev.PasoAComercial();
-            }
-            else
-            {
+                ComercialDato dev = Comercial[c.Codigo];
+                if (dev.Borrado == false)
+                {
+                    return dev.PasoAComercial();
+                }
                 return null;
             }
+            return null;
         }
 
         /// <summary>
@@ -402,7 +415,10 @@ namespace Persistencia
         /// <param name="c"></param>
         public static void INSERT_Comercial(Comercial c)
         {
-            Comercial.Add(new ComercialDato(c));
+            if (!EXISTE_Comercial(c))
+            {
+                Comercial.Add(new ComercialDato(c));
+            }
         }
 
         /// <summary>
@@ -488,7 +504,10 @@ namespace Persistencia
         /// <param name="v"></param>
         public static void INSERT_PresupuestoVehiculos(Presupuesto p, Vehiculo v)
         {
-            Presupuesto_Vehiculos.Add(new Presupuesto_VehiculosDato(p,v));
+            if(!EXISTE_PresupuestoVehiculo(p, v))
+            {
+                Presupuesto_Vehiculos.Add(new Presupuesto_VehiculosDato(p, v));
+            }
         }
 
         /// <summary>
@@ -520,7 +539,10 @@ namespace Persistencia
         /// <param name="v"></param>
         public static void DELETE_PresupuestoVehiculos(Presupuesto p, Vehiculo v)
         {
-            Presupuesto_Vehiculos.Remove(new Presupuesto_VehiculosDato(p, v).ID);
+            if(EXISTE_PresupuestoVehiculo(p,v))
+            {
+                Presupuesto_Vehiculos.Remove(new Presupuesto_VehiculosDato(p, v).ID);
+            }
         }
 
         ////////////////////////////////////////////////////////////////////////// VEHICULOS VENDIDOS ///////////////////////////////////////////////////////////////////////////////
@@ -551,10 +573,13 @@ namespace Persistencia
         /// <param name="v"></param>
         public static void INSERT_VehiculosVendidos(Comercial c, Vehiculo v)
         {
-            Vehiculos_Vendidos.Add(new Vehiculos_VendidosDato(c, v));
-            c = BD.SELECT_Comercial(new Comercial(c.Codigo, "", "", null));
-            c.Vehiculos.Add(v.NumBastidor);
-            BD.UPDATE_Comercial(c);
+            if(!EXISTE_VehiculosVendidos(c,v))
+            {
+                Vehiculos_Vendidos.Add(new Vehiculos_VendidosDato(c, v));
+                c = BD.SELECT_Comercial(new Comercial(c.Codigo, "", "", null));
+                c.Vehiculos.Add(v.NumBastidor);
+                BD.UPDATE_Comercial(c);
+            }
         }
 
         /// <summary>
@@ -582,10 +607,13 @@ namespace Persistencia
         /// <param name="v"></param>
         public static void DELETE_VehiculosVendidos(Comercial c, Vehiculo v)
         {
-            Vehiculos_Vendidos.Remove(new Vehiculos_VendidosDato(c, v).Codigo);
-            c = SELECT_Comercial(new Comercial(c.Codigo, "", "", null));
-            c.Vehiculos.Remove(v.NumBastidor);
-            UPDATE_Comercial(c);
+            if(EXISTE_VehiculosVendidos(c,v))
+            {
+                Vehiculos_Vendidos.Remove(new Vehiculos_VendidosDato(c, v).Codigo);
+                c = SELECT_Comercial(new Comercial(c.Codigo, "", "", null));
+                c.Vehiculos.Remove(v.NumBastidor);
+                UPDATE_Comercial(c);
+            }
         }
     }
 }
