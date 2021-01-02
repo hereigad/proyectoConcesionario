@@ -15,6 +15,8 @@ namespace Persistencia
         private static TablaComercial comercial;
         private static Tabla_PresupuestoVehiculo presupuesto_vehiculo;
         private static Tabla_VehiculoVendido vehiculos_vendidos;
+        private static TablaExtra extras;
+        private static TablaExtraVehiculo vehiculo_extra;
 
         public BD() { }
 
@@ -89,6 +91,30 @@ namespace Persistencia
                     presupuestos = new TablaPresupuesto();
                 }
                 return presupuestos;
+            }
+        }
+
+        public static TablaExtra Extras
+        {
+            get
+            {
+                if(extras == null)
+                {
+                    extras = new TablaExtra();
+                }
+                return extras;
+            }
+        }
+
+        public static TablaExtraVehiculo Vehiculo_Extra
+        {
+            get
+            {
+                if(vehiculo_extra == null)
+                {
+                    vehiculo_extra = new TablaExtraVehiculo();
+                }
+                return vehiculo_extra;
             }
         }
 
@@ -184,15 +210,16 @@ namespace Persistencia
         /// <returns></returns>
         public static Vehiculo SELECT_Vehiculo(Vehiculo v)
         {
-            VehiculoDato dev = Vehiculos[v.NumBastidor];
-            if (dev.Borrado == false)
+            if (EXISTE_Vehiculo(v))
             {
-                return dev.PasoAVehiculo();
-            }
-            else
-            {
+                VehiculoDato dev = Vehiculos[v.NumBastidor];
+                if (dev.Borrado == false)
+                {
+                    return dev.PasoAVehiculo();
+                }
                 return null;
             }
+            return null;
         }
 
         /// <summary>
@@ -202,7 +229,10 @@ namespace Persistencia
         /// <param name="v"></param>
         public static void INSERT_Vehiculo(Vehiculo v)
         {
-            Vehiculos.Add(new VehiculoDato(v));
+            if (!EXISTE_Vehiculo(v))
+            {
+                Vehiculos.Add(new VehiculoDato(v));
+            }
         }
 
         /// <summary>
