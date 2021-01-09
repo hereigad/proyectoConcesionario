@@ -611,9 +611,9 @@ namespace Persistencia
 
         /// <summary>
         /// pre: e distinto de null y existente en la base de datos
-        /// post: devuelve un listado con las claves de los vehiculos vendidos por el comercial c
+        /// post:
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="e"></param>
         /// <returns></returns>
         public static ExtraDato SELECT_Extra(Extra e)
         {
@@ -626,10 +626,10 @@ namespace Persistencia
         }
 
         /// <summary>
-        /// pre: el comercial c no existe en la base de datos y c distinto de null
-        /// post: añade un nuevo comercial a la base de datos
+        /// pre:
+        /// post:
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="e"></param>
         public static void INSERT_Extra(Extra e)
         {
             if (!EXISTE_Extra(e))
@@ -639,10 +639,10 @@ namespace Persistencia
         }
 
         /// <summary>
-        /// pre: c distinto de null
-        /// post: devuelve TRUE si el comercial c existe en la base de datos; FALSE en caso contrario
+        /// pre:
+        /// post:
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="e"></param>
         /// <returns></returns>
         public static bool EXISTE_Extra(Extra e)
         {
@@ -661,10 +661,10 @@ namespace Persistencia
         }
 
         /// <summary>
-        /// pre: c distinto de null
-        /// post: si el comercial c existe en la base de datos, actualiza sus datos con los datos que vienen en el parametro
+        /// pre:
+        /// post: 
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="e"></param>
         private static void UPDATE_Extra(Extra e)
         {
             if (EXISTE_Extra(e))
@@ -675,15 +675,95 @@ namespace Persistencia
         }
 
         /// <summary>
-        /// pre: c distinto de null
-        /// post: si el comercial c existe en la base de datos, lo borra
+        /// pre:
+        /// post:
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="e"></param>
         private static void DELETE_Extra(Extra e)
         {
             if (EXISTE_Extra(e))
             {
                 Extras.Remove(new ExtraDato(e).Nombre);
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////// EXTRA_VEHICULO ///////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// pre: e distinto de null y existente en la base de datos
+        /// post:
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        public static ExtraVehiculoDato SELECT_ExtraVehiculo(Vehiculo v)
+        {
+            if (EXISTE_ExtraVehiculo(v))
+            {
+                return Vehiculo_Extra[v.NumBastidor];
+
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// pre:
+        /// post:
+        /// </summary>
+        /// <param name="e"></param>
+        public static void INSERT_ExtraVehiculo(Extra e, Vehiculo v)
+        {
+            if (!EXISTE_ExtraVehiculo(v))
+            {
+                Vehiculo_Extra.Add(new ExtraVehiculoDato(e, v));
+            }
+        }
+
+        /// <summary>
+        /// pre:
+        /// post:
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        public static bool EXISTE_ExtraVehiculo(Vehiculo v)
+        {
+            bool existe = false;
+            int i = 0;
+            while (i < Extras.Count)
+            {
+                ExtraVehiculoDato evd = Vehiculo_Extra.ElementAt(i);
+                if (evd.NumBastidor.Equals(v.NumBastidor))
+                {
+                    existe = true;
+                }
+                i++;
+            }
+            return existe;
+        }
+
+        /// <summary>
+        /// pre:
+        /// post: 
+        /// </summary>
+        /// <param name="e"></param>
+        private static void UPDATE_ExtraVehiculo(Extra e, Vehiculo v)
+        {
+            if (EXISTE_ExtraVehiculo(v))
+            {
+                Extras.Remove(new ExtraVehiculoDato(e, v).NumBastidor);
+                BD.INSERT_ExtraVehiculo(e, v);
+            }
+        }
+
+        /// <summary>
+        /// pre:
+        /// post:
+        /// </summary>
+        /// <param name="e"></param>
+        private static void DELETE_ExtraVehiculo(Extra e, Vehiculo v)
+        {
+            if (EXISTE_ExtraVehiculo(v))
+            {
+                Extras.Remove(new ExtraVehiculoDato(e, v).NumBastidor);
             }
         }
     }
