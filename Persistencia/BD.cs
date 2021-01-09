@@ -7,7 +7,7 @@ using ModeloDominio;
 
 namespace Persistencia
 {
-    class BD
+    public class BD
     {
         private static ColCliente clientes;
         private static TablaVehiculo vehiculos;
