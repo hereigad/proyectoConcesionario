@@ -606,5 +606,86 @@ namespace Persistencia
                 UPDATE_Comercial(c);
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////// EXTRA ///////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// pre: e distinto de null y existente en la base de datos
+        /// post: devuelve un listado con las claves de los vehiculos vendidos por el comercial c
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static ExtraDato SELECT_Extra(Extra e)
+        {
+            if (EXISTE_Extra(e))
+            {
+                return Extras[e.Nombre];
+
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// pre: el comercial c no existe en la base de datos y c distinto de null
+        /// post: añade un nuevo comercial a la base de datos
+        /// </summary>
+        /// <param name="c"></param>
+        public static void INSERT_Extra(Extra e)
+        {
+            if (!EXISTE_Extra(e))
+            {
+                Extras.Add(new ExtraDato(e));
+            }
+        }
+
+        /// <summary>
+        /// pre: c distinto de null
+        /// post: devuelve TRUE si el comercial c existe en la base de datos; FALSE en caso contrario
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static bool EXISTE_Extra(Extra e)
+        {
+            bool existe = false;
+            int i = 0;
+            while (i < Extras.Count)
+            {
+                ExtraDato ed = Extras.ElementAt(i);
+                if (ed.Nombre.Equals(e.Nombre))
+                {
+                    existe = true;
+                }
+                i++;
+            }
+            return existe;
+        }
+
+        /// <summary>
+        /// pre: c distinto de null
+        /// post: si el comercial c existe en la base de datos, actualiza sus datos con los datos que vienen en el parametro
+        /// </summary>
+        /// <param name="c"></param>
+        private static void UPDATE_Extra(Extra e)
+        {
+            if (EXISTE_Extra(e))
+            {
+                Extras.Remove(new ExtraDato(e).Nombre);
+                BD.INSERT_Extra(e);
+            }
+        }
+
+        /// <summary>
+        /// pre: c distinto de null
+        /// post: si el comercial c existe en la base de datos, lo borra
+        /// </summary>
+        /// <param name="c"></param>
+        private static void DELETE_Extra(Extra e)
+        {
+            if (EXISTE_Extra(e))
+            {
+                Extras.Remove(new ExtraDato(e).Nombre);
+            }
+        }
     }
 }
+
