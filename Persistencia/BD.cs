@@ -126,14 +126,14 @@ namespace Persistencia
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        public static Cliente SELECT_Cliente(Cliente c)
+        public static ClienteDato SELECT_Cliente(Cliente c)
         {
             if(EXISTE_Cliente(c))
             {
                 ClienteDatos dev = Clientes[c.DNI];
                 if (dev.Borrado == false)
                 {
-                    return dev.PasoACliente();
+                    return dev;
                 }
                 return null;
             }
