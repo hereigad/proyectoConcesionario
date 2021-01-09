@@ -7,7 +7,7 @@ using ModeloDominio;
 
 namespace Persistencia
 {
-    class Vehiculos_VendidosDato
+    public class Vehiculos_VendidosDato
     {
         private string codigo;
         private string numBastidor;

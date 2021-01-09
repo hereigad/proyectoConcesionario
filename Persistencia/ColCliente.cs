@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    class ColCliente:  KeyedCollection<string,ClienteDatos>
+    public class ColCliente:  KeyedCollection<string,ClienteDatos>
     {
         protected override string GetKeyForItem(ClienteDatos c) {
             return c.DNI;

@@ -7,7 +7,7 @@ using ModeloDominio;
 
 namespace Persistencia
 {
-    class Presupuesto_VehiculosDato
+    public class Presupuesto_VehiculosDato
     {
         private string id;
         private string dni;

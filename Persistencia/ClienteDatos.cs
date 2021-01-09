@@ -7,7 +7,7 @@ using ModeloDominio;
 
 namespace Persistencia
 {
-    class ClienteDatos
+    public class ClienteDatos
     {
         private string Dni;
         private string Nombre;

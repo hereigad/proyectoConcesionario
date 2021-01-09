@@ -58,7 +58,7 @@ namespace Persistencia
         public bool Borrado { get { return this.borrado; }
             set { this.borrado = value; }
         }
-        public List<Extra> Extras { get { return this.extras; } }
+        //public List<Extra> Extras { get { return this.extras; } }
         
         public Vehiculo PasoAVehiculo() {
             return new Vehiculo(this.NumBastidor,this.Marca,this.Modelo,this.Potencia,this.PVP);

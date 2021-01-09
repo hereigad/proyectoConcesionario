@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace Persistencia
 {
-    class Tabla_VehiculoVendido: KeyedCollection<string, Vehiculos_VendidosDato>
+    public class Tabla_VehiculoVendido: KeyedCollection<string, Vehiculos_VendidosDato>
     {
         protected override string GetKeyForItem(Vehiculos_VendidosDato item)
         {

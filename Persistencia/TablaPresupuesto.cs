@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace Persistencia
 {
-    class TablaPresupuesto: KeyedCollection<string, PresupuestoDato>
+    public class TablaPresupuesto: KeyedCollection<string, PresupuestoDato>
     {
         protected override string GetKeyForItem(PresupuestoDato item)
         {
