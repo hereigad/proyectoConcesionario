@@ -126,16 +126,12 @@ namespace Persistencia
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        public static ClienteDato SELECT_Cliente(Cliente c)
+        public static ClienteDatos SELECT_Cliente(Cliente c)
         {
             if(EXISTE_Cliente(c))
             {
-                ClienteDatos dev = Clientes[c.DNI];
-                if (dev.Borrado == false)
-                {
-                    return dev;
-                }
-                return null;
+                return Clientes[c.DNI];
+               
             }
             return null;
         }
@@ -213,16 +209,12 @@ namespace Persistencia
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static Vehiculo SELECT_Vehiculo(Vehiculo v)
+        public static VehiculoDato SELECT_Vehiculo(Vehiculo v)
         {
             if (EXISTE_Vehiculo(v))
             {
-                VehiculoDato dev = Vehiculos[v.NumBastidor];
-                if (dev.Borrado == false)
-                {
-                    return dev.PasoAVehiculo();
-                }
-                return null;
+                return Vehiculos[v.NumBastidor];
+               
             }
             return null;
         }
@@ -303,17 +295,15 @@ namespace Persistencia
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        public static Presupuesto SELECT_Presupuesto(Presupuesto p)
+        public static PresupuestoDato SELECT_Presupuesto(Presupuesto p)
         {
-            if(EXISTE_Presupuesto(p))
+            if (EXISTE_Presupuesto(p))
             {
                 PresupuestoDato pd = Presupuestos[p.ID];
-                Comercial c = SELECT_Comercial(new Comercial(pd.Codigo, "", "", null));
-                Cliente cli = SELECT_Cliente(new Cliente(pd.DNI, "", "", Categoria.A));
-                //Aqui añadir el select de presupuestoVehiculos
-                List<Vehiculo> listVeh = null;
-
-                return pd.PasoAPresupuesto(listVeh, c, cli);
+                return pd;
+            
+           
+          
                 /*Comercial c = SELECT_Comercial(new Comercial(pd.Codigo, "", ""));
                 Cliente cl = SELECT_Cliente(new Cliente(pd.DNI, "", "", Categoria.A));
                 List<Vehiculo> vehiculos = SELECT_PresupuestoVehiculos(p);
@@ -349,7 +339,10 @@ namespace Persistencia
             {
                 if(Presupuestos.ElementAt(i).ID.Equals(p.ID))
                 {
-                    existe = true;
+                    if (!Presupuestos.ElementAt(i).Borrado)
+                    {
+                        existe = true;
+                    }
                 }
                 i++;
             }
@@ -394,16 +387,12 @@ namespace Persistencia
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        public static Comercial SELECT_Comercial(Comercial c)
+        public static ComercialDato SELECT_Comercial(Comercial c)
         {
             if(EXISTE_Comercial(c))
             {
-                ComercialDato dev = Comercial[c.Codigo];
-                if (dev.Borrado == false)
-                {
-                    return dev.PasoAComercial();
-                }
-                return null;
+                return Comercial[c.Codigo];
+               
             }
             return null;
         }
@@ -484,15 +473,17 @@ namespace Persistencia
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        public static List<string> SELECT_PresupuestoVehiculos(Presupuesto p)
+        public static Presupuesto_VehiculosDato SELECT_PresupuestoVehiculos(Presupuesto p)
         {
-            List<string> clavesVehiculos = new List<string>();
-            Presupuesto presupuesto = BD.SELECT_Presupuesto(p);
-            foreach(Vehiculo v in presupuesto.Vehiculos)
-            {
-                clavesVehiculos.Add(v.NumBastidor);
+             List<string> clavesVehiculos = new List<string>();
+             Presupuesto presupuesto = BD.SELECT_Presupuesto(p);
+              foreach(Vehiculo v in presupuesto.Vehiculos)
+             {
+                 clavesVehiculos.Add(v.NumBastidor);
             }
-            return clavesVehiculos;
+             return clavesVehiculos;
+           
+          
         }
 
         
