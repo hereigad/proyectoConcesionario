@@ -25,5 +25,13 @@ namespace Persistencia
                 return this.nombre;
             }
         }
+
+        public double PVP
+        {
+            get
+            {
+                return this.PVP;
+            }
+        }
     }
 }

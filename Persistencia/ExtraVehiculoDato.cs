@@ -10,12 +10,15 @@ namespace Persistencia
     public class ExtraVehiculoDato
     {
         private string numBastidor;
-        private string nombre;
+        private List<string> nombre;
 
-        public ExtraVehiculoDato(Extra e, Vehiculo v)
+        public ExtraVehiculoDato(List<Extra> e, Vehiculo v)
         {
             this.numBastidor = v.NumBastidor;
-            this.nombre = e.Nombre;
+            foreach(Extra i in e)
+            {
+                nombre.Add(i.Nombre);
+            }
         }
 
         public string NumBastidor
@@ -23,6 +26,14 @@ namespace Persistencia
             get
             {
                 return this.numBastidor;
+            }
+        }
+
+        public List<string> Nombre
+        {
+            get
+            {
+                return this.nombre;
             }
         }
     }
