@@ -11,9 +11,16 @@ namespace PersistenciaCliente
 {
     class PersistenciaCliente
     {
+
         public void anadirCliente(Cliente c) { 
                
             
+        }
+        public Cliente seleccionarCliente(Cliente c) {
+            Cliente cli;
+
+
+            return cli;
         }
 
     }
