@@ -17,6 +17,7 @@ namespace Persistencia
         private static Tabla_VehiculoVendido vehiculos_vendidos;
         private static TablaExtra extras;
         private static TablaExtraVehiculo vehiculo_extra;
+        private static Tabla_ClientePresupuesto cliente_presupuesto;
 
         public BD() { }
 
@@ -67,6 +68,17 @@ namespace Persistencia
                     clientes = new ColCliente();
                 }
                 return clientes;
+            }
+        }
+        public static Tabla_ClientePresupuesto ClientePresupuesto
+        {
+            get
+            {
+                if (cliente_presupuesto == null)
+                {
+                    cliente_presupuesto = new Tabla_ClientePresupuesto();
+                }
+                return cliente_presupuesto;
             }
         }
 
@@ -464,7 +476,7 @@ namespace Persistencia
                 Comercial.Add(cd);
             }
         }
-        /*
+
         //////////////////////////////////////////////////////////////////// Presupuesto_Vehiculos //////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
@@ -535,7 +547,7 @@ namespace Persistencia
                 Presupuesto_Vehiculos.Remove(new Presupuesto_VehiculosDato(p, v).ID);
             }
         }
-        
+
         ////////////////////////////////////////////////////////////////////////// VEHICULOS VENDIDOS ///////////////////////////////////////////////////////////////////////////////
         
         /// <summary>
@@ -606,7 +618,69 @@ namespace Persistencia
                 UPDATE_Comercial(c);
             }
         }
-        */
+
+        ////////////////////////////////////////////////////////////////////////// Cliente Presupuesto ///////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// pre: c distinto de null y existente en la base de datos
+        /// post: devuelve un listado con las claves de los vehiculos vendidos por el comercial c
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static ClientePresupuesto SELECT_ClientePresupuesto(Cliente c)
+        {
+            ClientePresupuesto clipres = ClientePresupuesto[c.DNI];
+            return clipres;
+        }
+
+        /// <summary>
+        /// pre: c y v existen la base de datos cada uno en su tabla correspondiente
+        /// post: añade el par c,v en la tabla VehiculosVendidos
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="v"></param>
+        public static void INSERT_ClientePresupuesto(Cliente c, Presupuesto p)
+        {
+            if (!EXISTE_ClientePresupuesto(c, p))
+            {
+                ClientePresupuesto.Add(new ClientePresupuesto(c, p));
+            }
+        }
+
+        /// <summary>
+        /// pre: c y v existen en la base de datos cada uno en su tabla correspondiente
+        /// post: devuelve TRUE si existe el par c,v; FALSE en caso contrario
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static bool EXISTE_ClientePresupuesto(Cliente c, Presupuesto p)
+        {
+            bool existe = false;
+            if (ClientePresupuesto.Contains(new ClientePresupuesto(c, p).DNI))
+            {
+                existe = true;
+            }
+            return existe;
+        }
+
+        /// <summary>
+        /// pre: c y v no nulos y existentes en la base de datos
+        /// post: borra la tupla c,v de la base de datos
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="v"></param>
+        public static void DELETE_ClientePresupuesto(Cliente c, Presupuesto p)
+        {
+            if (EXISTE_ClientePresupuesto(c, p))
+            {
+                ClientePresupuesto cpn = new ClientePresupuesto(c, p);
+                cpn.Borrado = true;
+                ClientePresupuesto.Remove(c.DNI);
+                ClientePresupuesto.Add(cpn);
+            }
+        }
+
         ////////////////////////////////////////////////////////////////////////// EXTRA ///////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
