@@ -37,8 +37,24 @@ namespace PersistenciaVehiculo
             VehiculoDato vd = BD.SELECT_Vehiculo(v);
             if(vd.Nuevo)
             {
-                v = new VehiculoNuevo(vd.NumBastidor, vd.Marca, vd.Modelo, vd.Potencia, vd.PVP, vd.)
+                ExtraVehiculoDato evd = BD.SELECT_ExtraVehiculo(v);
+                ExtraDato ed = null;
+                Extra e = null;
+                List<Extra> extras = new List<Extra>();
+                foreach (string n in evd.Nombre)
+                {
+                    e = new Extra(n, 0);
+                    ed = BD.SELECT_Extra(e);
+                    e = new Extra(ed.Nombre, ed.PVP);
+                    extras.Add(e);
+                }
+                v = new VehiculoNuevo(vd.NumBastidor, vd.Marca, vd.Modelo, vd.Potencia, vd.PVP, extras);
             }
+            else
+            {
+                v = new VehiculoSegundaMano(vd.NumBastidor, vd.Marca, vd.Modelo, vd.Potencia, vd.PVP, vd.Fec)
+            }
+            return v;
         }
     }
 }
