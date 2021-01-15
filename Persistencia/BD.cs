@@ -481,21 +481,21 @@ namespace Persistencia
 
         /// <summary>
         /// pre: p distinto de null y es un presupuesto presente en la base de datos en el cual se le puede pasar solo el identificador
-        /// post: devuelve una lista con las claves de los vehiculos (el numero de bastidor) que tienen el presupuesto con el ID dado
+        /// post: devuelve la tabla con las claves del vehiculo (el numero de bastidor) que tiene el presupuesto con el ID dado
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        public static Presupuesto_VehiculosDato SELECT_PresupuestoVehiculos(Presupuesto p)
+        public static Presupuesto_VehiculosDato SELECT_PresupuestoVehiculos(Presupuesto p, Vehiculo v)
         {
-             List<string> clavesVehiculos = new List<string>();
-             Presupuesto presupuesto = BD.SELECT_Presupuesto(p);
-              foreach(Vehiculo v in presupuesto.Vehiculos)
-             {
-                 clavesVehiculos.Add(v.NumBastidor);
-            }
-             return clavesVehiculos;
-           
-          
+            /*List<string> clavesVehiculos = new List<string>();
+            Presupuesto presupuesto = BD.SELECT_Presupuesto(p);
+             foreach(Vehiculo v in presupuesto.Vehiculos)
+            {
+                clavesVehiculos.Add(v.NumBastidor);
+           }
+            return clavesVehiculos;*/
+            Tuple<string, string> clave = new Tuple<string, string>(p.ID, v.NumBastidor);
+            return Presupuesto_Vehiculos[clave];
         }
 
         
@@ -525,8 +525,8 @@ namespace Persistencia
             bool existe = false;
             if(EXISTE_Presupuesto(p))
             {
-                List<string> numBastidores = BD.SELECT_PresupuestoVehiculos(p);
-                if(numBastidores.Contains(v.NumBastidor))
+                Presupuesto_VehiculosDato pvd = SELECT_PresupuestoVehiculos(p, v);
+                if(pvd != null)
                 {
                     existe = true;
                 }
@@ -544,7 +544,7 @@ namespace Persistencia
         {
             if(EXISTE_PresupuestoVehiculo(p,v))
             {
-                Presupuesto_Vehiculos.Remove(new Presupuesto_VehiculosDato(p, v).ID);
+                Presupuesto_Vehiculos.Remove(new Presupuesto_VehiculosDato(p, v).Clave);
             }
         }
 
@@ -552,20 +552,16 @@ namespace Persistencia
         
         /// <summary>
         /// pre: c distinto de null y existente en la base de datos
-        /// post: devuelve un listado con las claves de los vehiculos vendidos por el comercial c
+        /// post: devuelve una fila con la clave del comercial y la del vehiculo o null si no existe
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        public static List<string> SELECT_VehiculosVendidos(Comercial c)
+        public static Vehiculos_VendidosDato SELECT_VehiculosVendidos(Comercial c, Vehiculo v)
         {
-            //return Vehiculos_Vendidos[v.NumBastidor];
-            List<string> numBastidores = new List<string>();
-            c = BD.SELECT_Comercial(new Comercial(c.Codigo,"","",null));
-            foreach (string v in c.Vehiculos)
-            {
-                numBastidores.Add(v);
-            }
-            return numBastidores;
+            Vehiculos_VendidosDato vvd = null;
+            Tuple<string, string> clave = new Tuple<string, string>(c.Codigo, v.NumBastidor);
+            vvd = Vehiculos_Vendidos[clave];
+            return vvd;
         }
 
         /// <summary>
@@ -579,7 +575,8 @@ namespace Persistencia
             if(!EXISTE_VehiculosVendidos(c,v))
             {
                 Vehiculos_Vendidos.Add(new Vehiculos_VendidosDato(c, v));
-                c = BD.SELECT_Comercial(new Comercial(c.Codigo, "", "", null));
+                ComercialDato cd = BD.SELECT_Comercial(new Comercial(c.Codigo, "", "", null));
+                c = cd.PasoAComercial();
                 c.Vehiculos.Add(v.NumBastidor);
                 BD.UPDATE_Comercial(c);
             }
@@ -595,7 +592,7 @@ namespace Persistencia
         public static bool EXISTE_VehiculosVendidos(Comercial c, Vehiculo v)
         {
             bool existe = false;
-            if(Vehiculos_Vendidos.Contains(new Vehiculos_VendidosDato(c,v).Codigo))
+            if(Vehiculos_Vendidos.Contains(new Vehiculos_VendidosDato(c,v).Clave))
             {
                 existe = true;
             }
@@ -612,8 +609,9 @@ namespace Persistencia
         {
             if(EXISTE_VehiculosVendidos(c,v))
             {
-                Vehiculos_Vendidos.Remove(new Vehiculos_VendidosDato(c, v).Codigo);
-                c = SELECT_Comercial(new Comercial(c.Codigo, "", "", null));
+                Vehiculos_Vendidos.Remove(new Vehiculos_VendidosDato(c, v).Clave);
+                ComercialDato cd = SELECT_Comercial(new Comercial(c.Codigo, "", "", null));
+                c = cd.PasoAComercial();
                 c.Vehiculos.Remove(v.NumBastidor);
                 UPDATE_Comercial(c);
             }
@@ -629,7 +627,7 @@ namespace Persistencia
         /// <returns></returns>
         public static ClientePresupuesto SELECT_ClientePresupuesto(Cliente c)
         {
-            ClientePresupuesto clipres = ClientePresupuesto[c.DNI];
+            ClientePresupuesto clipres = ClientePresupuesto[c.DNI]; // le tienes que pasar una tupla formada por (dni, id), tal como has definido la clave en ClientePresupuesto.cs
             return clipres;
         }
 

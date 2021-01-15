@@ -11,12 +11,16 @@ namespace Persistencia
     {
         private string codigo;
         private string numBastidor;
+        private Tuple<string, string> clave;
 
         public Vehiculos_VendidosDato(Comercial comercial, Vehiculo vehiculo)
         {
             this.codigo = comercial.Codigo;
             this.numBastidor = vehiculo.NumBastidor;
+            this.clave = new Tuple<string, string>(comercial.Codigo, vehiculo.NumBastidor);
         }
+
+        public Tuple<string, string> Clave { get { return this.clave; } }
 
         public string NumeroBastidor
         {

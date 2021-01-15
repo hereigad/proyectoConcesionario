@@ -9,24 +9,25 @@ namespace Persistencia
 {
     public class Presupuesto_VehiculosDato
     {
-        private string id;
+        //private string id;
         private string dni;
         private string codigo;
         private string numBastidor;
+        private Tuple<string, string> clave;
 
         public Presupuesto_VehiculosDato(Presupuesto presupuesto, Vehiculo vehiculo)
         {
-            this.id = presupuesto.ID;
             this.dni = presupuesto.Cliente.DNI;
             this.codigo = presupuesto.Comercial.Codigo;
             this.numBastidor = vehiculo.NumBastidor;
+            this.clave = new Tuple<string, string>(presupuesto.ID, vehiculo.NumBastidor);
         }
 
-        public string ID
+        public Tuple<string, string> Clave
         {
             get
             {
-                return this.id;
+                return this.clave;
             }
         }
 

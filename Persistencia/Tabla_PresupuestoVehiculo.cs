@@ -7,11 +7,11 @@ using System.Collections.ObjectModel;
 
 namespace Persistencia
 {
-    public class Tabla_PresupuestoVehiculo: KeyedCollection<string, Presupuesto_VehiculosDato>
+    public class Tabla_PresupuestoVehiculo: KeyedCollection<Tuple<string, string>, Presupuesto_VehiculosDato>
     {
-        protected override string GetKeyForItem(Presupuesto_VehiculosDato item)
+        protected override Tuple<string, string> GetKeyForItem(Presupuesto_VehiculosDato item)
         {
-            return item.ID;
+            return item.Clave;
         }
     }
 }
