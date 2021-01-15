@@ -6,20 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Persistencia;
+using PersistenciaPresupuesto;
 
 namespace PersistenciaCliente
 {
     public class PersistenciaCliente
     {
 
-        public bool anadirCliente(Cliente c) {
+        public static bool anadirCliente(Cliente c) {
             BD.INSERT_Cliente(c);
             if (BD.EXISTE_Cliente(c)) {
                 return true;
             }
             return false;
         }
-        public Cliente seleccionarCliente(Cliente c) {
+        public static Cliente seleccionarCliente(Cliente c) {
             ClienteDatos cd = BD.SELECT_Cliente(c);
             if (cd.CategoriaCliente == 5) {
                 return new Cliente(cd.DNI, cd.NombreCliente, cd.TlfCliente,Categoria.A);
@@ -34,7 +35,7 @@ namespace PersistenciaCliente
             return null;
         }
 
-        public bool eliminaCliente(Cliente c) {
+        public static bool eliminaCliente(Cliente c) {
             BD.DELETE_Cliente(c);
             if (BD.EXISTE_Cliente(c)) {
                 return false;
@@ -42,29 +43,29 @@ namespace PersistenciaCliente
             return true;  
         }
 
-        public bool existeCliente(Cliente c) {
+        public static bool existeCliente(Cliente c) {
             if (BD.EXISTE_Cliente(c)) {
                 return true;
             }
             return false;
         }
 
-        public List<Presupuesto> presupuestosDeCliente(Cliente c) {
+        public static List<Presupuesto> presupuestosDeCliente(Cliente c) {
             List<Presupuesto> lista = new List<Presupuesto>();
             Tabla_ClientePresupuesto tabla = BD.ClientePresupuesto;
             foreach (ClientePresupuesto p in tabla) {
-                if (p.DNI.Equals(c.DNI)) { 
-                //Llamar a metodo que recupera un presupuesto
-                
+                if (p.DNI.Equals(c.DNI)) {
+                    lista.Add(PersistenciaPresupuesto.PersistenciaPresupuesto.seleccionarPresupuesto(new Presupuesto(p.DNI,new DateTime(),EstadoPresupuesto.Aceptado,null,null,null)));    
+                    
                 }
             }
             return lista;
         
         }
-        public List<Presupuesto> presupuestosAceptados(Cliente c)
+        public static List<Presupuesto> presupuestosAceptados(Cliente c)
         {
             List<Presupuesto> listafin = new List<Presupuesto>();
-            List<Presupuesto> lista = this.presupuestosDeCliente(c);
+            List<Presupuesto> lista = PersistenciaCliente.presupuestosDeCliente(c);
             foreach (Presupuesto p in lista)
             {
                 if (p.Estado==EstadoPresupuesto.Aceptado)
@@ -77,7 +78,7 @@ namespace PersistenciaCliente
             return listafin;
 
         }
-        public List<Cliente> clientesCategoria(Categoria cat) {
+        public static List<Cliente> clientesCategoria(Categoria cat) {
             List<Cliente> lista = new List<Cliente>();
             ColCliente colec = BD.Clientes;
             Cliente cliAux;
@@ -92,7 +93,7 @@ namespace PersistenciaCliente
             return lista;
         }
 
-        public List<Cliente> clientesConcesionario()
+        public static List<Cliente> clientesConcesionario()
         {
             List<Cliente> lista = new List<Cliente>();
             ColCliente colec = BD.Clientes;

@@ -49,6 +49,10 @@
       <Project>{8b9d1548-d3de-4376-8f52-ce6ec669e77c}</Project>
       <Name>ModeloDominio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PersistenciaPresupuesto\PersistenciaPresupuesto.csproj">
+      <Project>{c8dbb085-9fea-48d7-ae70-565f9817ccc8}</Project>
+      <Name>PersistenciaPresupuesto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Persistencia\SimulacionBD.csproj">
       <Project>{61f7ddf1-36de-478b-8d09-b27aebed2c9c}</Project>
       <Name>SimulacionBD</Name>
