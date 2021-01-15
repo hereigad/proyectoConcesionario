@@ -9,7 +9,7 @@ using Persistencia;
 
 namespace PersistenciaCliente
 {
-    class PersistenciaCliente
+    public class PersistenciaCliente
     {
 
         public bool anadirCliente(Cliente c) {
@@ -51,9 +51,56 @@ namespace PersistenciaCliente
 
         public List<Presupuesto> presupuestosDeCliente(Cliente c) {
             List<Presupuesto> lista = new List<Presupuesto>();
-
+            Tabla_ClientePresupuesto tabla = BD.ClientePresupuesto;
+            foreach (ClientePresupuesto p in tabla) {
+                if (p.DNI.Equals(c.DNI)) { 
+                //Llamar a metodo que recupera un presupuesto
+                
+                }
+            }
             return lista;
         
+        }
+        public List<Presupuesto> presupuestosAceptados(Cliente c)
+        {
+            List<Presupuesto> listafin = new List<Presupuesto>();
+            List<Presupuesto> lista = this.presupuestosDeCliente(c);
+            foreach (Presupuesto p in lista)
+            {
+                if (p.Estado==EstadoPresupuesto.Aceptado)
+                {
+
+                    listafin.Add(p);
+
+                }
+            }
+            return listafin;
+
+        }
+        public List<Cliente> clientesCategoria(Categoria cat) {
+            List<Cliente> lista = new List<Cliente>();
+            ColCliente colec = BD.Clientes;
+            Cliente cliAux;
+            foreach (ClienteDatos c in colec)
+            {
+                cliAux=seleccionarCliente(new Cliente(c.DNI, null, null, Categoria.A));
+                if (cliAux.Categoria == cat) {
+                    lista.Add(cliAux);
+                }
+
+            }
+            return lista;
+        }
+
+        public List<Cliente> clientesConcesionario()
+        {
+            List<Cliente> lista = new List<Cliente>();
+            ColCliente colec = BD.Clientes;
+            foreach (ClienteDatos c in colec)
+            {  
+                    lista.Add(seleccionarCliente(new Cliente(c.DNI, null, null, Categoria.A)));
+            }
+            return lista;
         }
 
     }

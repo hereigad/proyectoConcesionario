@@ -625,12 +625,12 @@ namespace Persistencia
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        public static ClientePresupuesto SELECT_ClientePresupuesto(Cliente c)
+      /*  public static ClientePresupuesto SELECT_ClientePresupuesto(Cliente c)
         {
             ClientePresupuesto clipres = ClientePresupuesto[c.DNI]; // le tienes que pasar una tupla formada por (dni, id), tal como has definido la clave en ClientePresupuesto.cs
             return clipres;
         }
-
+      */
         /// <summary>
         /// pre: c y v existen la base de datos cada uno en su tabla correspondiente
         /// post: añade el par c,v en la tabla VehiculosVendidos

@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    public class Tabla_ClientePresupuesto : KeyedCollection<Tuple<String,String>, ClientePresupuesto>
+    public class Tabla_ClientePresupuesto : KeyedCollection<Tuple<String, String>, ClientePresupuesto>
     {
         protected override Tuple<String, String> GetKeyForItem(ClientePresupuesto item)
         {
             return item.Clave;
         }
     }
+}
