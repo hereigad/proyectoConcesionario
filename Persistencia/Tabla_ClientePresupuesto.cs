@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    public class Tabla_ClientePresupuesto : KeyedCollection<string, ClientePresupuesto>
+    public class Tabla_ClientePresupuesto : KeyedCollection<Tuple<String,String>, ClientePresupuesto>
     {
-        protected override string GetKeyForItem(ClientePresupuesto item)
+        protected override Tuple<String, String> GetKeyForItem(ClientePresupuesto item)
         {
-            return item.DNI;
+            return item.Clave;
         }
     }

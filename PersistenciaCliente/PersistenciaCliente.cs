@@ -52,7 +52,7 @@ namespace PersistenciaCliente
         public List<Presupuesto> presupuestosDeCliente(Cliente c) {
             List<Presupuesto> lista = new List<Presupuesto>();
 
-
+            return lista;
         
         }
 

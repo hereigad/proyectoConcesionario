@@ -657,7 +657,7 @@ namespace Persistencia
         public static bool EXISTE_ClientePresupuesto(Cliente c, Presupuesto p)
         {
             bool existe = false;
-            if (ClientePresupuesto.Contains(new ClientePresupuesto(c, p).DNI))
+            if (ClientePresupuesto.Contains(new Tuple<String,String>(c.DNI,p.ID)))
             {
                 existe = true;
             }
@@ -676,7 +676,7 @@ namespace Persistencia
             {
                 ClientePresupuesto cpn = new ClientePresupuesto(c, p);
                 cpn.Borrado = true;
-                ClientePresupuesto.Remove(c.DNI);
+                ClientePresupuesto.Remove(new Tuple<string, string>(c.DNI,p.ID));
                 ClientePresupuesto.Add(cpn);
             }
         }
