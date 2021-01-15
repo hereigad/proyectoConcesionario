@@ -83,8 +83,8 @@ namespace Persistencia
         }
 
     
-    public Presupuesto PasoAPresupuesto(Comercial c,Cliente cli) {
-        return new Presupuesto(this.ID,this.FechaRealizacion,this.Estado,c,cli);
+    public Presupuesto PasoAPresupuesto(Comercial c,Cliente cli, List<Vehiculo> vehiculos) {
+        return new Presupuesto(this.ID,this.FechaRealizacion,this.Estado,c,cli, vehiculos);
     }
 }
     }

@@ -12,18 +12,18 @@ namespace ModeloDominio
         private string id;
 
         private EstadoPresupuesto estado;
-        //private List<Vehiculo> vehiculos;
+        private List<Vehiculo> vehiculos;
         private Cliente cliente;
         private Comercial comercial;
       
 
-        public Presupuesto(string id, DateTime fecha, EstadoPresupuesto estado, Comercial comercial, Cliente cliente)
+        public Presupuesto(string id, DateTime fecha, EstadoPresupuesto estado, Comercial comercial, Cliente cliente, List<Vehiculo> vehiculos)
         {
             this.fechaRealizacion = fecha;
             this.id = id;
             this.comercial = comercial;
             this.cliente = cliente;
-            //this.vehiculos = vehiculos;
+            this.vehiculos = vehiculos;
             this.estado = estado;
           
         }
@@ -54,13 +54,13 @@ namespace ModeloDominio
             }
         }
 
-        /*public List<Vehiculo> Vehiculos
+        public List<Vehiculo> Vehiculos
         {
             get
             {
                 return this.vehiculos;
             }
-        }*/
+        }
 
         public DateTime FechaRealizacion
         {
