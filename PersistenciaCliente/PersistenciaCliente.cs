@@ -20,6 +20,7 @@ namespace PersistenciaCliente
             }
             return false;
         }
+       
         public static Cliente seleccionarCliente(Cliente c) {
             ClienteDatos cd = BD.SELECT_Cliente(c);
             if (cd.CategoriaCliente == 5) {
