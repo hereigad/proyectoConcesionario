@@ -11,32 +11,48 @@ namespace LogicaNegocioCliente
 {
     public class LogicaCliente
     {
-        public void addCliente(Cliente c)
+        private Cliente cli;
+        public LogicaCliente(Cliente c) {
+            this.cli = c;
+        
+        }
+        public void addCliente()
         {
-            PersistenciaCliente.PersistenciaCliente.anadirCliente(c);
+            PersistenciaCliente.PersistenciaCliente.anadirCliente(this.cli);
 
         }
-        public Cliente selCliente(String dni) {
-            return PersistenciaCliente.PersistenciaCliente.seleccionarCliente(new Cliente(dni,null,null,Categoria.A));
+        public Cliente selCliente() {
+            return PersistenciaCliente.PersistenciaCliente.seleccionarCliente(this.cli);
         
         }
 
-        public bool existe(String dni) {
-            return PersistenciaCliente.PersistenciaCliente.existeCliente(new Cliente(dni, null, null, Categoria.A));
+        public bool existe() {
+            return PersistenciaCliente.PersistenciaCliente.existeCliente(this.cli);
         
         }
-        public void bajaCliente(String dni) {
+        public void bajaCliente() {
 
-            PersistenciaCliente.PersistenciaCliente.eliminaCliente(new Cliente(dni, null, null, Categoria.A));
+            PersistenciaCliente.PersistenciaCliente.eliminaCliente(this.cli);
         }
-        public List<Presupuesto> listaPresupuestosCliente(String dni) {
+        public List<Presupuesto> listaPresupuestosCliente() {
 
-            return PersistenciaCliente.PersistenciaCliente.presupuestosDeCliente(new Cliente(dni, null, null, Categoria.A));
+            return PersistenciaCliente.PersistenciaCliente.presupuestosDeCliente(this.cli);
         }
-        public List<Presupuesto> listaPresupuestosAceptados(String dni) {
-            return PersistenciaCliente.PersistenciaCliente.presupuestosAceptados(new Cliente(dni, null, null, Categoria.A));
+        public List<Presupuesto> listaPresupuestosAceptados() {
+            return PersistenciaCliente.PersistenciaCliente.presupuestosAceptados(this.cli);
         }
-        public List<Cliente> clientePorCategoria(String categoria) {
+
+        public Cliente LCliente {
+            get {
+
+                return this.cli;
+            }
+            set {
+                this.cli = value;
+            }
+        
+        }
+        public static List<Cliente> clientePorCategoria(String categoria) {
             if (categoria.Equals("A")) {
                 return PersistenciaCliente.PersistenciaCliente.clientesCategoria(Categoria.A);
             }
@@ -50,7 +66,7 @@ namespace LogicaNegocioCliente
             }
             return null;
         }
-        public List<Cliente> totalClientes() {
+        public static List<Cliente> totalClientes() {
             return PersistenciaCliente.PersistenciaCliente.clientesConcesionario();
         
         }
