@@ -55,7 +55,7 @@ namespace PersistenciaCliente
             Tabla_ClientePresupuesto tabla = BD.ClientePresupuesto;
             foreach (ClientePresupuesto p in tabla) {
                 if (p.DNI.Equals(c.DNI)) {
-                    lista.Add(PersistenciaPresupuesto.PersistenciaPresupuesto.seleccionarPresupuesto(new Presupuesto(p.DNI,new DateTime(),EstadoPresupuesto.Aceptado,null,null,null)));    
+                    lista.Add(PersistenciaPresupuesto.PersistenciaPresupuesto.seleccionarPresupuesto(new Presupuesto(p.ID,new DateTime(),EstadoPresupuesto.Aceptado,null,null,null)));    
                     
                 }
             }
