@@ -11,44 +11,45 @@ namespace LogicaNegocioCliente
 {
     public class LogicaCliente
     {
-        private Cliente cli;
-        public LogicaCliente(Cliente c) {
-            this.cli = c;
+        private Comercial com;
+        
+        public LogicaCliente(Comercial c) {
+            this.com = c;
         
         }
-        public void addCliente()
+        public void addCliente(Cliente c)
         {
-            PersistenciaCliente.PersistenciaCliente.anadirCliente(this.cli);
+            PersistenciaCliente.PersistenciaCliente.anadirCliente(c);
 
         }
-        public Cliente selCliente() {
-            return PersistenciaCliente.PersistenciaCliente.seleccionarCliente(this.cli);
+        public Cliente selCliente(Cliente c) {
+            return PersistenciaCliente.PersistenciaCliente.seleccionarCliente(c);
         
         }
 
-        public bool existe() {
-            return PersistenciaCliente.PersistenciaCliente.existeCliente(this.cli);
+        public bool existe(Cliente c) {
+            return PersistenciaCliente.PersistenciaCliente.existeCliente(c);
         
         }
-        public void bajaCliente() {
+        public void bajaCliente(Cliente c) {
 
-            PersistenciaCliente.PersistenciaCliente.eliminaCliente(this.cli);
+            PersistenciaCliente.PersistenciaCliente.eliminaCliente(c);
         }
-        public List<Presupuesto> listaPresupuestosCliente() {
+        public List<Presupuesto> listaPresupuestosCliente(Cliente c) {
 
-            return PersistenciaCliente.PersistenciaCliente.presupuestosDeCliente(this.cli);
+            return PersistenciaCliente.PersistenciaCliente.presupuestosDeCliente(c);
         }
-        public List<Presupuesto> listaPresupuestosAceptados() {
-            return PersistenciaCliente.PersistenciaCliente.presupuestosAceptados(this.cli);
+        public List<Presupuesto> listaPresupuestosAceptados(Cliente c) {
+            return PersistenciaCliente.PersistenciaCliente.presupuestosAceptados(c);
         }
 
-        public Cliente LCliente {
+        public Comercial Comercial {
             get {
 
-                return this.cli;
+                return this.com;
             }
             set {
-                this.cli = value;
+                this.com = value;
             }
         
         }
