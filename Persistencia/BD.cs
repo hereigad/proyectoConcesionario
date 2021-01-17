@@ -767,11 +767,17 @@ namespace Persistencia
         /// </summary>
         /// <param name="e"></param>
         /// <returns></returns>
-        public static ExtraVehiculoDato SELECT_ExtraVehiculo(Vehiculo v)
+        public static List<ExtraVehiculoDato> SELECT_ExtraVehiculo(Vehiculo v)
         {
             if (EXISTE_ExtraVehiculo(v))
             {
-                return Vehiculo_Extra[v.NumBastidor];
+                List<ExtraVehiculoDato> extras = new List<ExtraVehiculoDato>();
+                foreach(ExtraVehiculoDato i in Vehiculo_Extra) {
+                    if(i.NumBastidor_Nombre.Item1.Equals(v.NumBastidor)) {
+                        extras.Add(i);
+                    }
+                }
+                return extras;
 
             }
             return null;
@@ -803,7 +809,7 @@ namespace Persistencia
             while (i < Extras.Count)
             {
                 ExtraVehiculoDato evd = Vehiculo_Extra.ElementAt(i);
-                if (evd.NumBastidor.Equals(v.NumBastidor))
+                if (evd.NumBastidor_Nombre.Item1.Equals(v.NumBastidor))
                 {
                     existe = true;
                 }
@@ -821,7 +827,7 @@ namespace Persistencia
         {
             if (EXISTE_ExtraVehiculo(v))
             {
-                Extras.Remove(new ExtraVehiculoDato(e, v).NumBastidor);
+                Extras.Remove(new ExtraVehiculoDato(e, v).NumBastidor_Nombre.Item1);
                 BD.INSERT_ExtraVehiculo(e, v);
             }
         }
@@ -835,7 +841,7 @@ namespace Persistencia
         {
             if (EXISTE_ExtraVehiculo(v))
             {
-                Extras.Remove(new ExtraVehiculoDato(e, v).NumBastidor);
+                Extras.Remove(new ExtraVehiculoDato(e, v).NumBastidor_Nombre.Item1);
             }
         }
     }

@@ -37,13 +37,13 @@ namespace PersistenciaVehiculo
             VehiculoDato vd = BD.SELECT_Vehiculo(v);
             if(vd.Nuevo)
             {
-                ExtraVehiculoDato evd = BD.SELECT_ExtraVehiculo(v);
+                List<ExtraVehiculoDato> evd = BD.SELECT_ExtraVehiculo(v);
                 ExtraDato ed = null;
                 Extra e = null;
                 List<Extra> extras = new List<Extra>();
-                foreach (string n in evd.Nombre)
+                foreach (ExtraVehiculoDato n in evd)
                 {
-                    e = new Extra(n, 0);
+                    e = new Extra(n.NumBastidor_Nombre.Item2, 0);
                     ed = BD.SELECT_Extra(e);
                     e = new Extra(ed.Nombre, ed.PVP);
                     extras.Add(e);
@@ -52,9 +52,27 @@ namespace PersistenciaVehiculo
             }
             else
             {
-                v = new VehiculoSegundaMano(vd.NumBastidor, vd.Marca, vd.Modelo, vd.Potencia, vd.PVP, vd.Fec)
+                v = new VehiculoSegundaMano(vd.NumBastidor, vd.Marca, vd.Modelo, vd.Potencia, vd.PVP, vd.Matricula, vd.FechaMatricula);
             }
             return v;
+        }
+
+        public static List<Vehiculo> obtenerTodosVehiculos() {
+            List<Vehiculo> vehiculos = new List<Vehiculo>();
+            foreach(VehiculoDato n in BD.Vehiculos) {
+                vehiculos.Add(obtenerVehiculo(n.NumBastidor));
+            }
+            return vehiculos;
+        }
+
+        public static List<Vehiculo> obtenerVehiculosSegundaMano() {
+            List<Vehiculo> vehiculos = new List<Vehiculo>();
+            foreach (VehiculoDato n in BD.Vehiculos) {
+                if (!n.Nuevo) {
+                    vehiculos.Add(obtenerVehiculo(n.NumBastidor));
+                }
+            }
+            return vehiculos;
         }
     }
 }
