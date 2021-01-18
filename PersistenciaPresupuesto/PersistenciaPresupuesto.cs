@@ -62,6 +62,7 @@ namespace PersistenciaPresupuesto
             if (BD.EXISTE_Presupuesto(p))
             {
                 BD.SELECT_Presupuesto(p).Borrado = true;
+                BD.UPDATE_Presupuesto(p);
 
                 List<ClientePresupuesto> clientePresupuestos = BD.SELECT_ALL_ClientePresupuesto();
                 foreach (ClientePresupuesto cp in clientePresupuestos)
