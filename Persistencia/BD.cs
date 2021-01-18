@@ -148,6 +148,14 @@ namespace Persistencia
             return null;
         }
 
+        public static List<ClienteDatos> SELECT_ALL_Cliente() {
+            List<ClienteDatos> clientes = new List<ClienteDatos>();
+            foreach(ClienteDatos n in Clientes) {
+                clientes.Add(n);
+            }
+            return clientes;
+        }
+
         /// <summary>
         /// pre: el cliente no existe en la base de datos y c es distinto de null
         /// post: añade el nuevo cliente en la base de datos
@@ -229,6 +237,14 @@ namespace Persistencia
                
             }
             return null;
+        }
+
+        public static List<VehiculoDato> SELECT_ALL_Vehiculo() {
+            List<VehiculoDato> vehiculos = new List<VehiculoDato>();
+            foreach (VehiculoDato n in Vehiculos) {
+                vehiculos.Add(n);
+            }
+            return vehiculos;
         }
 
         /// <summary>
@@ -324,6 +340,14 @@ namespace Persistencia
             return null;
         }
 
+        public static List<PresupuestoDato> SELECT_ALL_Presupuesto() {
+            List<PresupuestoDato> presupuestos = new List<PresupuestoDato>();
+            foreach (PresupuestoDato n in Presupuestos) {
+                presupuestos.Add(n);
+            }
+            return presupuestos;
+        }
+
         /// <summary>
         /// pre: p distinto de null y no existe en la base de datos
         /// post: añade el presupuesto p en la base de datos
@@ -407,6 +431,14 @@ namespace Persistencia
                
             }
             return null;
+        }
+
+        public static List<ComercialDato> SELECT_ALL_Comercial() {
+            List<ComercialDato> comerciales = new List<ComercialDato>();
+            foreach (ComercialDato n in Comercial) {
+                comerciales.Add(n);
+            }
+            return comerciales;
         }
 
         /// <summary>
@@ -498,7 +530,15 @@ namespace Persistencia
             return Presupuesto_Vehiculos[clave];
         }
 
-        
+        public static List<Presupuesto_VehiculosDato> SELECT_ALL_PresupuestoVehiculos() {
+            List<Presupuesto_VehiculosDato> presupuesto_vehiculos = new List<Presupuesto_VehiculosDato>();
+            foreach (Presupuesto_VehiculosDato n in Presupuesto_Vehiculos) {
+                presupuesto_vehiculos.Add(n);
+            }
+            return presupuesto_vehiculos;
+        }
+
+
         /// <summary>
         /// pre: el presupuesto p y vehiculo v, existen en la base de datos y p, v, distintos de null
         /// post: añade el par p,v
@@ -562,6 +602,14 @@ namespace Persistencia
             Tuple<string, string> clave = new Tuple<string, string>(c.Codigo, v.NumBastidor);
             vvd = Vehiculos_Vendidos[clave];
             return vvd;
+        }
+
+        public static List<Vehiculos_VendidosDato> SELECT_ALL_VehiculosVendidos() {
+            List<Vehiculos_VendidosDato> vehiculos_vendidos = new List<Vehiculos_VendidosDato>();
+            foreach (Vehiculos_VendidosDato n in Vehiculos_Vendidos) {
+                vehiculos_vendidos.Add(n);
+            }
+            return vehiculos_vendidos;
         }
 
         /// <summary>
@@ -631,6 +679,15 @@ namespace Persistencia
             return clipres;
         }
       */
+
+        public static List<ClientePresupuesto> SELECT_ALL_ClientePresupuesto() {
+            List<ClientePresupuesto> cliente_presupuesto = new List<ClientePresupuesto>();
+            foreach (ClientePresupuesto n in ClientePresupuesto) {
+                cliente_presupuesto.Add(n);
+            }
+            return cliente_presupuesto;
+        }
+
         /// <summary>
         /// pre: c y v existen la base de datos cada uno en su tabla correspondiente
         /// post: añade el par c,v en la tabla VehiculosVendidos
@@ -695,6 +752,14 @@ namespace Persistencia
 
             }
             return null;
+        }
+
+        public static List<ExtraDato> SELECT_ALL_Extra() {
+            List<ExtraDato> extras = new List<ExtraDato>();
+            foreach (ExtraDato n in Extras) {
+                extras.Add(n);
+            }
+            return extras;
         }
 
         /// <summary>
@@ -781,6 +846,14 @@ namespace Persistencia
 
             }
             return null;
+        }
+
+        public static List<ExtraVehiculoDato> SELECT_ALL_ExtraVehiculo() {
+            List<ExtraVehiculoDato> extra_vehiculo = new List<ExtraVehiculoDato>();
+            foreach (ExtraVehiculoDato n in Vehiculo_Extra) {
+                extra_vehiculo.Add(n);
+            }
+            return extra_vehiculo;
         }
 
         /// <summary>
