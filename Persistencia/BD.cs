@@ -676,8 +676,8 @@ namespace Persistencia
         }
 
         /// <summary>
-        /// pre: c y p distintos de null
-        /// post: añade el par c,v en la tabla clientePresupuesto
+        /// pre: c y p distintos de null y no existen en la base de datos
+        /// post: añade el par c,p en la tabla clientePresupuesto
         /// </summary>
         /// <param name="c"></param>
         /// <param name="v"></param>

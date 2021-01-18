@@ -360,8 +360,8 @@ namespace PersistenciaPresupuesto
         }
 
         /// <summary>
-        /// pre: c y p existen la base de datos cada uno en su tabla correspondiente
-        /// post: añade el par c,v en la tabla clientePresupuesto
+        /// pre: c y p distintos de null y no existen la base de datos
+        /// post: añade el par c,p en la tabla clientePresupuesto
         /// </summary>
         /// <param name="c"></param>
         /// <param name="p"></param>
