@@ -370,6 +370,17 @@ namespace PersistenciaPresupuesto
             BD.INSERT_ClientePresupuesto(c, p);
         }
 
+        public static bool borarClientePresupuesto(Cliente c, Presupuesto p)
+        {
+            bool borrado = false;
+            if(existeClientePresupuesto(c,p))
+            {
+                BD.DELETE_ClientePresupuesto(c, p);
+                borrado = true;
+            }
+            return borrado;
+        }
+
         /*
         /// <summary>
         /// pre: comercial y cliente, existentes en la base de datos; los vehiculos, pueden existir o no
