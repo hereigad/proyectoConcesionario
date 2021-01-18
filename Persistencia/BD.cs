@@ -448,10 +448,7 @@ namespace Persistencia
         /// <param name="c"></param>
         public static void INSERT_Comercial(Comercial c)
         {
-            if (!EXISTE_Comercial(c))
-            {
-                Comercial.Add(new ComercialDato(c));
-            }
+            Comercial.Add(new ComercialDato(c));
         }
 
         /// <summary>
@@ -484,7 +481,7 @@ namespace Persistencia
         /// post: si el comercial c existe en la base de datos, actualiza sus datos con los datos que vienen en el parametro
         /// </summary>
         /// <param name="c"></param>
-        private static void UPDATE_Comercial(Comercial c)
+        public static void UPDATE_Comercial(Comercial c)
         {
             if(EXISTE_Comercial(c))
             {
@@ -494,19 +491,16 @@ namespace Persistencia
         }
 
         /// <summary>
-        /// pre: c distinto de null
+        /// pre: c distinto de null y existe en la base de datos
         /// post: si el comercial c existe en la base de datos, lo borra
         /// </summary>
         /// <param name="c"></param>
-        private static void DELETE_Comercial(Comercial c)
+        public static void DELETE_Comercial(Comercial c)
         {
-            if(EXISTE_Comercial(c))
-            {
-                ComercialDato cd = Comercial[c.Codigo];//new ComercialDato(c);
-                Comercial.Remove(new ComercialDato(c).Codigo);
-                cd.Borrado = true;
-                Comercial.Add(cd);
-            }
+            ComercialDato cd = Comercial[c.Codigo];//new ComercialDato(c);
+            Comercial.Remove(new ComercialDato(c).Codigo);
+            cd.Borrado = true;
+            Comercial.Add(cd);
         }
 
         //////////////////////////////////////////////////////////////////// Presupuesto_Vehiculos //////////////////////////////////////////////////////////////////////////////////////
