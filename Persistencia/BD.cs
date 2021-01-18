@@ -618,7 +618,7 @@ namespace Persistencia
         }
 
         /// <summary>
-        /// pre: c y v existen en la base de datos cada uno en su tabla correspondiente
+        /// pre: c y v distintos de null
         /// post: devuelve TRUE si existe el par c,v; FALSE en caso contrario
         /// </summary>
         /// <param name="c"></param>
@@ -635,7 +635,7 @@ namespace Persistencia
         }
 
         /// <summary>
-        /// pre: c y v no nulos y existentes en la base de datos
+        /// pre: c y v no nulos
         /// post: borra la tupla c,v de la base de datos
         /// </summary>
         /// <param name="c"></param>

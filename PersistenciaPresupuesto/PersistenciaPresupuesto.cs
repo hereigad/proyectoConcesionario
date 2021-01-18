@@ -194,7 +194,7 @@ namespace PersistenciaPresupuesto
         ////////////////////////////////////////////////////////////// TABLA COMERCIAL //////////////////////////////////////////////////////////////////////
         
         /// <summary>
-        /// pre: c distinto de null
+        /// pre: c distinto de null y existente en la base de datos
         /// post: devuelve el comercial con el codigo dado o null si no existe en la base de datos
         /// </summary>
         /// <param name="c"></param>
@@ -276,10 +276,17 @@ namespace PersistenciaPresupuesto
         /// <returns></returns>
         public static void anadirVehiculosVendidos(Comercial c, List<Vehiculo> vehiculos)
         {
-            foreach(Vehiculo v in vehiculos)
+            if(BD.EXISTE_Comercial(c))
             {
-                BD.INSERT_VehiculosVendidos(c, v);
+                foreach (Vehiculo v in vehiculos)
+                {
+                    if (BD.EXISTE_Vehiculo(v))
+                    {
+                        BD.INSERT_VehiculosVendidos(c, v);
+                    }
+                }
             }
+            
         }
 
         /// <summary>
