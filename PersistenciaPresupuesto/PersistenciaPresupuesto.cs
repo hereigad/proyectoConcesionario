@@ -309,7 +309,7 @@ namespace PersistenciaPresupuesto
 
         /// <summary>
         /// pre: comercial c y vehiculos distintos de null y existentes en la base de datos, en la tabla vehiculos_vendidos
-        /// post: paca cada vehiculo de la lista, borra el par (c,v) si este existe
+        /// post: para cada vehiculo de la lista, borra el par (c,v) si este existe
         /// </summary>
         /// <param name="c"></param>
         /// <param name="vehiculos"></param>
