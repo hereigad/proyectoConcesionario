@@ -269,16 +269,59 @@ namespace PersistenciaPresupuesto
 
         /// <summary>
         /// pre: comercial c distinto de null y existente en la base de datos y tambien los vehiculos
-        /// post: devuelve TRUE si el listado de vehiculos se han añadido con exito; FALSE en caso contrario
+        /// post: añade el listado de vehiculos como vendidos en la base de datos
         /// </summary>
         /// <param name="c"></param>
         /// <param name="vehiculos"></param>
         /// <returns></returns>
-        public static bool anadirVehiculosVendidos(Comercial c, List<Vehiculo> vehiculos)
+        public static void anadirVehiculosVendidos(Comercial c, List<Vehiculo> vehiculos)
         {
-            bool anadido = false;
+            foreach(Vehiculo v in vehiculos)
+            {
+                BD.INSERT_VehiculosVendidos(c, v);
+            }
+        }
 
-            return anadido;
+        /// <summary>
+        /// pre: comercial c y vehiculos existentes en la base de datos y distintos de null
+        /// post: para cada vehiculo, devuelve TRUE si existe el par c,v; FALSE en caso contrario
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="vehiculos"></param>
+        /// <returns></returns>
+        public static bool existeVehiculosVendidos(Comercial c, List<Vehiculo> vehiculos)
+        {
+            bool existe = false;
+            foreach (Vehiculo v in vehiculos)
+            {
+                if (BD.EXISTE_VehiculosVendidos(c, v))
+                {
+                    existe = true;
+                }
+                else
+                {
+                    existe = false;
+                    break;
+                }
+            }
+            return existe;
+        }
+
+        /// <summary>
+        /// pre: comercial c y vehiculos distintos de null y existentes en la base de datos, en la tabla vehiculos_vendidos
+        /// post: paca cada vehiculo de la lista, borra el par (c,v) si este existe
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="vehiculos"></param>
+        public static void borrarVehiculosVendidos(Comercial c, List<Vehiculo> vehiculos)
+        {
+            foreach(Vehiculo v in vehiculos)
+            {
+                if(BD.EXISTE_VehiculosVendidos(c,v))
+                {
+                    BD.DELETE_VehiculosVendidos(c, v);
+                }
+            }
         }
 
         /*
