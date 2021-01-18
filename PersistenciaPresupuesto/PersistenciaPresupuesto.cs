@@ -370,6 +370,13 @@ namespace PersistenciaPresupuesto
             BD.INSERT_ClientePresupuesto(c, p);
         }
 
+        /// <summary>
+        /// pre: cliente c y presupuesto p distintos de null
+        /// post: borra el par (c,p) de la base de datos
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public static bool borarClientePresupuesto(Cliente c, Presupuesto p)
         {
             bool borrado = false;
