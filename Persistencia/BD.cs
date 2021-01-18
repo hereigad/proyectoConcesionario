@@ -614,14 +614,7 @@ namespace Persistencia
         /// <param name="v"></param>
         public static void INSERT_VehiculosVendidos(Comercial c, Vehiculo v)
         {
-            if(!EXISTE_VehiculosVendidos(c,v))
-            {
-                Vehiculos_Vendidos.Add(new Vehiculos_VendidosDato(c, v));
-                ComercialDato cd = BD.SELECT_Comercial(new Comercial(c.Codigo, "", "", null));
-                c = cd.PasoAComercial();
-                c.Vehiculos.Add(v.NumBastidor);
-                BD.UPDATE_Comercial(c);
-            }
+            Vehiculos_Vendidos.Add(new Vehiculos_VendidosDato(c, v));
         }
 
         /// <summary>

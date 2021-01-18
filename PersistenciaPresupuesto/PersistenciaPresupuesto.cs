@@ -238,6 +238,49 @@ namespace PersistenciaPresupuesto
             return borrado;
         }
 
+        public static bool existeComercial(Comercial c)
+        {
+            return BD.EXISTE_Comercial(c);
+        }
+
+        ////////////////////////////////////////////////////////// TABLA VEHICULOS_VENDIDOS //////////////////////////////////////////////////////////////////////
+        
+        /// <summary>
+        /// pre: comercial c distinto de null y existente en la base de datos
+        /// post: devuelve un listado de los vehiculos vendidos por el comercial c
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static List<Vehiculo> seleccionarVehiculosVendidos(Comercial c)
+        {
+            List<Vehiculo> listado = new List<Vehiculo>();
+            List<Vehiculos_VendidosDato> vvd = BD.SELECT_ALL_VehiculosVendidos();
+            foreach(Vehiculos_VendidosDato wd in vvd)
+            {
+                if(wd.Clave.Item1.Equals(c.Codigo))
+                {
+                    string claveVehiculo = wd.Clave.Item2;
+                    Vehiculo vehiculo = BD.SELECT_Vehiculo(new Vehiculo(claveVehiculo, "", "", "", 0.0f)).PasoAVehiculo();
+                    listado.Add(vehiculo);
+                }
+            }
+            return listado;
+        }
+
+        /// <summary>
+        /// pre: comercial c distinto de null y existente en la base de datos y tambien los vehiculos
+        /// post: devuelve TRUE si el listado de vehiculos se han añadido con exito; FALSE en caso contrario
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="vehiculos"></param>
+        /// <returns></returns>
+        public static bool anadirVehiculosVendidos(Comercial c, List<Vehiculo> vehiculos)
+        {
+            bool anadido = false;
+
+            return anadido;
+        }
+
         /*
         /// <summary>
         /// pre: comercial y cliente, existentes en la base de datos; los vehiculos, pueden existir o no
