@@ -324,6 +324,52 @@ namespace PersistenciaPresupuesto
             }
         }
 
+        ////////////////////////////////////////////////////// TABLA CLIENTE_PRESUPUESTO //////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// pre: presupuesto p distinto de null y existente en la base de datos
+        /// post: devuelve el cliente del presupuesto p dado o null si no existe 
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static Cliente seleccionarClientePresupuesto(Presupuesto p)
+        {
+            Cliente cli = null;
+            List<ClientePresupuesto> tabla = BD.SELECT_ALL_ClientePresupuesto();
+            foreach(ClientePresupuesto cp in tabla)
+            {
+                if(cp.Clave.Item2.Equals(p.ID))
+                {
+                    string dni = cp.Clave.Item1;
+                    cli = BD.SELECT_Cliente(new Cliente(dni, "", "", Categoria.A)).PasoACliente();
+                }
+            }
+            return cli;
+        }
+
+        /// <summary>
+        /// pre: c y p existen en la base de datos cada uno en su tabla correspondiente
+        /// post: devuelve TRUE si existe el par c,v; FALSE en caso contrario
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static bool existeClientePresupuesto(Cliente c, Presupuesto p)
+        {
+            return BD.EXISTE_ClientePresupuesto(c, p);
+        }
+
+        /// <summary>
+        /// pre: c y p existen la base de datos cada uno en su tabla correspondiente
+        /// post: añade el par c,v en la tabla clientePresupuesto
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="p"></param>
+        public static void anadirClientePresupuesto(Cliente c, Presupuesto p)
+        {
+            BD.INSERT_ClientePresupuesto(c, p);
+        }
+
         /*
         /// <summary>
         /// pre: comercial y cliente, existentes en la base de datos; los vehiculos, pueden existir o no

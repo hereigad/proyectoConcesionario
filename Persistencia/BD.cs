@@ -676,17 +676,14 @@ namespace Persistencia
         }
 
         /// <summary>
-        /// pre: c y v existen la base de datos cada uno en su tabla correspondiente
-        /// post: añade el par c,v en la tabla VehiculosVendidos
+        /// pre: c y p existen la base de datos cada uno en su tabla correspondiente
+        /// post: añade el par c,v en la tabla clientePresupuesto
         /// </summary>
         /// <param name="c"></param>
         /// <param name="v"></param>
         public static void INSERT_ClientePresupuesto(Cliente c, Presupuesto p)
         {
-            if (!EXISTE_ClientePresupuesto(c, p))
-            {
-                ClientePresupuesto.Add(new ClientePresupuesto(c, p));
-            }
+            ClientePresupuesto.Add(new ClientePresupuesto(c, p));
         }
 
         /// <summary>
