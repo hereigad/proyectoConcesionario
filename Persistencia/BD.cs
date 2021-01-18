@@ -687,8 +687,8 @@ namespace Persistencia
         }
 
         /// <summary>
-        /// pre: c y v existen en la base de datos cada uno en su tabla correspondiente
-        /// post: devuelve TRUE si existe el par c,v; FALSE en caso contrario
+        /// pre: c y p distintos de null
+        /// post: devuelve TRUE si existe el par c,p; FALSE en caso contrario
         /// </summary>
         /// <param name="c"></param>
         /// <param name="v"></param>

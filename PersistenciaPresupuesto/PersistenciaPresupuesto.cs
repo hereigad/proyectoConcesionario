@@ -348,8 +348,8 @@ namespace PersistenciaPresupuesto
         }
 
         /// <summary>
-        /// pre: c y p existen en la base de datos cada uno en su tabla correspondiente
-        /// post: devuelve TRUE si existe el par c,v; FALSE en caso contrario
+        /// pre: c y p distintos de null
+        /// post: devuelve TRUE si existe el par c,p; FALSE en caso contrario
         /// </summary>
         /// <param name="c"></param>
         /// <param name="p"></param>
@@ -372,7 +372,7 @@ namespace PersistenciaPresupuesto
 
         /// <summary>
         /// pre: cliente c y presupuesto p distintos de null
-        /// post: borra el par (c,p) de la base de datos
+        /// post: borra el par (c,p) de la base de datos y devuelve TRUE; FALSE en caso contrario
         /// </summary>
         /// <param name="c"></param>
         /// <param name="p"></param>
