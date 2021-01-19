@@ -12,25 +12,78 @@ using System.Windows.Forms;
 namespace PresentacionCliente
 
 {
+    
     public class PresentacionCliente
     {
         private Comercial co;
+        private LogicaCliente lnc;
         public PresentacionCliente(Comercial com) {
             this.co = com;
+            this.lnc = new LogicaCliente(com);
         }
         public void addCliente() {
-
-
             ClaveCliente f = new ClaveCliente(this.co) ;
             f.ShowDialog();
-            if (f.DialogResult == DialogResult.OK) { 
-            
-            
-            
+            if (f.DialogResult == DialogResult.OK) {
+                if (this.lnc.existe(new Cliente(f.DNI, null, null, Categoria.A)))
+                {
+                    DatosCliente dc = new DatosCliente(f.DNI);
+                    dc.ShowDialog();
+                    if (dc.DialogResult == DialogResult.OK)
+                    {
+                        lnc.addCliente(new Cliente(dc.DNI, dc.Nombre, dc.Tfno, dc.Categoria));
+                    }
+
+                }
+                else {
+                    DialogResult dr=MessageBox.Show("¿Quiere introducir otro?","Este cliente ya existe",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
+                     if (dr == DialogResult.OK)
+                        {
+                        this.addCliente();
+
+                        }
+                }
             }
-            
-        
         }
+
+        public void deleteCliente()
+        {
+            ClaveCliente f = new ClaveCliente(this.co);
+            f.ShowDialog();
+            if (f.DialogResult == DialogResult.OK)
+            {
+                if (this.lnc.existe(new Cliente(f.DNI, null, null, Categoria.A)))
+                {
+                    DatosCliente dc = new DatosCliente(f.DNI);
+                    dc.todoReadOnly();
+                    dc.ShowDialog();
+                    if (dc.DialogResult == DialogResult.OK)
+                    {
+                        DialogResult dr = MessageBox.Show("¿Seguro que quieres dar de baja al cliente?", "Aviso", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                        if (dr == DialogResult.OK)
+                        {
+                            lnc.bajaCliente(new Cliente(dc.DNI, dc.Nombre, dc.Tfno, dc.Categoria));
+                            MessageBox.Show("Cliente eliminado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        
+                    }
+
+                }
+                else
+                {
+                  DialogResult dr=  MessageBox.Show("¿Quiere introducir otro?", "Este cliente ya existe", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (dr == DialogResult.OK) {
+                        this.deleteCliente();
+                    
+                    }                
+                }
+
+            }
+
+
+        }
+
+
 
     }
 }

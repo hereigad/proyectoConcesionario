@@ -24,8 +24,14 @@ namespace PresentacionCliente
 
         private void button2_Click(object sender, EventArgs e)
         {
+           
             
-            
+        }
+        public String DNI {
+            get {
+
+                return this.tbNombre.Text;
+            }
         }
     }
 }
