@@ -13,7 +13,7 @@ namespace PersistenciaPresupuesto
         
         ////////////////////////////////////////////////////////////// TABLA PRESUPUESTO ///////////////////////////////////////////////////////////////////////////////////
         /// <summary>
-        /// pre: p distinto de null y existente en la base de datos
+        /// pre: p distinto de null y existente en la base de datos; viene unicamente la clave
         /// post: devuelve el presupuesto de la base de datos según el id dado
         /// </summary>
         /// <param name="p"></param>
@@ -87,7 +87,7 @@ namespace PersistenciaPresupuesto
         }
 
         /// <summary>
-        /// pre: p distinto de null
+        /// pre: p distinto de null; viene el objeto entero, no solo su clave; vehiculos, cliente y comercial del presupuesto dado, existen en la base de datos
         /// post: añade el presupuesto p a la base de datos y devuelve TRUE si se ha añadio con exito; FALSE en caso contrario
         /// </summary>
         /// <param name="p"></param>
@@ -98,6 +98,12 @@ namespace PersistenciaPresupuesto
             if(!existePresupuesto(p))
             {
                 BD.INSERT_Presupuesto(p);
+                BD.INSERT_ClientePresupuesto(p.Cliente, p);
+                List<Vehiculo> v = p.Vehiculos;
+                foreach(Vehiculo v1 in v)
+                {
+                    BD.INSERT_PresupuestoVehiculos(p, v1);
+                }
                 anadido = true;
             }
             return anadido;
@@ -125,6 +131,28 @@ namespace PersistenciaPresupuesto
                 }
             }
             return listado;
+        }
+
+        /// <summary>
+        /// pre: v distinto de null y existente en la base de datos; viene solo la clave del vehiculo (el numero de bastidor)
+        /// post: devuelve una colección de presupuestos del vehiculo pedido
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static List<Presupuesto> seleccionarPresupuestosVehiculo(Vehiculo v)
+        {
+            List<Presupuesto> lista = new List<Presupuesto>();
+            List<Presupuesto_VehiculosDato> tabla = BD.SELECT_ALL_PresupuestoVehiculos();
+            foreach (Presupuesto_VehiculosDato pvd in tabla)
+            {
+                if (pvd.Clave.Item2.Equals(v.NumBastidor))
+                {
+                    string id = pvd.Clave.Item1;
+                    Presupuesto p = seleccionarPresupuesto(new Presupuesto(id, DateTime.Now, EstadoPresupuesto.Aceptado, null, null, null));
+                    lista.Add(p);
+                }
+            }
+            return lista;
         }
 
         /// <summary>
@@ -353,6 +381,28 @@ namespace PersistenciaPresupuesto
                 }
             }
             return cli;
+        }
+
+        /// <summary>
+        /// pre: cliente c distinto de null y existente en la base de datos; viene solo la clave del cliente
+        /// post: devuelve una coleccion de presupuestos del cliente c dado
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static List<Presupuesto> seleccionarPresupuestosCliente(Cliente c)
+        {
+            List<Presupuesto> lista = new List<Presupuesto>();
+            List<ClientePresupuesto> tabla = BD.SELECT_ALL_ClientePresupuesto();
+            foreach (ClientePresupuesto cp in tabla)
+            {
+                if(cp.Clave.Item1.Equals(c.DNI))
+                {
+                    string id = cp.Clave.Item2;
+                    Presupuesto p = seleccionarPresupuesto(new Presupuesto(id, DateTime.Now, EstadoPresupuesto.Aceptado, null, null, null));
+                    lista.Add(p);
+                }
+            }
+            return lista;
         }
 
         /// <summary>
