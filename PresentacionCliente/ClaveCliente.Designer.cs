@@ -49,6 +49,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -69,7 +70,7 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "DNI";
             // 
-            // Form1
+            // ClaveCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -78,7 +79,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tbNombre);
-            this.Name = "Form1";
+            this.Name = "ClaveCliente";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();

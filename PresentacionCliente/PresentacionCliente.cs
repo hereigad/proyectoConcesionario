@@ -25,7 +25,7 @@ namespace PresentacionCliente
             ClaveCliente f = new ClaveCliente(this.co) ;
             f.ShowDialog();
             if (f.DialogResult == DialogResult.OK) {
-                if (this.lnc.existe(new Cliente(f.DNI, null, null, Categoria.A)))
+                if (!this.lnc.existe(new Cliente(f.DNI, null, null, Categoria.A)))
                 {
                     DatosCliente dc = new DatosCliente(f.DNI);
                     dc.ShowDialog();
@@ -69,20 +69,58 @@ namespace PresentacionCliente
                             lnc.bajaCliente(new Cliente(dc.DNI, dc.Nombre, dc.Tfno, dc.Categoria));
                             MessageBox.Show("Cliente eliminado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-                        
+                        else {
+                            dc.ShowDialog();
+                        }
+
                     }
 
                 }
                 else
                 {
-                  DialogResult dr=  MessageBox.Show("¿Quiere introducir otro?", "Este cliente ya existe", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    if (dr == DialogResult.OK) {
+                    DialogResult dr = MessageBox.Show("¿Quiere introducir otro?", "Este cliente ya existe", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (dr == DialogResult.OK)
+                    {
                         this.deleteCliente();
-                    
-                    }                
-                }
 
+                    }
+                }
             }
+            
+
+
+        }
+
+        public void showCliente()
+        {
+            ClaveCliente f = new ClaveCliente(this.co);
+            f.ShowDialog();
+            if (f.DialogResult == DialogResult.OK)
+            {
+                if (this.lnc.existe(new Cliente(f.DNI, null, null, Categoria.A)))
+                {
+                    DatosCliente dc = new DatosCliente(f.DNI);
+                    Cliente aux = this.lnc.selCliente(new Cliente(f.DNI, null, null, Categoria.A));
+                    dc.Nombre = aux.Nombre;
+                    dc.Tfno = aux.Telefono;
+                    dc.Categoria = aux.Categoria;
+                    dc.todoReadOnly();
+                    dc.botonesCambio();
+                    dc.ShowDialog();
+                   
+
+                }
+                else
+                {
+                    DialogResult dr = MessageBox.Show("¿Quiere introducir otro?", "Este cliente ya existe", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (dr == DialogResult.OK)
+                    {
+                        this.showCliente();
+
+                    }
+                }
+            }
+
 
 
         }

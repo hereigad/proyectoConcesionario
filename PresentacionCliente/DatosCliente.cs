@@ -97,5 +97,23 @@ namespace PresentacionCliente
             gbCategoria.Enabled = false;
         
         }
+
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void btAceptar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
+
+        public void botonesCambio() {
+            this.btCancelar.Enabled = false;
+            this.btCancelar.Visible = false;
+            this.btAceptar.Location = new Point(240,422);
+        
+        }
     }
 }

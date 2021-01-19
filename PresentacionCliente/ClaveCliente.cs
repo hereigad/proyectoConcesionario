@@ -24,14 +24,24 @@ namespace PresentacionCliente
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
-            
+            this.DialogResult = DialogResult.OK;
+         
+                this.Close();
+
+
+
         }
         public String DNI {
             get {
 
                 return this.tbNombre.Text;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }
