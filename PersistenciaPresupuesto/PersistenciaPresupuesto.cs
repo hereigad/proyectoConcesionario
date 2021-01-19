@@ -35,6 +35,23 @@ namespace PersistenciaPresupuesto
         }
 
         /// <summary>
+        /// pre: -
+        /// post: devuelve todos los presupuestos de la base de datos
+        /// </summary>
+        /// <returns></returns>
+        public static List<Presupuesto> seleccionarTODOS_Presupuestos()
+        {
+            List<Presupuesto> lista = new List<Presupuesto>();
+            List<PresupuestoDato> tabla = BD.SELECT_ALL_Presupuesto();
+            foreach(PresupuestoDato pd in tabla)
+            {
+                Presupuesto p = seleccionarPresupuesto(new Presupuesto(pd.ID, pd.FechaRealizacion, pd.Estado, null, null, null));
+                lista.Add(p);
+            }
+            return lista;
+        }
+
+        /// <summary>
         /// pre: p distinto de null
         /// post: devuelve TRUE si el presupuesto p existe en la base de datos; FALSE en caso contrario
         /// </summary>

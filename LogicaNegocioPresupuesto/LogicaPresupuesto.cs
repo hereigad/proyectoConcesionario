@@ -115,10 +115,23 @@ namespace LogicaNegocioPresupuesto
             return lista;
         }
 
+        /// <summary>
+        /// pre: -
+        /// post: devuelve una colección de presupuestos con el estado dado
+        /// </summary>
+        /// <param name="estado"></param>
+        /// <returns></returns>
         public List<Presupuesto> obtenerPresupuestosEnEstado(EstadoPresupuesto estado)
         {
             List<Presupuesto> lista = new List<Presupuesto>();
-
+            List<Presupuesto> list = PersistenciaPresupuesto.PersistenciaPresupuesto.seleccionarTODOS_Presupuestos();
+            foreach(Presupuesto p in list)
+            {
+                if(p.Estado == estado)
+                {
+                    lista.Add(p);
+                }
+            }
             return lista;
         }
     }
