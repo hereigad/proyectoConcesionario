@@ -38,11 +38,17 @@ namespace PresentacionCliente
             get {
                 return this.tbNombre.Text;
             }
+            set {
+                this.tbNombre.Text = value;
+            }
         
         }
         public String Tfno {
             get {
                 return this.tbTfno.Text;
+            }
+            set {
+                this.tbTfno.Text = value;
             }
         
         }
@@ -59,6 +65,29 @@ namespace PresentacionCliente
                 }
                 return Categoria.A;
             
+            }
+            set {
+                Categoria c = (Categoria)value;
+                if (c == Categoria.A) {
+                    this.rbA.Enabled = true;
+                    this.rbB.Enabled = false;
+                    this.rbC.Enabled = false;
+                
+                }
+                if (c == Categoria.B)
+                {
+                    this.rbA.Enabled = false;
+                    this.rbB.Enabled = true;
+                    this.rbC.Enabled = false;
+
+                }
+                if (c == Categoria.C)
+                {
+                    this.rbA.Enabled = false;
+                    this.rbB.Enabled = false;
+                    this.rbC.Enabled = true;
+
+                }
             }
 
         }

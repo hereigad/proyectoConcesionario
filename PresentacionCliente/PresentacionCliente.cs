@@ -55,6 +55,10 @@ namespace PresentacionCliente
                 if (this.lnc.existe(new Cliente(f.DNI, null, null, Categoria.A)))
                 {
                     DatosCliente dc = new DatosCliente(f.DNI);
+                    Cliente aux = this.lnc.selCliente(new Cliente(f.DNI, null, null, Categoria.A));
+                    dc.Nombre = aux.Nombre;
+                    dc.Tfno = aux.Telefono;
+                    dc.Categoria = aux.Categoria;
                     dc.todoReadOnly();
                     dc.ShowDialog();
                     if (dc.DialogResult == DialogResult.OK)
