@@ -10,7 +10,7 @@ namespace PersistenciaVehiculo
 {
     public static class PersistenciaVehiculo
     {
-        public static bool altaVehivehiculo(Vehiculo v)
+        public static bool altaVehiculo(Vehiculo v)
         {
             BD.INSERT_Vehiculo(v);
             if(BD.EXISTE_Vehiculo(v))
@@ -34,27 +34,26 @@ namespace PersistenciaVehiculo
         public static Vehiculo obtenerVehiculo(string numBastidor)
         {
             Vehiculo v = new Vehiculo(numBastidor, null, null, null, 0);
-            VehiculoDato vd = BD.SELECT_Vehiculo(v);
-            if(vd.Nuevo)
-            {
-                List<ExtraVehiculoDato> evd = BD.SELECT_ExtraVehiculo(v);
-                ExtraDato ed = null;
-                Extra e = null;
-                List<Extra> extras = new List<Extra>();
-                foreach (ExtraVehiculoDato n in evd)
-                {
-                    e = new Extra(n.NumBastidor_Nombre.Item2, 0);
-                    ed = BD.SELECT_Extra(e);
-                    e = new Extra(ed.Nombre, ed.PVP);
-                    extras.Add(e);
+            if (BD.EXISTE_Vehiculo(v)) {
+                VehiculoDato vd = BD.SELECT_Vehiculo(v);
+                if (vd.Nuevo) {
+                    List<ExtraVehiculoDato> evd = BD.SELECT_ExtraVehiculo(v);
+                    ExtraDato ed = null;
+                    Extra e = null;
+                    List<Extra> extras = new List<Extra>();
+                    foreach (ExtraVehiculoDato n in evd) {
+                        e = new Extra(n.NumBastidor_Nombre.Item2, 0);
+                        ed = BD.SELECT_Extra(e);
+                        e = new Extra(ed.Nombre, ed.PVP);
+                        extras.Add(e);
+                    }
+                    v = new VehiculoNuevo(vd.NumBastidor, vd.Marca, vd.Modelo, vd.Potencia, vd.PVP, extras);
+                } else {
+                    v = new VehiculoSegundaMano(vd.NumBastidor, vd.Marca, vd.Modelo, vd.Potencia, vd.PVP, vd.Matricula, vd.FechaMatricula);
                 }
-                v = new VehiculoNuevo(vd.NumBastidor, vd.Marca, vd.Modelo, vd.Potencia, vd.PVP, extras);
+                return v;
             }
-            else
-            {
-                v = new VehiculoSegundaMano(vd.NumBastidor, vd.Marca, vd.Modelo, vd.Potencia, vd.PVP, vd.Matricula, vd.FechaMatricula);
-            }
-            return v;
+            return null;
         }
 
         public static List<Vehiculo> obtenerTodosVehiculos() {

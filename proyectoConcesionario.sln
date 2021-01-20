@@ -20,12 +20,17 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNegocioCliente", "LogicaNegocioCliente\LogicaNegocioCliente.csproj", "{EA0CD87F-5D98-4F7E-8845-C6B12B6B5306}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNegocioVehiculo", "LogicaNegocioVehiculo\LogicaNegocioVehiculo.csproj", "{BB1FFD7A-AAC3-4658-8302-E3C64CF50D59}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7430ECCC-B3C1-406C-A7AE-1DBE074D46D6} = {7430ECCC-B3C1-406C-A7AE-1DBE074D46D6}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNegocioPresupuesto", "LogicaNegocioPresupuesto\LogicaNegocioPresupuesto.csproj", "{51F951BB-A077-4B10-AB83-230925F50297}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentacionCliente", "PresentacionCliente\PresentacionCliente.csproj", "{976C4667-3974-4D07-B0EC-A3552867AED9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentacionForms", "PresentacionForms\PresentacionForms.csproj", "{707FC581-8ABE-47D2-99CD-28B36293A51F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentacionVehiculo", "PresentacionVehiculo\PresentacionVehiculo.csproj", "{C1FEA080-0E08-4D5A-BABC-DEDC9A058FB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +86,10 @@ Global
 		{707FC581-8ABE-47D2-99CD-28B36293A51F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{707FC581-8ABE-47D2-99CD-28B36293A51F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{707FC581-8ABE-47D2-99CD-28B36293A51F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1FEA080-0E08-4D5A-BABC-DEDC9A058FB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1FEA080-0E08-4D5A-BABC-DEDC9A058FB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1FEA080-0E08-4D5A-BABC-DEDC9A058FB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1FEA080-0E08-4D5A-BABC-DEDC9A058FB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

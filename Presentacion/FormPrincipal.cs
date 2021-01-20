@@ -38,5 +38,9 @@ namespace Presentacion
         {
             presCli.showCliente();
         }
+
+        private void altaToolStripMenuItem1_Click(object sender, EventArgs e) {
+
+        }
     }
 }
