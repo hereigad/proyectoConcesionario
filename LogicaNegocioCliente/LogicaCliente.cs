@@ -67,9 +67,15 @@ namespace LogicaNegocioCliente
             }
             return null;
         }
-        public static List<Cliente> totalClientes() {
+        public List<Cliente> totalClientes() {
             return PersistenciaCliente.PersistenciaCliente.clientesConcesionario();
         
+        }
+
+        public List<Cliente> OrdenarCliente(Comparison<Cliente> c) {
+
+
+            return null;
         }
     }
 }

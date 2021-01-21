@@ -55,6 +55,12 @@
     <Compile Include="DatosCliente.Designer.cs">
       <DependentUpon>DatosCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="listado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="listado.Designer.cs">
+      <DependentUpon>listado.cs</DependentUpon>
+    </Compile>
     <Compile Include="PresentacionCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DatosCliente.resx">
       <DependentUpon>DatosCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="listado.resx">
+      <DependentUpon>listado.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
