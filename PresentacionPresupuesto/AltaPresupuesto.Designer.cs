@@ -99,6 +99,7 @@
             this.btnAnadir.TabIndex = 6;
             this.btnAnadir.Text = ">";
             this.btnAnadir.UseVisualStyleBackColor = true;
+            this.btnAnadir.Click += new System.EventHandler(this.btnAnadir_Click);
             // 
             // btnQuitar
             // 
@@ -108,6 +109,7 @@
             this.btnQuitar.TabIndex = 7;
             this.btnQuitar.Text = "<";
             this.btnQuitar.UseVisualStyleBackColor = true;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
             // btnAlta
             // 
@@ -117,6 +119,7 @@
             this.btnAlta.TabIndex = 8;
             this.btnAlta.Text = "Dar de alta";
             this.btnAlta.UseVisualStyleBackColor = true;
+            this.btnAlta.Click += new System.EventHandler(this.btnAlta_Click);
             // 
             // btnCancelar
             // 
@@ -126,6 +129,7 @@
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // AltaPresupuesto
             // 
