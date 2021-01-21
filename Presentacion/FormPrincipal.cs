@@ -46,5 +46,10 @@ namespace Presentacion
         private void altaToolStripMenuItem1_Click(object sender, EventArgs e) {
 
         }
+
+        private void altaPresupuesto_Click(object sender, EventArgs e)
+        {
+            this.presPresupuesto.addPresupuesto();
+        }
     }
 }

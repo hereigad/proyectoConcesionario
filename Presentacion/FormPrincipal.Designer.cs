@@ -135,6 +135,7 @@
             this.altaPresupuesto.Name = "altaPresupuesto";
             this.altaPresupuesto.Size = new System.Drawing.Size(180, 22);
             this.altaPresupuesto.Text = "Alta";
+            this.altaPresupuesto.Click += new System.EventHandler(this.altaPresupuesto_Click);
             // 
             // bajaPresupuesto
             // 
