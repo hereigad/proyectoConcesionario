@@ -46,14 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="AltaPresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AltaPresupuesto.Designer.cs">
+      <DependentUpon>AltaPresupuesto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="PresentacionPresupuesto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AltaPresupuesto.resx">
+      <DependentUpon>AltaPresupuesto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +78,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LogicaNegocioCliente\LogicaNegocioCliente.csproj">
+      <Project>{ea0cd87f-5d98-4f7e-8845-c6b12b6b5306}</Project>
+      <Name>LogicaNegocioCliente</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicaNegocioPresupuesto\LogicaNegocioPresupuesto.csproj">
+      <Project>{51f951bb-a077-4b10-ab83-230925f50297}</Project>
+      <Name>LogicaNegocioPresupuesto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicaNegocioVehiculo\LogicaNegocioVehiculo.csproj">
+      <Project>{bb1ffd7a-aac3-4658-8302-e3c64cf50d59}</Project>
+      <Name>LogicaNegocioVehiculo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModeloDominio\ModeloDominio.csproj">
+      <Project>{8b9d1548-d3de-4376-8f52-ce6ec669e77c}</Project>
+      <Name>ModeloDominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -52,6 +52,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LogicaNegocioPresupuesto\LogicaNegocioPresupuesto.csproj">
+      <Project>{51f951bb-a077-4b10-ab83-230925f50297}</Project>
+      <Name>LogicaNegocioPresupuesto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ModeloDominio\ModeloDominio.csproj">
       <Project>{8b9d1548-d3de-4376-8f52-ce6ec669e77c}</Project>
       <Name>ModeloDominio</Name>
@@ -59,6 +63,10 @@
     <ProjectReference Include="..\PresentacionCliente\PresentacionCliente.csproj">
       <Project>{976c4667-3974-4d07-b0ec-a3552867aed9}</Project>
       <Name>PresentacionCliente</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PresentacionPresupuesto\PresentacionPresupuesto.csproj">
+      <Project>{6487248d-6fbe-487b-8904-3229909ee54e}</Project>
+      <Name>PresentacionPresupuesto</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
