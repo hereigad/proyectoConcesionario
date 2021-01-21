@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class Presupuesto
+    public class Presupuesto: IEquatable<Presupuesto>
     {
         private DateTime fechaRealizacion;
         private string id;
@@ -73,6 +73,18 @@ namespace ModeloDominio
         public bool isAceptado()
         {
             return this.estado == EstadoPresupuesto.Aceptado;
+        }
+
+        public bool Equals(Presupuesto p)
+        {
+            if(this.fechaRealizacion.Equals(p.FechaRealizacion) && this.cliente.Equals(p.Cliente))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public string ID

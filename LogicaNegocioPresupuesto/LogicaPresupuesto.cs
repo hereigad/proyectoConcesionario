@@ -11,29 +11,26 @@ namespace LogicaNegocioPresupuesto
 {
     public class LogicaPresupuesto
     {
-        private Cliente cliente;
+        /*private Cliente cliente;
         private List<Vehiculo> vehiculos;
-        private DateTime fechaRealizacion;
+        private DateTime fechaRealizacion;*/
         private Comercial comercial;
-        private EstadoPresupuesto estado;
+        //private EstadoPresupuesto estado;
 
-        public LogicaPresupuesto()
+        public LogicaPresupuesto(Comercial com)
         {
-
+            this.comercial = com;
         }
 
         /// <summary>
-        /// pre: com, cli y vehiculos distintos de null; entran los objetos completos, no solo sus claves
-        /// post: da de alta un nuevo presupuesto con el comercial, cliente y los vehiculos dados
+        /// pre: presupuesto p distinto de null
+        /// post: da de alta un nuevo presupuesto
         /// </summary>
-        /// <param name="com"></param>
-        /// <param name="cli"></param>
-        /// <param name="vehiculos"></param>
-        public void altaPresupuesto(Comercial com, Cliente cli, List<Vehiculo> vehiculos)
+        /// <param name="p"></param>
+        public void altaPresupuesto(Presupuesto p)
         {
-            string id = com.Codigo + "-" + cli.DNI + "-" + vehiculos.Count;
-            Presupuesto p = new Presupuesto(id, DateTime.Now, EstadoPresupuesto.Pendiente, com, cli, vehiculos);
-            PersistenciaPresupuesto.PersistenciaPresupuesto.anadirPresupuesto(p);
+            Presupuesto p1 = new Presupuesto(p.ID, DateTime.Now, EstadoPresupuesto.Pendiente, p.Comercial, p.Cliente, p.Vehiculos);
+            PersistenciaPresupuesto.PersistenciaPresupuesto.anadirPresupuesto(p1);
         }
 
         /// <summary>
@@ -45,7 +42,8 @@ namespace LogicaNegocioPresupuesto
         public Cliente obtenerCliente(Presupuesto p)
         {
             Cliente cli = null;
-            if (PersistenciaPresupuesto.PersistenciaPresupuesto.existePresupuesto(p)){
+            if (PersistenciaPresupuesto.PersistenciaPresupuesto.existePresupuesto(p))
+            {
                 cli = PersistenciaPresupuesto.PersistenciaPresupuesto.seleccionarClientePresupuesto(p);
             }
             return cli;
@@ -82,7 +80,7 @@ namespace LogicaNegocioPresupuesto
         public Presupuesto obtenerPresupuesto(Presupuesto p)
         {
             Presupuesto presupuesto = null;
-            if(PersistenciaPresupuesto.PersistenciaPresupuesto.existePresupuesto(p))
+            if (PersistenciaPresupuesto.PersistenciaPresupuesto.existePresupuesto(p))
             {
                 presupuesto = PersistenciaPresupuesto.PersistenciaPresupuesto.seleccionarPresupuesto(p);
             }
@@ -98,7 +96,7 @@ namespace LogicaNegocioPresupuesto
         public List<Presupuesto> obtenerPresupuestosCliente(Cliente c)
         {
             List<Presupuesto> lista = new List<Presupuesto>();
-            lista=PersistenciaPresupuesto.PersistenciaPresupuesto.seleccionarPresupuestosCliente(c);
+            lista = PersistenciaPresupuesto.PersistenciaPresupuesto.seleccionarPresupuestosCliente(c);
             return lista;
         }
 
@@ -125,9 +123,9 @@ namespace LogicaNegocioPresupuesto
         {
             List<Presupuesto> lista = new List<Presupuesto>();
             List<Presupuesto> list = PersistenciaPresupuesto.PersistenciaPresupuesto.seleccionarTODOS_Presupuestos();
-            foreach(Presupuesto p in list)
+            foreach (Presupuesto p in list)
             {
-                if(p.Estado == estado)
+                if (p.Estado == estado)
                 {
                     lista.Add(p);
                 }

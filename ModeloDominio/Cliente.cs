@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class Cliente
+    public class Cliente: IEquatable<Cliente>
     {
         private string Dni;
         private string nombre;
@@ -52,6 +52,18 @@ namespace ModeloDominio
             set
             {
                 this.categoria = value;
+            }
+        }
+
+        public bool Equals(Cliente c)
+        {
+            if (this.DNI.Equals(c.DNI))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
