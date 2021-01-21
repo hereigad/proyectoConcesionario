@@ -9,16 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ModeloDominio;
 using PresentacionCliente;
+using PresentacionPresupuesto;
+using LogicaNegocioPresupuesto;
 namespace Presentacion
 {
     public partial class FormPrincipal : Form
     {
         private Comercial com;
         private PresentacionCliente.PresentacionCliente presCli;
+        private PresentacionPresupuesto.PresentacionPresupuesto presPresupuesto;
         public FormPrincipal()
         {
             this.com = new Comercial(null,null,null,null);
             this.presCli = new PresentacionCliente.PresentacionCliente(this.com);
+            this.presPresupuesto = new PresentacionPresupuesto.PresentacionPresupuesto(new LogicaPresupuesto(this.com));
             InitializeComponent();
         }
 
