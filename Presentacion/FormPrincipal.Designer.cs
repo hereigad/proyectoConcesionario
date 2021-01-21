@@ -73,21 +73,21 @@
             // BTaltaCliente
             // 
             this.BTaltaCliente.Name = "BTaltaCliente";
-            this.BTaltaCliente.Size = new System.Drawing.Size(180, 22);
+            this.BTaltaCliente.Size = new System.Drawing.Size(126, 22);
             this.BTaltaCliente.Text = "Alta";
             this.BTaltaCliente.Click += new System.EventHandler(this.BTaltaCliente_Click);
             // 
             // BTbajaCliente
             // 
             this.BTbajaCliente.Name = "BTbajaCliente";
-            this.BTbajaCliente.Size = new System.Drawing.Size(180, 22);
+            this.BTbajaCliente.Size = new System.Drawing.Size(126, 22);
             this.BTbajaCliente.Text = "Baja";
             this.BTbajaCliente.Click += new System.EventHandler(this.BTbajaCliente_Click);
             // 
             // BTbusquedaCliente
             // 
             this.BTbusquedaCliente.Name = "BTbusquedaCliente";
-            this.BTbusquedaCliente.Size = new System.Drawing.Size(180, 22);
+            this.BTbusquedaCliente.Size = new System.Drawing.Size(126, 22);
             this.BTbusquedaCliente.Text = "Búsqueda";
             this.BTbusquedaCliente.Click += new System.EventHandler(this.BTbusquedaCliente_Click);
             // 
@@ -135,7 +135,6 @@
             this.altaPresupuesto.Name = "altaPresupuesto";
             this.altaPresupuesto.Size = new System.Drawing.Size(180, 22);
             this.altaPresupuesto.Text = "Alta";
-            this.altaPresupuesto.Click += new System.EventHandler(this.altaPresupuesto_Click);
             // 
             // bajaPresupuesto
             // 

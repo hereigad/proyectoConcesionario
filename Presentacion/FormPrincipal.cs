@@ -9,19 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ModeloDominio;
 using PresentacionCliente;
-using PresentacionPresupuesto;
 namespace Presentacion
 {
     public partial class FormPrincipal : Form
     {
         private Comercial com;
         private PresentacionCliente.PresentacionCliente presCli;
-        private PresentacionPresupuesto.PresentacionPresupuesto presPresup;
         public FormPrincipal()
         {
             this.com = new Comercial(null,null,null,null);
             this.presCli = new PresentacionCliente.PresentacionCliente(this.com);
-            this.presPresup = new PresentacionPresupuesto.PresentacionPresupuesto(this.com);
             InitializeComponent();
         }
 
@@ -44,11 +41,6 @@ namespace Presentacion
 
         private void altaToolStripMenuItem1_Click(object sender, EventArgs e) {
 
-        }
-
-        private void altaPresupuesto_Click(object sender, EventArgs e)
-        {
-            presPresup.addPresupuesto();
         }
     }
 }
