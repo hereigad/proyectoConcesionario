@@ -19,6 +19,7 @@ namespace PresentacionPresupuesto
     {
         public AltaPresupuesto(LogicaPresupuesto l)
         {
+            
             InitializeComponent();
         }
     }

@@ -22,6 +22,8 @@ namespace LogicaNegocioPresupuesto
             this.comercial = com;
         }
 
+        public Comercial Comercial { get { return this.comercial; } }
+
         /// <summary>
         /// pre: presupuesto p distinto de null
         /// post: da de alta un nuevo presupuesto
@@ -29,7 +31,7 @@ namespace LogicaNegocioPresupuesto
         /// <param name="p"></param>
         public void altaPresupuesto(Presupuesto p)
         {
-            Presupuesto p1 = new Presupuesto(p.ID, DateTime.Now, EstadoPresupuesto.Pendiente, p.Comercial, p.Cliente, p.Vehiculos);
+            Presupuesto p1 = new Presupuesto(p.ID, p.FechaRealizacion, p.Estado, p.Comercial, p.Cliente, p.Vehiculos);
             PersistenciaPresupuesto.PersistenciaPresupuesto.anadirPresupuesto(p1);
         }
 

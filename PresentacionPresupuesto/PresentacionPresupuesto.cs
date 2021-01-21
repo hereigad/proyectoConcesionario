@@ -22,6 +22,8 @@ namespace PresentacionPresupuesto
         public void addPresupuesto()
         {
             // crear un  presupuesto nuevo desde la interfaz y añadirlo a la base de datos
+            AltaPresupuesto ap = new AltaPresupuesto(this.logica);
+            ap.ShowDialog();
         }
     }
 }

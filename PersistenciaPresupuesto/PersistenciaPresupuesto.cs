@@ -104,7 +104,7 @@ namespace PersistenciaPresupuesto
         }
 
         /// <summary>
-        /// pre: p distinto de null; viene el objeto entero, no solo su clave; vehiculos, cliente y comercial del presupuesto dado, existen en la base de datos
+        /// pre: p distinto de null; viene el objeto entero, no solo su clave
         /// post: añade el presupuesto p a la base de datos y devuelve TRUE si se ha añadio con exito; FALSE en caso contrario
         /// </summary>
         /// <param name="p"></param>
