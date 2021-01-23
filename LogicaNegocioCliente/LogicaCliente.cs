@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ModeloDominio;
 using PersistenciaCliente;
+using PersistenciaPresupuesto;
 
 
 namespace LogicaNegocioCliente
@@ -72,10 +73,28 @@ namespace LogicaNegocioCliente
         
         }
 
-        public List<Cliente> OrdenarCliente(Comparison<Cliente> c) {
-
-
-            return null;
+        public Dictionary<Cliente,double> OrdenarCliente(Comparison<Cliente> c) {
+            Dictionary<Cliente, double> diccionario = new Dictionary<Cliente, double>();
+            List<Cliente> ordenados = this.totalClientes();
+            ordenados.Sort(c);
+            foreach (Cliente cli in ordenados) {
+                diccionario.Add(cli,obtieneImporte(cli));
+            
+            }
+            return diccionario;
         }
+      
+        public static double obtieneImporte(Cliente c) {
+            List<Presupuesto> presus = PersistenciaCliente.PersistenciaCliente.presupuestosDeCliente(c);
+            double dineros = 0;
+            foreach (Presupuesto p in presus) {
+                foreach (Vehiculo v in PersistenciaPresupuesto.PersistenciaPresupuesto.seleccionarVehiculosPresupuesto(p)) {
+                    dineros += v.Pvp;
+
+                }
+            }
+            return dineros;
+        }
+        
     }
 }

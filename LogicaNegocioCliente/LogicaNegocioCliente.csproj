@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComparadoresCliente.cs" />
     <Compile Include="LogicaCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -52,6 +53,14 @@
     <ProjectReference Include="..\PersistenciaCliente\PersistenciaCliente.csproj">
       <Project>{de0e3a24-5a3a-4a90-a700-186f0fbda14e}</Project>
       <Name>PersistenciaCliente</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersistenciaPresupuesto\PersistenciaPresupuesto.csproj">
+      <Project>{c8dbb085-9fea-48d7-ae70-565f9817ccc8}</Project>
+      <Name>PersistenciaPresupuesto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersistenciaVehiculo\PersistenciaVehiculo.csproj">
+      <Project>{7430eccc-b3c1-406c-a7ae-1dbe074d46d6}</Project>
+      <Name>PersistenciaVehiculo</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

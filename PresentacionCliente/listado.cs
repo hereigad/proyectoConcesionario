@@ -14,15 +14,16 @@ namespace PresentacionCliente
 {
     public partial class listado : Form
     {
+        private Dictionary<Cliente, double> diccio;
+        LogicaCliente log;
         public listado(LogicaNegocioCliente.LogicaCliente ln)
         {
 
-
+            this.log = ln;
             InitializeComponent();
-
+            diccio = ln.OrdenarCliente(LogicaNegocioCliente.ComparadoresCliente.ComparaDNI);
             BindingSource bd = new BindingSource();
-            bd.DataSource = ln.totalClientes();
-            this.lbDNI.DataSource = bd;
+            bd.DataSource = diccio;
             this.lbDNI.DisplayMember = "DNI";
             this.lbNombre.DataSource = bd;
             this.lbNombre.DisplayMember = "Nombre";
@@ -34,6 +35,31 @@ namespace PresentacionCliente
         private void btCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btDNI_Click(object sender, EventArgs e)
+        {
+            diccio = log.OrdenarCliente(LogicaNegocioCliente.ComparadoresCliente.ComparaDNI);
+            lbDNI.Refresh();
+            lbImporte.Refresh();
+            lbNombre.Refresh();
+        }
+
+        private void btNombre_Click(object sender, EventArgs e)
+        {
+            diccio = log.OrdenarCliente(LogicaNegocioCliente.ComparadoresCliente.ComparaNombre);
+            lbDNI.Refresh();
+            lbImporte.Refresh();
+            lbNombre.Refresh();
+
+        }
+
+        private void btImporte_Click(object sender, EventArgs e)
+        {
+            diccio = log.OrdenarCliente(LogicaNegocioCliente.ComparadoresCliente.ComparaImporte);
+            lbDNI.Refresh();
+            lbImporte.Refresh();
+            lbNombre.Refresh();
         }
     }
 }

@@ -39,60 +39,73 @@
             // 
             // btDNI
             // 
-            this.btDNI.Location = new System.Drawing.Point(78, 54);
+            this.btDNI.Location = new System.Drawing.Point(104, 66);
+            this.btDNI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btDNI.Name = "btDNI";
-            this.btDNI.Size = new System.Drawing.Size(120, 23);
+            this.btDNI.Size = new System.Drawing.Size(160, 28);
             this.btDNI.TabIndex = 0;
             this.btDNI.Text = "DNI";
             this.btDNI.UseVisualStyleBackColor = true;
+            this.btDNI.Click += new System.EventHandler(this.btDNI_Click);
             // 
             // lbDNI
             // 
             this.lbDNI.FormattingEnabled = true;
-            this.lbDNI.Location = new System.Drawing.Point(78, 99);
+            this.lbDNI.ItemHeight = 16;
+            this.lbDNI.Location = new System.Drawing.Point(104, 122);
+            this.lbDNI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbDNI.Name = "lbDNI";
-            this.lbDNI.Size = new System.Drawing.Size(120, 277);
+            this.lbDNI.Size = new System.Drawing.Size(159, 340);
             this.lbDNI.TabIndex = 1;
             // 
             // btNombre
             // 
-            this.btNombre.Location = new System.Drawing.Point(252, 54);
+            this.btNombre.Location = new System.Drawing.Point(336, 66);
+            this.btNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btNombre.Name = "btNombre";
-            this.btNombre.Size = new System.Drawing.Size(120, 23);
+            this.btNombre.Size = new System.Drawing.Size(160, 28);
             this.btNombre.TabIndex = 2;
             this.btNombre.Text = "Nombre";
             this.btNombre.UseVisualStyleBackColor = true;
+            this.btNombre.Click += new System.EventHandler(this.btNombre_Click);
             // 
             // lbNombre
             // 
             this.lbNombre.FormattingEnabled = true;
-            this.lbNombre.Location = new System.Drawing.Point(252, 99);
+            this.lbNombre.ItemHeight = 16;
+            this.lbNombre.Location = new System.Drawing.Point(336, 122);
+            this.lbNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbNombre.Name = "lbNombre";
-            this.lbNombre.Size = new System.Drawing.Size(120, 277);
+            this.lbNombre.Size = new System.Drawing.Size(159, 340);
             this.lbNombre.TabIndex = 3;
             // 
             // btImporte
             // 
-            this.btImporte.Location = new System.Drawing.Point(418, 54);
+            this.btImporte.Location = new System.Drawing.Point(557, 66);
+            this.btImporte.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btImporte.Name = "btImporte";
-            this.btImporte.Size = new System.Drawing.Size(120, 23);
+            this.btImporte.Size = new System.Drawing.Size(160, 28);
             this.btImporte.TabIndex = 4;
             this.btImporte.Text = "Importe";
             this.btImporte.UseVisualStyleBackColor = true;
+            this.btImporte.Click += new System.EventHandler(this.btImporte_Click);
             // 
             // lbImporte
             // 
             this.lbImporte.FormattingEnabled = true;
-            this.lbImporte.Location = new System.Drawing.Point(418, 99);
+            this.lbImporte.ItemHeight = 16;
+            this.lbImporte.Location = new System.Drawing.Point(557, 122);
+            this.lbImporte.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbImporte.Name = "lbImporte";
-            this.lbImporte.Size = new System.Drawing.Size(120, 277);
+            this.lbImporte.Size = new System.Drawing.Size(159, 340);
             this.lbImporte.TabIndex = 5;
             // 
             // btCerrar
             // 
-            this.btCerrar.Location = new System.Drawing.Point(252, 415);
+            this.btCerrar.Location = new System.Drawing.Point(336, 511);
+            this.btCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btCerrar.Name = "btCerrar";
-            this.btCerrar.Size = new System.Drawing.Size(120, 23);
+            this.btCerrar.Size = new System.Drawing.Size(160, 28);
             this.btCerrar.TabIndex = 6;
             this.btCerrar.Text = "Cerrar";
             this.btCerrar.UseVisualStyleBackColor = true;
@@ -100,9 +113,9 @@
             // 
             // listado
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 497);
+            this.ClientSize = new System.Drawing.Size(883, 612);
             this.Controls.Add(this.btCerrar);
             this.Controls.Add(this.lbImporte);
             this.Controls.Add(this.btImporte);
@@ -110,6 +123,7 @@
             this.Controls.Add(this.btNombre);
             this.Controls.Add(this.lbDNI);
             this.Controls.Add(this.btDNI);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "listado";
             this.Text = "Listado de Cliente";
             this.ResumeLayout(false);
