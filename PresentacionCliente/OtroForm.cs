@@ -26,11 +26,25 @@ namespace PresentacionCliente
             comboBox1.DisplayMember = "DNI";
                 }
 
+
+        /// <summary>
+        /// pre: 
+        /// post:Cierra el formulario
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         private void btCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+
+        /// <summary>
+        /// pre: 
+        /// post: Cambia el Cliente seleccionado
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selec = comboBox1.SelectedIndex;

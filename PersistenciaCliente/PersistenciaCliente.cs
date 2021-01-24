@@ -12,7 +12,12 @@ namespace PersistenciaCliente
 {
     public class PersistenciaCliente
     {
-
+        /// <summary>
+        /// pre: c no existe en la base de datos y no es nulo
+        /// post: devuelve true si el cliente ha sido añadido a la base de datos, false si no se ha podido
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public static bool anadirCliente(Cliente c) {
             BD.INSERT_Cliente(c);
             if (BD.EXISTE_Cliente(c)) {
@@ -20,7 +25,13 @@ namespace PersistenciaCliente
             }
             return false;
         }
-       
+
+        /// <summary>
+        /// pre: el DNI del cliente c debe existir en la Base de datos
+        /// post: devuelve un objeto cliente con todos los datos del cliente c
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public static Cliente seleccionarCliente(Cliente c) {
             ClienteDatos cd = BD.SELECT_Cliente(c);
             if (cd.CategoriaCliente == 5) {
@@ -35,7 +46,12 @@ namespace PersistenciaCliente
 
             return null;
         }
-
+        /// <summary>
+        /// pre: c no existe en la base de datos y no es nulo
+        /// post: devuelve true si el cliente ha sido eliminado de la base de datos, false si no se ha podido
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public static bool eliminaCliente(Cliente c) {
             BD.DELETE_Cliente(c);
             if (BD.EXISTE_Cliente(c)) {
@@ -44,6 +60,12 @@ namespace PersistenciaCliente
             return true;  
         }
 
+        /// <summary>
+        /// pre: 
+        /// post: devuelve true si el cliente existe en la base de datos, false si no 
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public static bool existeCliente(Cliente c) {
             if (BD.EXISTE_Cliente(c)) {
                 return true;
@@ -51,6 +73,12 @@ namespace PersistenciaCliente
             return false;
         }
 
+        /// <summary>
+        /// pre: c no existe en la base de datos y no es nulo
+        /// post: devuelve una lista con los presupuestos del cliente c
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public static List<Presupuesto> presupuestosDeCliente(Cliente c) {
             List<Presupuesto> lista = new List<Presupuesto>();
             Tabla_ClientePresupuesto tabla = BD.ClientePresupuesto;
@@ -63,6 +91,13 @@ namespace PersistenciaCliente
             return lista;
         
         }
+
+        /// <summary>
+        /// pre: c no existe en la base de datos y no es nulo
+        /// post: devuelve una lista con los presupuestos aceptados del cliente c
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public static List<Presupuesto> presupuestosAceptados(Cliente c)
         {
             List<Presupuesto> listafin = new List<Presupuesto>();
@@ -79,6 +114,14 @@ namespace PersistenciaCliente
             return listafin;
 
         }
+
+
+        /// <summary>
+        /// pre: 
+        /// post: devuelve una lista con todos los clientes pertenecientes a la categoria cat
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public static List<Cliente> clientesCategoria(Categoria cat) {
             List<Cliente> lista = new List<Cliente>();
             ColCliente colec = BD.Clientes;
@@ -93,7 +136,12 @@ namespace PersistenciaCliente
             }
             return lista;
         }
-
+        /// <summary>
+        /// pre:
+        /// post: devuelve una lista con todos los clientes del concesionario
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public static List<Cliente> clientesConcesionario()
         {
             List<Cliente> lista = new List<Cliente>();

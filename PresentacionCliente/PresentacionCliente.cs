@@ -21,6 +21,13 @@ namespace PresentacionCliente
             this.co = com;
             this.lnc = new LogicaCliente(com);
         }
+
+        /// <summary>
+        /// pre: 
+        /// post: Muestra un formulario para poder añadir un cliente
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public void addCliente() {
             ClaveCliente f = new ClaveCliente(this.co) ;
             f.ShowDialog();
@@ -46,6 +53,13 @@ namespace PresentacionCliente
             }
         }
 
+
+        /// <summary>
+        /// pre: 
+        /// post: muestra el formulario para poder eliminar un cliente
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public void deleteCliente()
         {
             ClaveCliente f = new ClaveCliente(this.co);
@@ -91,6 +105,12 @@ namespace PresentacionCliente
 
         }
 
+        /// <summary>
+        /// pre: 
+        /// post: Muestra el cliente en modo solo lectura
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public void showCliente()
         {
             ClaveCliente f = new ClaveCliente(this.co);

@@ -32,11 +32,24 @@ namespace PresentacionCliente
 
         }
 
+        /// <summary>
+        /// pre: 
+        /// post: Cierra el formulario
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         private void btCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+
+        /// <summary>
+        /// pre: 
+        /// post: Ordena la lista por DNI
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         private void btDNI_Click(object sender, EventArgs e)
         {
             diccio = log.OrdenarCliente(LogicaNegocioCliente.ComparadoresCliente.ComparaDNI);
@@ -45,6 +58,13 @@ namespace PresentacionCliente
             lbNombre.Refresh();
         }
 
+
+        /// <summary>
+        /// pre: 
+        /// post: Ordena la lista por nombre
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         private void btNombre_Click(object sender, EventArgs e)
         {
             diccio = log.OrdenarCliente(LogicaNegocioCliente.ComparadoresCliente.ComparaNombre);
@@ -54,6 +74,12 @@ namespace PresentacionCliente
 
         }
 
+        /// <summary>
+        /// pre: 
+        /// post: Ordena la lista por importe
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         private void btImporte_Click(object sender, EventArgs e)
         {
             diccio = log.OrdenarCliente(LogicaNegocioCliente.ComparadoresCliente.ComparaImporte);

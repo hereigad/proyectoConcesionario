@@ -18,32 +18,74 @@ namespace LogicaNegocioCliente
             this.com = c;
         
         }
+        /// <summary>
+        /// pre: c no existe en la base de datos y no es nulo
+        /// post: el cliente queda añadido
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public void addCliente(Cliente c)
         {
             PersistenciaCliente.PersistenciaCliente.anadirCliente(c);
 
         }
+        /// <summary>
+        /// pre: el DNI del cliente c debe existir en la BD
+        /// post: devuelve un objeto cliente con todos los datos
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public Cliente selCliente(Cliente c) {
             return PersistenciaCliente.PersistenciaCliente.seleccionarCliente(c);
         
         }
-
+        /// <summary>
+        /// pre: 
+        /// post: devuelve true si el cliente existe en la base de datos, false si no
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public bool existe(Cliente c) {
             return PersistenciaCliente.PersistenciaCliente.existeCliente(c);
         
         }
+
+        /// <summary>
+        /// pre: c existe en la base de datos y no es nulo
+        /// post: borra el cliente c de la base de datos
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public void bajaCliente(Cliente c) {
 
             PersistenciaCliente.PersistenciaCliente.eliminaCliente(c);
         }
+
+
+        /// <summary>
+        /// pre: c existe en la base de datos y no es nulo
+        /// post: devuelve la lista de los presupuestos del cliente c
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public List<Presupuesto> listaPresupuestosCliente(Cliente c) {
 
             return PersistenciaCliente.PersistenciaCliente.presupuestosDeCliente(c);
         }
+
+
+        /// <summary>
+        /// pre: c existe en la base de datos y no es nulo
+        /// post: devuelve la lista de los presupuestos aceptados del cliente c
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public List<Presupuesto> listaPresupuestosAceptados(Cliente c) {
             return PersistenciaCliente.PersistenciaCliente.presupuestosAceptados(c);
         }
 
+
+        
         public Comercial Comercial {
             get {
 
@@ -54,6 +96,13 @@ namespace LogicaNegocioCliente
             }
         
         }
+
+        /// <summary>
+        /// pre: 
+        /// post: devuelve la lista de los clientes con la categoria "categoria"
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public static List<Cliente> clientePorCategoria(String categoria) {
             if (categoria.Equals("A")) {
                 return PersistenciaCliente.PersistenciaCliente.clientesCategoria(Categoria.A);
@@ -68,11 +117,26 @@ namespace LogicaNegocioCliente
             }
             return null;
         }
+
+
+        /// <summary>
+        /// pre: 
+        /// post: devuelve todos los cientes del concesionario
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public List<Cliente> totalClientes() {
             return PersistenciaCliente.PersistenciaCliente.clientesConcesionario();
         
         }
 
+
+        /// <summary>
+        /// pre: Se envia un Comparison con el que se ordena la lista de los clientes
+        /// post: devuelve un dictionary con los clientes y su importe
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public Dictionary<Cliente,double> OrdenarCliente(Comparison<Cliente> c) {
             Dictionary<Cliente, double> diccionario = new Dictionary<Cliente, double>();
             List<Cliente> ordenados = this.totalClientes();
@@ -83,7 +147,14 @@ namespace LogicaNegocioCliente
             }
             return diccionario;
         }
-      
+
+
+        /// <summary>
+        /// pre: c existe en la base de datos y no es nulo
+        /// post: devuelve el importe total del cliente
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public static double obtieneImporte(Cliente c) {
             List<Presupuesto> presus = PersistenciaCliente.PersistenciaCliente.presupuestosDeCliente(c);
             double dineros = 0;
