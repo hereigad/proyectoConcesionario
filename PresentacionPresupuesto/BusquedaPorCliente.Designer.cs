@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.listPresupuestos = new System.Windows.Forms.ListBox();
-            this.vistaPresupuesto1 = new VistaPresupuesto();
+            this.vistaPresupuesto = new VistaPresupuesto();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -42,12 +42,12 @@
             this.listPresupuestos.TabIndex = 0;
             this.listPresupuestos.SelectedIndexChanged += new System.EventHandler(this.listPresupuestos_SelectedIndexChanged);
             // 
-            // vistaPresupuesto1
+            // vistaPresupuesto
             // 
-            this.vistaPresupuesto1.Location = new System.Drawing.Point(240, 12);
-            this.vistaPresupuesto1.Name = "vistaPresupuesto1";
-            this.vistaPresupuesto1.Size = new System.Drawing.Size(327, 294);
-            this.vistaPresupuesto1.TabIndex = 1;
+            this.vistaPresupuesto.Location = new System.Drawing.Point(240, 12);
+            this.vistaPresupuesto.Name = "vistaPresupuesto";
+            this.vistaPresupuesto.Size = new System.Drawing.Size(327, 294);
+            this.vistaPresupuesto.TabIndex = 1;
             // 
             // btnCerrar
             // 
@@ -65,10 +65,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 363);
             this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.vistaPresupuesto1);
+            this.Controls.Add(this.vistaPresupuesto);
             this.Controls.Add(this.listPresupuestos);
             this.Name = "BusquedaPorCliente";
-            this.Text = "BusquedaCliente";
+            this.Text = "Busqueda Cliente";
             this.ResumeLayout(false);
 
         }
@@ -76,7 +76,7 @@
         #endregion
 
         private System.Windows.Forms.ListBox listPresupuestos;
-        private VistaPresupuesto vistaPresupuesto1;
+        private VistaPresupuesto vistaPresupuesto;
         private System.Windows.Forms.Button btnCerrar;
     }
 }

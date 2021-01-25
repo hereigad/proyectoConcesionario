@@ -26,6 +26,7 @@ namespace PresentacionPresupuesto
         {
             this.logicaP = lp;
             this.dni = dni;
+            this.Text = this.Text + " " + this.dni;
             this.devolverPresupuestos();
         }
 
@@ -41,7 +42,7 @@ namespace PresentacionPresupuesto
         private void listPresupuestos_SelectedIndexChanged(object sender, EventArgs e)
         {
             Presupuesto p = this.presupuestos.ElementAt(this.listPresupuestos.SelectedIndex);
-            this.vistaPresupuesto1 = new VistaPresupuesto(p);
+            this.vistaPresupuesto = new VistaPresupuesto(p);
         }
 
         private void button1_Click(object sender, EventArgs e)
