@@ -119,7 +119,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "VistaPresupuesto";
-            this.Size = new System.Drawing.Size(327, 307);
+            this.Size = new System.Drawing.Size(327, 294);
             this.ResumeLayout(false);
             this.PerformLayout();
 

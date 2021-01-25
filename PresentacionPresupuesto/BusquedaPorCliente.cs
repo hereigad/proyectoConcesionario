@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ModeloDominio;
 
 namespace PresentacionPresupuesto
 {
@@ -15,6 +16,7 @@ namespace PresentacionPresupuesto
         private LogicaNegocioPresupuesto.LogicaPresupuesto logicaP;
         private LogicaNegocioCliente.LogicaCliente logicaC;
         private string dni;
+        private List<Presupuesto> presupuestos;
         public BusquedaPorCliente()
         {
             InitializeComponent();
@@ -25,6 +27,12 @@ namespace PresentacionPresupuesto
             this.logicaP = lp;
             this.logicaC = lc;
             this.dni = dni;
+        }
+
+        private void devolverPresupuestos()
+        {
+            Cliente cli = this.logicaC.selCliente(new Cliente(this.dni, "", "", Categoria.A));
+            this.presupuestos = this.logicaP.obtenerPresupuestosCliente(cli);
         }
     }
 }

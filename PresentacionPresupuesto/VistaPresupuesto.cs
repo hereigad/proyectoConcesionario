@@ -43,10 +43,9 @@ namespace PresentacionPresupuesto
                     break;
             }
 
-            List<string> bastidores = new List<string>();
             foreach(Vehiculo v in this.presupuesto.Vehiculos)
             {
-                bastidores.Add(v.NumBastidor);
+                this.listVehiculos.Items.Add(v.NumBastidor);
             }
         }
     }
