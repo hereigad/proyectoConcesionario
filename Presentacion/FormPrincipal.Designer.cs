@@ -39,9 +39,11 @@
             this.busquedaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.presupuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaPresupuesto = new System.Windows.Forms.ToolStripMenuItem();
-            this.bajaPresupuesto = new System.Windows.Forms.ToolStripMenuItem();
-            this.busquedaPresupuesto = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.búsquedaPorClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.búsquedaPorVehiculoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recorrerUnoAUnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listarTodosLosPresupuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,8 +126,10 @@
             // 
             this.presupuestosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaPresupuesto,
-            this.bajaPresupuesto,
-            this.busquedaPresupuesto});
+            this.búsquedaPorClienteToolStripMenuItem,
+            this.búsquedaPorVehiculoToolStripMenuItem,
+            this.recorrerUnoAUnoToolStripMenuItem,
+            this.listarTodosLosPresupuestosToolStripMenuItem});
             this.presupuestosToolStripMenuItem.Name = "presupuestosToolStripMenuItem";
             this.presupuestosToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
             this.presupuestosToolStripMenuItem.Text = "Presupuestos";
@@ -137,23 +141,39 @@
             this.altaPresupuesto.Text = "Alta";
             this.altaPresupuesto.Click += new System.EventHandler(this.altaPresupuesto_Click);
             // 
-            // bajaPresupuesto
-            // 
-            this.bajaPresupuesto.Name = "bajaPresupuesto";
-            this.bajaPresupuesto.Size = new System.Drawing.Size(180, 22);
-            this.bajaPresupuesto.Text = "Baja";
-            // 
-            // busquedaPresupuesto
-            // 
-            this.busquedaPresupuesto.Name = "busquedaPresupuesto";
-            this.busquedaPresupuesto.Size = new System.Drawing.Size(180, 22);
-            this.busquedaPresupuesto.Text = "Búsqueda";
-            // 
             // configuraciónToolStripMenuItem
             // 
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
+            // 
+            // búsquedaPorClienteToolStripMenuItem
+            // 
+            this.búsquedaPorClienteToolStripMenuItem.Name = "búsquedaPorClienteToolStripMenuItem";
+            this.búsquedaPorClienteToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.búsquedaPorClienteToolStripMenuItem.Text = "Búsqueda por Cliente";
+            this.búsquedaPorClienteToolStripMenuItem.Click += new System.EventHandler(this.búsquedaPorClienteToolStripMenuItem_Click);
+            // 
+            // búsquedaPorVehiculoToolStripMenuItem
+            // 
+            this.búsquedaPorVehiculoToolStripMenuItem.Name = "búsquedaPorVehiculoToolStripMenuItem";
+            this.búsquedaPorVehiculoToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.búsquedaPorVehiculoToolStripMenuItem.Text = "Búsqueda por Vehiculo";
+            this.búsquedaPorVehiculoToolStripMenuItem.Click += new System.EventHandler(this.búsquedaPorVehiculoToolStripMenuItem_Click);
+            // 
+            // recorrerUnoAUnoToolStripMenuItem
+            // 
+            this.recorrerUnoAUnoToolStripMenuItem.Name = "recorrerUnoAUnoToolStripMenuItem";
+            this.recorrerUnoAUnoToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.recorrerUnoAUnoToolStripMenuItem.Text = "Recorrer uno a uno";
+            this.recorrerUnoAUnoToolStripMenuItem.Click += new System.EventHandler(this.recorrerUnoAUnoToolStripMenuItem_Click);
+            // 
+            // listarTodosLosPresupuestosToolStripMenuItem
+            // 
+            this.listarTodosLosPresupuestosToolStripMenuItem.Name = "listarTodosLosPresupuestosToolStripMenuItem";
+            this.listarTodosLosPresupuestosToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.listarTodosLosPresupuestosToolStripMenuItem.Text = "Listar todos los presupuestos";
+            this.listarTodosLosPresupuestosToolStripMenuItem.Click += new System.EventHandler(this.listarTodosLosPresupuestosToolStripMenuItem_Click);
             // 
             // FormPrincipal
             // 
@@ -186,7 +206,9 @@
         private System.Windows.Forms.ToolStripMenuItem bajaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem busquedaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem altaPresupuesto;
-        private System.Windows.Forms.ToolStripMenuItem bajaPresupuesto;
-        private System.Windows.Forms.ToolStripMenuItem busquedaPresupuesto;
+        private System.Windows.Forms.ToolStripMenuItem búsquedaPorClienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem búsquedaPorVehiculoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem recorrerUnoAUnoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listarTodosLosPresupuestosToolStripMenuItem;
     }
 }

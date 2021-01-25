@@ -51,5 +51,25 @@ namespace Presentacion
         {
             this.presPresupuesto.altaPresupuesto();
         }
+
+        private void búsquedaPorClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.presPresupuesto.busquedaPorCliente();
+        }
+
+        private void búsquedaPorVehiculoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.presPresupuesto.busquedaPorVehiculo();
+        }
+
+        private void recorrerUnoAUnoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.presPresupuesto.recorridoUnoAUno();
+        }
+
+        private void listarTodosLosPresupuestosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.presPresupuesto.listarTodosLosPresupuestos();
+        }
     }
 }

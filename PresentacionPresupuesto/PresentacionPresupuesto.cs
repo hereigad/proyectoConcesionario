@@ -25,6 +25,24 @@ namespace PresentacionPresupuesto
             ap.ShowDialog();
         }
 
+        public void busquedaPorCliente()
+        {
 
+        }
+
+        public void busquedaPorVehiculo()
+        {
+
+        }
+
+        public void recorridoUnoAUno()
+        {
+
+        }
+
+        public void listarTodosLosPresupuestos()
+        {
+
+        }
     }
 }
