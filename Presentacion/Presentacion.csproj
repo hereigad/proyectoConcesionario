@@ -65,7 +65,7 @@
       <Name>PresentacionCliente</Name>
     </ProjectReference>
     <ProjectReference Include="..\PresentacionPresupuesto\PresentacionPresupuesto.csproj">
-      <Project>{6487248d-6fbe-487b-8904-3229909ee54e}</Project>
+      <Project>{ea9f6fb3-992c-48dc-825b-41fa81d29c81}</Project>
       <Name>PresentacionPresupuesto</Name>
     </ProjectReference>
   </ItemGroup>
