@@ -13,12 +13,16 @@ namespace PresentacionPresupuesto
     public partial class InsertarClave : Form
     {
         private string marcador;
-        public InsertarClave(string marca)
+        public InsertarClave()
+        {
+            InitializeComponent();
+        }
+
+        public InsertarClave(string marca): this()
         {
             this.marcador = marca;
             this.Name = "Insertar " + this.marcador;
             this.myLabel.Text = this.marcador;
-            InitializeComponent();
         }
 
         public string Clave

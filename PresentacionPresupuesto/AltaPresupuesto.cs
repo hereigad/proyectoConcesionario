@@ -23,13 +23,17 @@ namespace PresentacionPresupuesto
         private LogicaCliente lnc;
         private LogicaPresupuesto logica;
 
-        public AltaPresupuesto(LogicaPresupuesto l)
+        public AltaPresupuesto()
+        {
+            InitializeComponent();
+        }
+
+        public AltaPresupuesto(LogicaPresupuesto l): this()
         {
             this.logica = l;
             this.lnc = new LogicaCliente(l.Comercial);
             this.rellenarComboDNI();
             this.rellenarListVehiculosDisponibles();
-            InitializeComponent();
         }
 
         private void rellenarComboDNI()

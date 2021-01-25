@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace PresentacionPresupuesto
 {
-    public partial class BusquedaCliente : Form
+    public partial class BusquedaPorCliente : Form
     {
         private LogicaNegocioPresupuesto.LogicaPresupuesto logicaP;
         private LogicaNegocioCliente.LogicaCliente logicaC;
         private string dni;
-        public BusquedaCliente(LogicaNegocioPresupuesto.LogicaPresupuesto lp, LogicaNegocioCliente.LogicaCliente lc, string dni)
+        public BusquedaPorCliente(LogicaNegocioPresupuesto.LogicaPresupuesto lp, LogicaNegocioCliente.LogicaCliente lc, string dni)
         {
             this.logicaP = lp;
             this.logicaC = lc;
