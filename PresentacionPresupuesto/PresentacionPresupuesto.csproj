@@ -49,6 +49,18 @@
     <Compile Include="AltaPresupuesto.Designer.cs">
       <DependentUpon>AltaPresupuesto.cs</DependentUpon>
     </Compile>
+    <Compile Include="BusquedaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusquedaCliente.Designer.cs">
+      <DependentUpon>BusquedaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InsertarClave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsertarClave.Designer.cs">
+      <DependentUpon>InsertarClave.cs</DependentUpon>
+    </Compile>
     <Compile Include="PresentacionPresupuesto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -73,6 +85,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AltaPresupuesto.resx">
       <DependentUpon>AltaPresupuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertarClave.resx">
+      <DependentUpon>InsertarClave.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

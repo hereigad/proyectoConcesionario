@@ -11,6 +11,8 @@ using ModeloDominio;
 using PresentacionCliente;
 using PresentacionPresupuesto;
 using LogicaNegocioPresupuesto;
+using LogicaNegocioVehiculo;
+using LogicaNegocioCliente;
 namespace Presentacion
 {
     public partial class FormPrincipal : Form
@@ -22,7 +24,7 @@ namespace Presentacion
         {
             this.com = new Comercial(null,null,null,null);
             this.presCli = new PresentacionCliente.PresentacionCliente(this.com);
-            this.presPresupuesto = new PresentacionPresupuesto.PresentacionPresupuesto(new LogicaPresupuesto(this.com));
+            this.presPresupuesto = new PresentacionPresupuesto.PresentacionPresupuesto(new LogicaPresupuesto(this.com), new LogicaVehiculo(), new LogicaCliente(this.com));
             InitializeComponent();
         }
 
