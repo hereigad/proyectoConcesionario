@@ -49,7 +49,7 @@ namespace Presentacion
 
         private void altaPresupuesto_Click(object sender, EventArgs e)
         {
-            this.presPresupuesto.addPresupuesto();
+            this.presPresupuesto.altaPresupuesto();
         }
     }
 }

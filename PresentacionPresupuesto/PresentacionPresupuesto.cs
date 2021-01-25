@@ -19,10 +19,12 @@ namespace PresentacionPresupuesto
             this.logica = l;
         }
 
-        public void addPresupuesto()
+        public void altaPresupuesto()
         {
             AltaPresupuesto ap = new AltaPresupuesto(this.logica);
             ap.ShowDialog();
         }
+
+
     }
 }
