@@ -15,7 +15,6 @@ namespace PresentacionPresupuesto
     public partial class BusquedaPorCliente : Form
     {
         private LogicaNegocioPresupuesto.LogicaPresupuesto logicaP;
-        private LogicaNegocioCliente.LogicaCliente logicaC;
         private string dni;
         private List<Presupuesto> presupuestos;
         public BusquedaPorCliente()
@@ -23,17 +22,15 @@ namespace PresentacionPresupuesto
             InitializeComponent();
         }
 
-        public BusquedaPorCliente(LogicaNegocioPresupuesto.LogicaPresupuesto lp, LogicaNegocioCliente.LogicaCliente lc, string dni): this()
+        public BusquedaPorCliente(LogicaNegocioPresupuesto.LogicaPresupuesto lp, string dni): this()
         {
             this.logicaP = lp;
-            this.logicaC = lc;
             this.dni = dni;
             this.devolverPresupuestos();
         }
 
         private void devolverPresupuestos()
         {
-            //Cliente cli = this.logicaC.selCliente(new Cliente(this.dni, "", "", Categoria.A));
             this.presupuestos = this.logicaP.obtenerPresupuestosCliente(new Cliente(this.dni, "", "", Categoria.A));
             foreach(Presupuesto p in this.presupuestos)
             {
