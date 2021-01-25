@@ -15,12 +15,16 @@ namespace PresentacionPresupuesto
         private LogicaNegocioPresupuesto.LogicaPresupuesto logicaP;
         private LogicaNegocioCliente.LogicaCliente logicaC;
         private string dni;
-        public BusquedaPorCliente(LogicaNegocioPresupuesto.LogicaPresupuesto lp, LogicaNegocioCliente.LogicaCliente lc, string dni)
+        public BusquedaPorCliente()
+        {
+            InitializeComponent();
+        }
+
+        public BusquedaPorCliente(LogicaNegocioPresupuesto.LogicaPresupuesto lp, LogicaNegocioCliente.LogicaCliente lc, string dni): this()
         {
             this.logicaP = lp;
             this.logicaC = lc;
             this.dni = dni;
-            InitializeComponent();
         }
     }
 }

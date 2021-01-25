@@ -30,12 +30,12 @@
         {
             this.SuspendLayout();
             // 
-            // BusquedaCliente
+            // BusquedaPorCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 353);
-            this.Name = "BusquedaCliente";
+            this.ClientSize = new System.Drawing.Size(979, 535);
+            this.Name = "BusquedaPorCliente";
             this.Text = "BusquedaCliente";
             this.ResumeLayout(false);
 
