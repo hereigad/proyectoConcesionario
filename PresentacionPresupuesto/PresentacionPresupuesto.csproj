@@ -70,5 +70,10 @@
       <Name>ModeloDominio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AltaPresupuesto.resx">
+      <DependentUpon>AltaPresupuesto.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
