@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ModeloDominio;
 using PresentacionCliente;
-using PresentacionPresupuesto;
+//using PresentacionPresupuesto;
 using LogicaNegocioPresupuesto;
 namespace Presentacion
 {
@@ -17,12 +17,12 @@ namespace Presentacion
     {
         private Comercial com;
         private PresentacionCliente.PresentacionCliente presCli;
-        private PresentacionPresupuesto.PresentacionPresupuesto presPresupuesto;
+        //private PresentacionPresupuesto.PresentacionPresupuesto presPresupuesto;
         public FormPrincipal()
         {
             this.com = new Comercial(null,null,null,null);
             this.presCli = new PresentacionCliente.PresentacionCliente(this.com);
-            this.presPresupuesto = new PresentacionPresupuesto.PresentacionPresupuesto(new LogicaPresupuesto(this.com));
+            //this.presPresupuesto = new PresentacionPresupuesto.PresentacionPresupuesto(new LogicaPresupuesto(this.com));
             InitializeComponent();
         }
 
@@ -49,7 +49,7 @@ namespace Presentacion
 
         private void altaPresupuesto_Click(object sender, EventArgs e)
         {
-            this.presPresupuesto.addPresupuesto();
+            //this.presPresupuesto.addPresupuesto();
         }
     }
 }
