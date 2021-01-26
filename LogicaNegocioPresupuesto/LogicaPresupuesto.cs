@@ -11,11 +11,7 @@ namespace LogicaNegocioPresupuesto
 {
     public class LogicaPresupuesto
     {
-        /*private Cliente cliente;
-        private List<Vehiculo> vehiculos;
-        private DateTime fechaRealizacion;*/
         private Comercial comercial;
-        //private EstadoPresupuesto estado;
 
         public LogicaPresupuesto(Comercial com)
         {
@@ -132,6 +128,18 @@ namespace LogicaNegocioPresupuesto
                     lista.Add(p);
                 }
             }
+            return lista;
+        }
+
+        /// <summary>
+        /// pre: -
+        /// post: devuelve una coleccion con todos los presupuestos de la base de datos
+        /// </summary>
+        /// <returns></returns>
+        public List<Presupuesto> obtenerTodosPresupuestos()
+        {
+            List<Presupuesto> lista = new List<Presupuesto>();
+            lista = PersistenciaPresupuesto.PersistenciaPresupuesto.seleccionarTODOS_Presupuestos();
             return lista;
         }
     }
