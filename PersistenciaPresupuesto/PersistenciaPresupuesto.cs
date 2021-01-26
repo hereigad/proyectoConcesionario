@@ -154,7 +154,7 @@ namespace PersistenciaPresupuesto
         }
 
         /// <summary>
-        /// pre: v distinto de null y existente en la base de datos; viene solo la clave del vehiculo (el numero de bastidor)
+        /// pre: v distinto de null; viene solo la clave del vehiculo (el numero de bastidor)
         /// post: devuelve una colección de presupuestos del vehiculo pedido
         /// </summary>
         /// <param name="v"></param>
