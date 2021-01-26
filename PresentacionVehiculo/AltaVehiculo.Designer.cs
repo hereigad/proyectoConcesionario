@@ -41,9 +41,9 @@
             this.Extras = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.VehiculosGroup.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,6 +96,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(178, 57);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(70, 20);
             this.textBox1.TabIndex = 5;
             // 
@@ -135,6 +136,7 @@
             this.Aceptar.TabIndex = 10;
             this.Aceptar.Text = "Aceptar";
             this.Aceptar.UseVisualStyleBackColor = true;
+            this.Aceptar.Click += new System.EventHandler(this.Aceptar_Click);
             // 
             // Cancelar
             // 
@@ -207,14 +209,6 @@
             this.textBox6.TabIndex = 16;
             this.textBox6.Visible = false;
             // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(420, 257);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(70, 20);
-            this.textBox7.TabIndex = 17;
-            this.textBox7.Visible = false;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -235,14 +229,22 @@
             this.label8.Text = "Fecha Matriculacion:";
             this.label8.Visible = false;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(420, 260);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(153, 20);
+            this.dateTimePicker1.TabIndex = 20;
+            this.dateTimePicker1.Visible = false;
+            // 
             // AltaVehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 450);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox7);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.Extras);
@@ -288,8 +290,8 @@
         private System.Windows.Forms.ListBox Extras;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

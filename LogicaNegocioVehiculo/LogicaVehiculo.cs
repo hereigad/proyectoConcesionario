@@ -35,6 +35,10 @@ namespace LogicaNegocioVehiculo
             return PersistenciaVehiculo.PersistenciaVehiculo.obtenerVehiculosSegundaMano();
         }
 
+        public Extra obtenerExtra(string nombre) {
+            return PersistenciaExtras.obtenerExtra(nombre);
+        }
+
         public List<Extra> obtenerExtras() {
             return PersistenciaExtras.obtenerTodosExtras();
         }

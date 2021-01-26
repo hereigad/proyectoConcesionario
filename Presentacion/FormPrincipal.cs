@@ -194,9 +194,33 @@ namespace Presentacion
             un.ShowDialog();
         }
         private void altaVehiculo_Click(object sender, EventArgs e) {
-            NumBastidorVehiculo nb = new NumBastidorVehiculo(lv);
-            nb.Visible = true;
-            nb.Activate();
+            NumBastidorVehiculo nb = new NumBastidorVehiculo();
+            nb.ShowDialog();
+            if(nb.DialogResult == DialogResult.OK) {
+                Vehiculo v = lv.obtenerVehiculo(nb.NumBastidor);
+                if (v != null) {
+                    DialogResult result = MessageBox.Show("El vehiculo ya existe", "Vehiculo existente", MessageBoxButtons.OK);
+                    if (result == DialogResult.OK) {
+                        nb.Close();
+                    }
+                } else {
+                    AltaVehiculo alta = new AltaVehiculo(lv, nb.NumBastidor);
+                    Vehiculo vehiculo = null;
+                    alta.ShowDialog();
+                    nb.Close();
+                    if(alta.DialogResult == DialogResult.OK) {
+                        if(alta.Nuevo) {
+                            vehiculo = new VehiculoNuevo(alta.NumBastidor, alta.Marca, alta.Modelo, alta.Potencia, alta.PVP, alta.ExtraList);
+                        }
+                        if(alta.SegundaMano) {
+                            vehiculo = new VehiculoSegundaMano(alta.NumBastidor, alta.Marca, alta.Modelo, alta.Potencia, alta.PVP, alta.Matricula, alta.FechaMatriculacion);
+                        }
+                        if(vehiculo != null) {
+                            lv.altaVehiculo(vehiculo);
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>

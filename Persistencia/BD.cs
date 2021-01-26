@@ -867,7 +867,7 @@ namespace Persistencia
         {
             bool existe = false;
             int i = 0;
-            while (i < Extras.Count)
+            while (i < Vehiculo_Extra.Count)
             {
                 ExtraVehiculoDato evd = Vehiculo_Extra.ElementAt(i);
                 if (evd.NumBastidor_Nombre.Item1.Equals(v.NumBastidor))

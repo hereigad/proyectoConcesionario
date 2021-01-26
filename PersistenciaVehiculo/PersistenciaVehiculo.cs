@@ -12,6 +12,12 @@ namespace PersistenciaVehiculo
     {
         public static bool altaVehiculo(Vehiculo v)
         {
+            if(v.GetType() == typeof(VehiculoNuevo)) {
+                VehiculoNuevo vn = (VehiculoNuevo) v;
+                foreach(Extra e in vn.Extras) {
+                    BD.INSERT_ExtraVehiculo(e, v);
+                }
+            }
             BD.INSERT_Vehiculo(v);
             if(BD.EXISTE_Vehiculo(v))
             {

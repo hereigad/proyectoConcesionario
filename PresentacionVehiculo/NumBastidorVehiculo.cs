@@ -12,11 +12,9 @@ using ModeloDominio;
 
 namespace PresentacionVehiculo {
     public partial class NumBastidorVehiculo : Form {
-        private LogicaVehiculo lv;
 
-        public NumBastidorVehiculo(LogicaVehiculo lv) {
+        public NumBastidorVehiculo() {
             InitializeComponent();
-            this.lv = lv;
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -24,18 +22,17 @@ namespace PresentacionVehiculo {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            Vehiculo v = lv.obtenerVehiculo(this.textBox1.Text);
-            if (v != null) {
-                DialogResult result = MessageBox.Show("El vehiculo ya existe", "Vehiculo existente", MessageBoxButtons.OK);
-                if (result == System.Windows.Forms.DialogResult.OK) {
-                    this.Close();
-                }
-            }
-            else {
-                AltaVehiculo alta = new AltaVehiculo(lv);
-                alta.Visible = true;
-                this.Close();
-                alta.Activate();
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void button2_Click(object sender, EventArgs e) {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        public string NumBastidor {
+            get {
+                return this.textBox1.Text;
             }
         }
     }
