@@ -21,13 +21,16 @@ namespace Presentacion
        
         private PresentacionPresupuesto.PresentacionPresupuesto presPresupuesto;
         private LogicaCliente lnc;
+        private LogicaPresupuesto lnp;
         public FormPrincipal()
         {
             this.com = new Comercial(null,null,null,null);
            
-            this.presPresupuesto = new PresentacionPresupuesto.PresentacionPresupuesto(new LogicaPresupuesto(this.com), new LogicaVehiculo(), new LogicaCliente(this.com));
+            
             InitializeComponent();
-             lnc  = new LogicaCliente(com);
+            lnc  = new LogicaCliente(com);
+            this.lnp = new LogicaPresupuesto(this.com);
+            this.presPresupuesto = new PresentacionPresupuesto.PresentacionPresupuesto(this.lnp, new LogicaVehiculo(), this.lnc);
         }
 
 
@@ -199,7 +202,21 @@ namespace Presentacion
 
         private void búsquedaPorClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.presPresupuesto.busquedaPorCliente();
+            Clave clave = new Clave("DNI");
+            clave.ShowDialog();
+            if (clave.DialogResult == DialogResult.OK)
+            {
+                string dni = clave.ClaveO;
+                if (this.lnc.existe(new Cliente(dni, "", "", Categoria.A)))
+                {
+                    BusquedaPorCliente bc = new BusquedaPorCliente(this.lnp, dni);
+                    bc.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("El cliente con DNI " + dni + " no existe!");
+                }
+            }
         }
 
         private void búsquedaPorVehiculoToolStripMenuItem_Click(object sender, EventArgs e)

@@ -30,25 +30,6 @@ namespace PresentacionPresupuesto
             ap.ShowDialog();
         }
 
-        public void busquedaPorCliente()
-        {
-            InsertarClave ic = new InsertarClave("DNI");
-            DialogResult dr = ic.ShowDialog();
-            if(dr == DialogResult.OK)
-            {
-                string dni = ic.Clave;
-                if(this.logicaC.existe(new Cliente(dni, "", "", Categoria.A)))
-                {
-                    BusquedaPorCliente bc = new BusquedaPorCliente(this.logicaP, dni);
-                    bc.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("El cliente con DNI " + dni + " no existe!");
-                }
-            }
-        }
-
         public void busquedaPorVehiculo()
         {
 
