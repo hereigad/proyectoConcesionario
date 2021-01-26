@@ -28,6 +28,12 @@ namespace PresentacionVehiculo {
                     this.Close();
                 }
             }
+            else {
+                AltaVehiculo alta = new AltaVehiculo();
+                alta.Visible = true;
+                this.Close();
+                alta.Activate();
+            }
         }
     }
 }

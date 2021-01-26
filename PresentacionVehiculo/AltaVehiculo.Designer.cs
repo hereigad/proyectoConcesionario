@@ -33,12 +33,18 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.groupBox1.SuspendLayout();
+            this.Aceptar = new System.Windows.Forms.Button();
+            this.Cancelar = new System.Windows.Forms.Button();
+            this.VehiculosGroup = new System.Windows.Forms.GroupBox();
+            this.SegundaRadio = new System.Windows.Forms.RadioButton();
+            this.NuevoRadio = new System.Windows.Forms.RadioButton();
+            this.Extras = new System.Windows.Forms.ListBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.VehiculosGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -121,65 +127,128 @@
             this.textBox5.Size = new System.Drawing.Size(70, 20);
             this.textBox5.TabIndex = 9;
             // 
-            // button1
+            // Aceptar
             // 
-            this.button1.Location = new System.Drawing.Point(178, 394);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Aceptar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Aceptar.Location = new System.Drawing.Point(178, 394);
+            this.Aceptar.Name = "Aceptar";
+            this.Aceptar.Size = new System.Drawing.Size(70, 23);
+            this.Aceptar.TabIndex = 10;
+            this.Aceptar.Text = "Aceptar";
+            this.Aceptar.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // Cancelar
             // 
-            this.button2.Location = new System.Drawing.Point(297, 394);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(70, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.Cancelar.Location = new System.Drawing.Point(297, 394);
+            this.Cancelar.Name = "Cancelar";
+            this.Cancelar.Size = new System.Drawing.Size(70, 23);
+            this.Cancelar.TabIndex = 11;
+            this.Cancelar.Text = "Cancelar";
+            this.Cancelar.UseVisualStyleBackColor = true;
+            this.Cancelar.Click += new System.EventHandler(this.cancelar_Click);
             // 
-            // groupBox1
+            // VehiculosGroup
             // 
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(297, 53);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Vehiculos";
+            this.VehiculosGroup.Controls.Add(this.SegundaRadio);
+            this.VehiculosGroup.Controls.Add(this.NuevoRadio);
+            this.VehiculosGroup.Location = new System.Drawing.Point(297, 53);
+            this.VehiculosGroup.Name = "VehiculosGroup";
+            this.VehiculosGroup.Size = new System.Drawing.Size(200, 100);
+            this.VehiculosGroup.TabIndex = 13;
+            this.VehiculosGroup.TabStop = false;
+            this.VehiculosGroup.Text = "Vehiculos";
             // 
-            // radioButton1
+            // SegundaRadio
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(15, 43);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(57, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Nuevo";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.SegundaRadio.AutoSize = true;
+            this.SegundaRadio.Location = new System.Drawing.Point(95, 43);
+            this.SegundaRadio.Name = "SegundaRadio";
+            this.SegundaRadio.Size = new System.Drawing.Size(98, 17);
+            this.SegundaRadio.TabIndex = 1;
+            this.SegundaRadio.Text = "Segunda Mano";
+            this.SegundaRadio.UseVisualStyleBackColor = true;
+            this.SegundaRadio.CheckedChanged += new System.EventHandler(this.SegundaRadio_CheckedChanged);
             // 
-            // radioButton2
+            // NuevoRadio
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(95, 43);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(98, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Segunda Mano";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.NuevoRadio.AutoSize = true;
+            this.NuevoRadio.Checked = true;
+            this.NuevoRadio.Location = new System.Drawing.Point(15, 43);
+            this.NuevoRadio.Name = "NuevoRadio";
+            this.NuevoRadio.Size = new System.Drawing.Size(57, 17);
+            this.NuevoRadio.TabIndex = 0;
+            this.NuevoRadio.TabStop = true;
+            this.NuevoRadio.Text = "Nuevo";
+            this.NuevoRadio.UseVisualStyleBackColor = true;
+            this.NuevoRadio.CheckedChanged += new System.EventHandler(this.NuevoRadio_CheckedChanged);
+            // 
+            // Extras
+            // 
+            this.Extras.FormattingEnabled = true;
+            this.Extras.Location = new System.Drawing.Point(297, 177);
+            this.Extras.Name = "Extras";
+            this.Extras.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.Extras.Size = new System.Drawing.Size(200, 160);
+            this.Extras.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(294, 161);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Extras";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(420, 217);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(70, 20);
+            this.textBox6.TabIndex = 16;
+            this.textBox6.Visible = false;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(420, 257);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(70, 20);
+            this.textBox7.TabIndex = 17;
+            this.textBox7.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(309, 220);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Matricula:";
+            this.label7.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(309, 260);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(106, 13);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Fecha Matriculacion:";
+            this.label8.Visible = false;
             // 
             // AltaVehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 450);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.Extras);
+            this.Controls.Add(this.VehiculosGroup);
+            this.Controls.Add(this.Cancelar);
+            this.Controls.Add(this.Aceptar);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
@@ -192,8 +261,8 @@
             this.Controls.Add(this.label1);
             this.Name = "AltaVehiculo";
             this.Text = "Alta de vehiculo";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.VehiculosGroup.ResumeLayout(false);
+            this.VehiculosGroup.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,10 +280,16 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Button Aceptar;
+        private System.Windows.Forms.Button Cancelar;
+        private System.Windows.Forms.GroupBox VehiculosGroup;
+        private System.Windows.Forms.RadioButton SegundaRadio;
+        private System.Windows.Forms.RadioButton NuevoRadio;
+        private System.Windows.Forms.ListBox Extras;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

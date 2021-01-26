@@ -113,7 +113,7 @@
             this.altaToolStripMenuItem1.Name = "altaToolStripMenuItem1";
             this.altaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
             this.altaToolStripMenuItem1.Text = "Alta";
-            this.altaToolStripMenuItem1.Click += new System.EventHandler(this.altaToolStripMenuItem1_Click);
+            this.altaToolStripMenuItem1.Click += new System.EventHandler(this.altaVehiculo_Click);
             // 
             // bajaToolStripMenuItem1
             // 

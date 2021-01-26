@@ -13,6 +13,7 @@ using PresentacionPresupuesto;
 using LogicaNegocioPresupuesto;
 using LogicaNegocioVehiculo;
 using LogicaNegocioCliente;
+using PresentacionVehiculo;
 namespace Presentacion
 {
     public partial class FormPrincipal : Form
@@ -189,8 +190,10 @@ namespace Presentacion
             PresentacionCliente.UnoaUno un = new PresentacionCliente.UnoaUno(lnc);
             un.ShowDialog();
         }
-        private void altaToolStripMenuItem1_Click(object sender, EventArgs e) {
-
+        private void altaVehiculo_Click(object sender, EventArgs e) {
+            NumBastidorVehiculo nb = new NumBastidorVehiculo();
+            nb.Visible = true;
+            nb.Activate();
         }
 
         /// <summary>
