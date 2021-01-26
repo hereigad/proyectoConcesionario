@@ -184,10 +184,10 @@ namespace PersistenciaPresupuesto
             bool anadidos = false;
             foreach(Vehiculo v in vehiculos)
             {
-                if(!BD.EXISTE_Vehiculo(v))
+                /*if(!BD.EXISTE_Vehiculo(v))
                 {
                     BD.INSERT_Vehiculo(v);
-                }
+                }*/
                 BD.INSERT_PresupuestoVehiculos(p, v);
                 anadidos = true;
             }

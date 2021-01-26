@@ -558,13 +558,17 @@ namespace Persistencia
         public static bool EXISTE_PresupuestoVehiculo(Presupuesto p, Vehiculo v)
         {
             bool existe = false;
-            if(EXISTE_Presupuesto(p))
+            /*if(EXISTE_Presupuesto(p))
             {
                 Presupuesto_VehiculosDato pvd = SELECT_PresupuestoVehiculos(p, v);
                 if(pvd != null)
                 {
                     existe = true;
                 }
+            }*/
+            if (Presupuesto_Vehiculos.Contains(new Presupuesto_VehiculosDato(p, v).Clave))
+            {
+                existe = true;
             }
             return existe;
         }
