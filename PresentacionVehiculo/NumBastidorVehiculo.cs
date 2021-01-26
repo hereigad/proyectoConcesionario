@@ -13,6 +13,7 @@ using ModeloDominio;
 namespace PresentacionVehiculo {
     public partial class NumBastidorVehiculo : Form {
         private LogicaVehiculo lv;
+
         public NumBastidorVehiculo(LogicaVehiculo lv) {
             InitializeComponent();
             this.lv = lv;
