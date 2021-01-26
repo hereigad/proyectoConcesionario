@@ -206,7 +206,7 @@ namespace Presentacion
         /// <param name="e"></param>
         private void altaPresupuesto_Click(object sender, EventArgs e)
         {
-            AltaPresupuesto ap = new AltaPresupuesto(this.lnp);
+            AltaPresupuesto ap = new AltaPresupuesto(this.lnp, this.lnc, this.lv);
             ap.ShowDialog();
         }
 

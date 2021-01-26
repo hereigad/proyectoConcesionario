@@ -21,17 +21,20 @@ namespace PresentacionPresupuesto
         private List<Cliente> clientes;
 
         private LogicaCliente lnc;
-        private LogicaPresupuesto logica;
+        private LogicaPresupuesto lnp;
+        private LogicaVehiculo lnv;
+
 
         public AltaPresupuesto()
         {
             InitializeComponent();
         }
 
-        public AltaPresupuesto(LogicaPresupuesto l): this()
+        public AltaPresupuesto(LogicaPresupuesto l, LogicaCliente lc, LogicaVehiculo lv): this()
         {
-            this.logica = l;
-            this.lnc = new LogicaCliente(l.Comercial);
+            this.lnp = l;
+            this.lnc = lc;
+            this.lnv = lv;
             this.rellenarComboDNI();
             this.rellenarListVehiculosDisponibles();
         }
@@ -47,7 +50,7 @@ namespace PresentacionPresupuesto
 
         private void rellenarListVehiculosDisponibles()
         {
-            this.vehiculosDisponibles = LogicaNegocioVehiculo.LogicaVehiculo.obtenerTodosVehiculos();
+            this.vehiculosDisponibles = this.lnv.obtenerTodosVehiculos();
             foreach(Vehiculo v in this.vehiculosDisponibles)
             {
                 this.listDisponibles.Items.Add(v.NumBastidor);
@@ -91,8 +94,8 @@ namespace PresentacionPresupuesto
 
             Cliente c = this.lnc.selCliente(new Cliente(dniCliente, "", "", Categoria.A));
 
-            Presupuesto p = new Presupuesto(this.logica.Comercial.Codigo+"-"+c.DNI+"-"+vehiculos.Count(), DateTime.Now, EstadoPresupuesto.Pendiente, this.logica.Comercial, c, vehiculos);
-            this.logica.altaPresupuesto(p);
+            Presupuesto p = new Presupuesto(this.lnp.Comercial.Codigo+"-"+c.DNI+"-"+vehiculos.Count(), DateTime.Now, EstadoPresupuesto.Pendiente, this.lnp.Comercial, c, vehiculos);
+            this.lnp.altaPresupuesto(p);
             this.Close();
         }
     }
