@@ -267,7 +267,8 @@ namespace Presentacion
         /// <param name="e"></param>
         private void listarTodosLosPresupuestosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ListadoPresupuestos listado = new ListadoPresupuestos(this.lnp);
+            listado.ShowDialog();
         }
 
        
