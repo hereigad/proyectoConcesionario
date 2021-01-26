@@ -36,6 +36,10 @@
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.txtEstado = new System.Windows.Forms.TextBox();
             this.listVehiculos = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtDNI = new System.Windows.Forms.TextBox();
+            this.txtComercial = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -68,7 +72,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 98);
+            this.label4.Location = new System.Drawing.Point(6, 151);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(132, 13);
             this.label4.TabIndex = 3;
@@ -101,15 +105,53 @@
             // listVehiculos
             // 
             this.listVehiculos.FormattingEnabled = true;
-            this.listVehiculos.Location = new System.Drawing.Point(3, 125);
+            this.listVehiculos.Location = new System.Drawing.Point(6, 178);
             this.listVehiculos.Name = "listVehiculos";
-            this.listVehiculos.Size = new System.Drawing.Size(286, 147);
+            this.listVehiculos.Size = new System.Drawing.Size(283, 147);
             this.listVehiculos.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(4, 102);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(61, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "DNI Cliente";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 128);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Codigo Comercial";
+            // 
+            // txtDNI
+            // 
+            this.txtDNI.Location = new System.Drawing.Point(166, 94);
+            this.txtDNI.Name = "txtDNI";
+            this.txtDNI.ReadOnly = true;
+            this.txtDNI.Size = new System.Drawing.Size(123, 20);
+            this.txtDNI.TabIndex = 12;
+            // 
+            // txtComercial
+            // 
+            this.txtComercial.Location = new System.Drawing.Point(166, 125);
+            this.txtComercial.Name = "txtComercial";
+            this.txtComercial.ReadOnly = true;
+            this.txtComercial.Size = new System.Drawing.Size(123, 20);
+            this.txtComercial.TabIndex = 13;
             // 
             // VistaPresupuesto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtComercial);
+            this.Controls.Add(this.txtDNI);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.listVehiculos);
             this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.txtFecha);
@@ -119,7 +161,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "VistaPresupuesto";
-            this.Size = new System.Drawing.Size(327, 294);
+            this.Size = new System.Drawing.Size(302, 338);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,5 +177,9 @@
         private System.Windows.Forms.TextBox txtFecha;
         private System.Windows.Forms.TextBox txtEstado;
         private System.Windows.Forms.ListBox listVehiculos;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtDNI;
+        private System.Windows.Forms.TextBox txtComercial;
     }
 }

@@ -25,10 +25,16 @@ namespace PresentacionPresupuesto
             this.rellenarDatos();
         }
 
+        /// <summary>
+        /// pre: -
+        /// post: rellena los campos con los datos del presupuesto
+        /// </summary>
         private void rellenarDatos()
         {
             this.txtId.Text = this.presupuesto.ID;
             this.txtFecha.Text = this.presupuesto.FechaRealizacion.ToString();
+            this.txtDNI.Text = this.presupuesto.Cliente.DNI;
+            this.txtComercial.Text = this.presupuesto.Comercial.Codigo;
             
             switch (this.presupuesto.Estado)
             {
