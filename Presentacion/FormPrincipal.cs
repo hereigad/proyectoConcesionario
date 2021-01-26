@@ -206,7 +206,7 @@ namespace Presentacion
         /// <param name="e"></param>
         private void altaPresupuesto_Click(object sender, EventArgs e)
         {
-            AltaPresupuesto ap = new AltaPresupuesto(this.lnp);
+            AltaPresupuesto ap = new AltaPresupuesto(this.lnp, this.lnc, this.lv);
             ap.ShowDialog();
         }
 
@@ -254,7 +254,8 @@ namespace Presentacion
         /// <param name="e"></param>
         private void recorrerUnoAUnoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            PresupuestoUnoAUno pap = new PresupuestoUnoAUno(this.lnp);
+            pap.ShowDialog();
         }
 
         /// <summary>
