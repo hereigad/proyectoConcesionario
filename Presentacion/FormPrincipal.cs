@@ -25,7 +25,7 @@ namespace Presentacion
         private LogicaVehiculo lv;
         public FormPrincipal()
         {
-            this.com = new Comercial("1234abc", "Pepe", "Perez", new List<string>());
+            this.com = new Comercial("1234abc", "Pepe", "Perez", new List<string>()); // lo he instanciado para luego añadirlo a la base de datos para poder hacer algunas pruebas
            
             
             InitializeComponent();
