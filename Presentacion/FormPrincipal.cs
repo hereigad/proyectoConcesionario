@@ -19,7 +19,6 @@ namespace Presentacion
     {
         private Comercial com;
        
-        //private PresentacionPresupuesto.PresentacionPresupuesto presPresupuesto;
         private LogicaCliente lnc;
         private LogicaPresupuesto lnp;
         public FormPrincipal()
@@ -30,7 +29,6 @@ namespace Presentacion
             InitializeComponent();
             lnc  = new LogicaCliente(com);
             this.lnp = new LogicaPresupuesto(this.com);
-            //this.presPresupuesto = new PresentacionPresupuesto.PresentacionPresupuesto(this.lnp, new LogicaVehiculo(), this.lnc);
         }
 
 
@@ -195,12 +193,24 @@ namespace Presentacion
 
         }
 
+        /// <summary>
+        /// pre: -
+        /// post: abre un formulario para dar de alta un nuevo presupuesto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void altaPresupuesto_Click(object sender, EventArgs e)
         {
             AltaPresupuesto ap = new AltaPresupuesto(this.lnp);
             ap.ShowDialog();
         }
 
+        /// <summary>
+        /// pre: -
+        /// post: muestra un formulario para ver los presupuestos de un determinado cliente, si existen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void búsquedaPorClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clave clave = new Clave("DNI");
@@ -220,16 +230,34 @@ namespace Presentacion
             }
         }
 
+        /// <summary>
+        /// pre: -
+        /// post: muestra un formulario para ver los presupuestos de un determinado vehiculo, si existen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void búsquedaPorVehiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// pre: -
+        /// post: recorre uno a uno todos los presupuestos, mostrando su informacion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void recorrerUnoAUnoToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// pre: -
+        /// post: abre una ventana con la lista de todos los presupuestos de la base de datos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listarTodosLosPresupuestosToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
