@@ -220,7 +220,7 @@ namespace Presentacion
                 string dni = clave.ClaveO;
                 if (this.lnc.existe(new Cliente(dni, "", "", Categoria.A)))
                 {
-                    BusquedaPorCliente bc = new BusquedaPorCliente(this.lnp, dni);
+                    BusquedaPorCliente bc = new BusquedaPorCliente(dni,this.lnp);
                     bc.ShowDialog();
                 }
                 else
