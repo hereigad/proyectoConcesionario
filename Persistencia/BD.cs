@@ -113,6 +113,10 @@ namespace Persistencia
                 if(extras == null)
                 {
                     extras = new TablaExtra();
+                    extras.Add(new ExtraDato(new Extra("test1", 0)));
+                    extras.Add(new ExtraDato(new Extra("test2", 0)));
+                    extras.Add(new ExtraDato(new Extra("test3", 0)));
+                    extras.Add(new ExtraDato(new Extra("test4", 0)));
                 }
                 return extras;
             }

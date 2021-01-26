@@ -30,7 +30,7 @@ namespace Persistencia
         {
             get
             {
-                return this.PVP;
+                return this.pvp;
             }
         }
     }
