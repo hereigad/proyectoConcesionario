@@ -55,6 +55,12 @@
     <Compile Include="BusquedaPorCliente.Designer.cs">
       <DependentUpon>BusquedaPorCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListadoPresupuestos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoPresupuestos.Designer.cs">
+      <DependentUpon>ListadoPresupuestos.cs</DependentUpon>
+    </Compile>
     <Compile Include="PresupuestoUnoAUno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BusquedaPorCliente.resx">
       <DependentUpon>BusquedaPorCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoPresupuestos.resx">
+      <DependentUpon>ListadoPresupuestos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PresupuestoUnoAUno.resx">
       <DependentUpon>PresupuestoUnoAUno.cs</DependentUpon>

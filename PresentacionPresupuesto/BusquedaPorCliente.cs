@@ -35,9 +35,13 @@ namespace PresentacionPresupuesto
         private void rellenarDatos()
         {
             this.presupuestos = this.lnp.obtenerPresupuestosCliente(new Cliente(this.dni, "", "", Categoria.A));
-            foreach(Presupuesto p in this.presupuestos)
+            if(this.presupuestos.Count > 0)
             {
-                this.listPresupuestos.Items.Add(p.ID);
+                foreach (Presupuesto p in this.presupuestos)
+                {
+                    this.listPresupuestos.Items.Add(p.ID);
+                }
+                this.listPresupuestos.SelectedIndex = 0;
             }
         }
 
@@ -48,8 +52,9 @@ namespace PresentacionPresupuesto
 
         private void listPresupuestos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Presupuesto p = this.presupuestos.ElementAt(this.listPresupuestos.SelectedIndex);
-            this.vistaPresupuesto = new VistaPresupuesto(p);
+            int i = this.listPresupuestos.SelectedIndex;
+            Presupuesto p = this.presupuestos.ElementAt(i);
+            this.vistaPresupuesto.rellenarDatos(p);
         }
     }
 }

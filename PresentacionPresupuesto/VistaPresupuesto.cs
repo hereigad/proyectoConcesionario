@@ -21,16 +21,17 @@ namespace PresentacionPresupuesto
 
         public VistaPresupuesto(Presupuesto p): this()
         {
-            this.presupuesto = p;
-            this.rellenarDatos();
+            //this.presupuesto = p;
+            this.rellenarDatos(p);
         }
 
         /// <summary>
         /// pre: -
         /// post: rellena los campos con los datos del presupuesto
         /// </summary>
-        private void rellenarDatos()
+        public void rellenarDatos(Presupuesto p1)
         {
+            this.presupuesto = p1;
             this.txtId.Text = this.presupuesto.ID;
             this.txtFecha.Text = this.presupuesto.FechaRealizacion.ToString();
             this.txtDNI.Text = this.presupuesto.Cliente.DNI;
