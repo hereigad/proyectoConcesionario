@@ -23,7 +23,7 @@ namespace ModeloDominio
         {
             get
             {
-                return this.DNI;
+                return this.Dni;
             }
         }
         public string Nombre
@@ -57,7 +57,7 @@ namespace ModeloDominio
 
         public bool Equals(Cliente c)
         {
-            if (this.DNI.Equals(c.DNI))
+            if (this.Dni.Equals(c.DNI))
             {
                 return true;
             }

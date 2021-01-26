@@ -23,7 +23,7 @@ namespace Persistencia
         }
         public string DNI {
             get {
-                return this.DNI;
+                return this.Dni;
             }
         }
 

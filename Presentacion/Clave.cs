@@ -33,7 +33,7 @@ namespace Presentacion
         }
         public String ClaveO{
             get {
-                return this.clave;
+                return this.txtClave.Text;
             }
         }
     }
