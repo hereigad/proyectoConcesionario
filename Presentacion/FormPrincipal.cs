@@ -29,8 +29,9 @@ namespace Presentacion
            
             
             InitializeComponent();
-            lnc  = new LogicaCliente(com);
             this.lnp = new LogicaPresupuesto(this.com);
+            this.lnp.altaComercial(this.com);
+            lnc  = new LogicaCliente(com);
             lv = new LogicaVehiculo(com);
         }
 

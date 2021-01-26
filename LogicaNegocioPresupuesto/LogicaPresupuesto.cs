@@ -32,6 +32,16 @@ namespace LogicaNegocioPresupuesto
         }
 
         /// <summary>
+        /// pre: c distinto de null
+        /// post: añade el comercial c en la base de datos
+        /// </summary>
+        /// <param name="c"></param>
+        public void altaComercial(Comercial c)
+        {
+            PersistenciaPresupuesto.PersistenciaPresupuesto.anadirComercial(c);
+        }
+
+        /// <summary>
         /// pre: p distinto de null; basta solo con la clave del presupuesto
         /// post: devuelve el cliente del presupuesto dado o null si no existe el presupuesto
         /// </summary>
