@@ -79,7 +79,7 @@
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.vistaPresupuesto);
             this.Name = "BusquedaPorCliente";
-            this.Text = "BusquedaPorCliente";
+            this.Text = "Busqueda Por Cliente";
             this.ResumeLayout(false);
             this.PerformLayout();
 
