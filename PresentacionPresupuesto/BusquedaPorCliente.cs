@@ -12,9 +12,22 @@ namespace PresentacionPresupuesto
 {
     public partial class BusquedaPorCliente : Form
     {
+        private LogicaNegocioPresupuesto.LogicaPresupuesto lnp;
+        private string dni;
         public BusquedaPorCliente()
         {
             InitializeComponent();
+        }
+
+        public BusquedaPorCliente(string d, LogicaNegocioPresupuesto.LogicaPresupuesto lp): this()
+        {
+            this.dni = d;
+            this.lnp = lp;
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

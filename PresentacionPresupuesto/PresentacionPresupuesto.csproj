@@ -85,6 +85,9 @@
     <EmbeddedResource Include="AltaPresupuesto.resx">
       <DependentUpon>AltaPresupuesto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BusquedaPorCliente.resx">
+      <DependentUpon>BusquedaPorCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VistaPresupuesto.resx">
       <DependentUpon>VistaPresupuesto.cs</DependentUpon>
     </EmbeddedResource>

@@ -213,7 +213,7 @@ namespace Presentacion
         /// <param name="e"></param>
         private void búsquedaPorClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*Clave clave = new Clave("DNI");
+            Clave clave = new Clave("DNI");
             clave.ShowDialog();
             if (clave.DialogResult == DialogResult.OK)
             {
@@ -227,7 +227,7 @@ namespace Presentacion
                 {
                     MessageBox.Show("El cliente con DNI " + dni + " no existe!");
                 }
-            }*/
+            }
         }
 
         /// <summary>
