@@ -22,6 +22,7 @@ namespace Presentacion
        
         private LogicaCliente lnc;
         private LogicaPresupuesto lnp;
+        private LogicaVehiculo lv;
         public FormPrincipal()
         {
             this.com = new Comercial(null,null,null,null);
@@ -30,6 +31,7 @@ namespace Presentacion
             InitializeComponent();
             lnc  = new LogicaCliente(com);
             this.lnp = new LogicaPresupuesto(this.com);
+            lv = new LogicaVehiculo(com);
         }
 
 
