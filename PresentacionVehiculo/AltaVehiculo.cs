@@ -12,9 +12,11 @@ using LogicaNegocioVehiculo;
 
 namespace PresentacionVehiculo {
     public partial class AltaVehiculo : Form {
-        public AltaVehiculo() {
+        private LogicaVehiculo lv;
+        public AltaVehiculo(LogicaVehiculo lv) {
             InitializeComponent();
-            List<Extra> extras = LogicaVehiculo.obtenerExtras();
+            this.lv = lv;
+            List<Extra> extras = lv.obtenerExtras();
             foreach(Extra e in extras) {
                 this.Extras.Items.Add(e.Nombre);
             }

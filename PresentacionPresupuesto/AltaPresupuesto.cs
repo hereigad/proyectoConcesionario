@@ -22,6 +22,7 @@ namespace PresentacionPresupuesto
 
         private LogicaCliente lnc;
         private LogicaPresupuesto logica;
+        private LogicaVehiculo lv;
 
         public AltaPresupuesto()
         {
@@ -32,6 +33,7 @@ namespace PresentacionPresupuesto
         {
             this.logica = l;
             this.lnc = new LogicaCliente(l.Comercial);
+            this.lv = new LogicaVehiculo(l.Comercial);
             this.rellenarComboDNI();
             this.rellenarListVehiculosDisponibles();
         }
@@ -47,7 +49,7 @@ namespace PresentacionPresupuesto
 
         private void rellenarListVehiculosDisponibles()
         {
-            this.vehiculosDisponibles = LogicaNegocioVehiculo.LogicaVehiculo.obtenerTodosVehiculos();
+            this.vehiculosDisponibles = lv.obtenerTodosVehiculos();
             foreach(Vehiculo v in this.vehiculosDisponibles)
             {
                 this.listDisponibles.Items.Add(v.NumBastidor);

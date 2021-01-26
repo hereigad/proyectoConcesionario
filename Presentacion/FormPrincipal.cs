@@ -193,7 +193,7 @@ namespace Presentacion
             un.ShowDialog();
         }
         private void altaVehiculo_Click(object sender, EventArgs e) {
-            NumBastidorVehiculo nb = new NumBastidorVehiculo();
+            NumBastidorVehiculo nb = new NumBastidorVehiculo(lv);
             nb.Visible = true;
             nb.Activate();
         }
