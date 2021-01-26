@@ -279,10 +279,7 @@ namespace Persistencia
                 VehiculoDato act = Vehiculos.ElementAt(i);
                 if (act.NumBastidor.Equals(v.NumBastidor))
                 {
-                    if (act.Borrado == false)
-                    {
-                        existe = true;
-                    }
+                    existe = true;
                 }
                 i++;
             }
@@ -298,7 +295,7 @@ namespace Persistencia
         {
             if(EXISTE_Vehiculo(v))
             {
-                Vehiculos.Remove(new VehiculoDato(v).NumBastidor);
+                Vehiculos.Remove(v.NumBastidor);
                 BD.INSERT_Vehiculo(v);
             }
         }
@@ -313,7 +310,7 @@ namespace Persistencia
             if(EXISTE_Vehiculo(v))
             {
                 VehiculoDato ins = Vehiculos[v.NumBastidor];//new VehiculoDato(v);
-                Vehiculos.Remove(new VehiculoDato(v).NumBastidor);
+                Vehiculos.Remove(v.NumBastidor);
                 ins.Borrado = true;
                 Vehiculos.Add(ins);
             }

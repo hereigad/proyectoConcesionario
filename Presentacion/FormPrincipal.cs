@@ -222,6 +222,24 @@ namespace Presentacion
                 }
             }
         }
+        private void bajaVehiculo_Click(object sender, EventArgs e) {
+            NumBastidorVehiculo nb = new NumBastidorVehiculo();
+            nb.ShowDialog();
+            if (nb.DialogResult == DialogResult.OK) {
+                if(lv.bajaVehiculo(nb.NumBastidor)) {
+                    DialogResult result = MessageBox.Show("Vehiculo eliminado", "Vehiculo eliminado", MessageBoxButtons.OK);
+                    if (result == DialogResult.OK) {
+                        nb.Close();
+                    }
+                }
+                else {
+                    DialogResult result = MessageBox.Show("El vehiculo no existe", "Vehiculo inexistente", MessageBoxButtons.OK);
+                    if (result == DialogResult.OK) {
+                        nb.Close();
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// pre: -
@@ -295,6 +313,5 @@ namespace Presentacion
             listado.ShowDialog();
         }
 
-       
     }
 }

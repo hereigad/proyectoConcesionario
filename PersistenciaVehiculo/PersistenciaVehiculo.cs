@@ -12,6 +12,13 @@ namespace PersistenciaVehiculo
     {
         public static bool altaVehiculo(Vehiculo v)
         {
+            if(BD.EXISTE_Vehiculo(v)) { 
+                if(BD.SELECT_Vehiculo(v).Borrado == true) {
+                    BD.UPDATE_Vehiculo(v);
+                    return true;
+                }
+                return false;
+            }
             if(v.GetType() == typeof(VehiculoNuevo)) {
                 VehiculoNuevo vn = (VehiculoNuevo) v;
                 foreach(Extra e in vn.Extras) {
@@ -29,11 +36,13 @@ namespace PersistenciaVehiculo
         public static bool bajaVehiculo(string numBastidor)
         {
             Vehiculo v = new Vehiculo(numBastidor, null, null, null, 0);
-            BD.DELETE_Vehiculo(v);
-            if(!BD.EXISTE_Vehiculo(v))
-            {
-                return true;
+            if (BD.EXISTE_Vehiculo(v)) {
+                BD.DELETE_Vehiculo(v);
+                if (BD.SELECT_Vehiculo(v).Borrado == true) {
+                    return true;
+                }
             }
+            
             return false;
         }
 
@@ -56,6 +65,9 @@ namespace PersistenciaVehiculo
                     v = new VehiculoNuevo(vd.NumBastidor, vd.Marca, vd.Modelo, vd.Potencia, vd.PVP, extras);
                 } else {
                     v = new VehiculoSegundaMano(vd.NumBastidor, vd.Marca, vd.Modelo, vd.Potencia, vd.PVP, vd.Matricula, vd.FechaMatricula);
+                }
+                if(vd.Borrado) {
+                    v = null;
                 }
                 return v;
             }
