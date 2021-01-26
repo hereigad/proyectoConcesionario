@@ -51,6 +51,18 @@ namespace PresentacionPresupuesto
         private void rellenarListVehiculosDisponibles()
         {
             this.vehiculosDisponibles = this.lnv.obtenerTodosVehiculos();
+
+            /*///prueba
+            for(int i=0; i<10; i++)
+            {
+                Random r = new Random();
+                int j = r.Next(0, 50);
+                Vehiculo v = new Vehiculo("v" + j, "m" + j, "modelo" + j, "pot", j);
+                this.lnv.altaVehiculo(v);
+                this.vehiculosDisponibles.Add(v);
+            }
+            ///prueba*/
+
             foreach(Vehiculo v in this.vehiculosDisponibles)
             {
                 this.listDisponibles.Items.Add(v.NumBastidor);
