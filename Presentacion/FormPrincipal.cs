@@ -254,7 +254,8 @@ namespace Presentacion
         /// <param name="e"></param>
         private void recorrerUnoAUnoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            PresupuestoUnoAUno pap = new PresupuestoUnoAUno(this.lnp);
+            pap.ShowDialog();
         }
 
         /// <summary>
