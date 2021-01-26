@@ -43,12 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClaveCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ClaveCliente.Designer.cs">
-      <DependentUpon>ClaveCliente.cs</DependentUpon>
-    </Compile>
     <Compile Include="DatosCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,7 +61,6 @@
     <Compile Include="OtroForm.Designer.cs">
       <DependentUpon>OtroForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PresentacionCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnoaUno.cs">
       <SubType>Form</SubType>
@@ -85,15 +78,8 @@
       <Project>{8b9d1548-d3de-4376-8f52-ce6ec669e77c}</Project>
       <Name>ModeloDominio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PresentacionForms\PresentacionForms.csproj">
-      <Project>{707fc581-8abe-47d2-99cd-28b36293a51f}</Project>
-      <Name>PresentacionForms</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ClaveCliente.resx">
-      <DependentUpon>ClaveCliente.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DatosCliente.resx">
       <DependentUpon>DatosCliente.cs</DependentUpon>
     </EmbeddedResource>

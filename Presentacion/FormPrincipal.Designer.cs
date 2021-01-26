@@ -39,11 +39,15 @@
             this.busquedaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.presupuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaPresupuesto = new System.Windows.Forms.ToolStripMenuItem();
-            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.búsquedaPorClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.búsquedaPorVehiculoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recorrerUnoAUnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listarTodosLosPresupuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verTotalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmListas = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmDesplegable = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmUnoAUno = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,8 +61,8 @@
             this.configuraciónToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(600, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -67,29 +71,30 @@
             this.clientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BTaltaCliente,
             this.BTbajaCliente,
-            this.BTbusquedaCliente});
+            this.BTbusquedaCliente,
+            this.verTotalToolStripMenuItem});
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
             this.clientesToolStripMenuItem.Text = "Clientes";
             // 
             // BTaltaCliente
             // 
             this.BTaltaCliente.Name = "BTaltaCliente";
-            this.BTaltaCliente.Size = new System.Drawing.Size(126, 22);
+            this.BTaltaCliente.Size = new System.Drawing.Size(224, 26);
             this.BTaltaCliente.Text = "Alta";
             this.BTaltaCliente.Click += new System.EventHandler(this.BTaltaCliente_Click);
             // 
             // BTbajaCliente
             // 
             this.BTbajaCliente.Name = "BTbajaCliente";
-            this.BTbajaCliente.Size = new System.Drawing.Size(126, 22);
+            this.BTbajaCliente.Size = new System.Drawing.Size(224, 26);
             this.BTbajaCliente.Text = "Baja";
             this.BTbajaCliente.Click += new System.EventHandler(this.BTbajaCliente_Click);
             // 
             // BTbusquedaCliente
             // 
             this.BTbusquedaCliente.Name = "BTbusquedaCliente";
-            this.BTbusquedaCliente.Size = new System.Drawing.Size(126, 22);
+            this.BTbusquedaCliente.Size = new System.Drawing.Size(224, 26);
             this.BTbusquedaCliente.Text = "Búsqueda";
             this.BTbusquedaCliente.Click += new System.EventHandler(this.BTbusquedaCliente_Click);
             // 
@@ -100,26 +105,26 @@
             this.bajaToolStripMenuItem1,
             this.busquedaToolStripMenuItem1});
             this.vehículosToolStripMenuItem.Name = "vehículosToolStripMenuItem";
-            this.vehículosToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.vehículosToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
             this.vehículosToolStripMenuItem.Text = "Vehículos";
             // 
             // altaToolStripMenuItem1
             // 
             this.altaToolStripMenuItem1.Name = "altaToolStripMenuItem1";
-            this.altaToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
+            this.altaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
             this.altaToolStripMenuItem1.Text = "Alta";
             this.altaToolStripMenuItem1.Click += new System.EventHandler(this.altaToolStripMenuItem1_Click);
             // 
             // bajaToolStripMenuItem1
             // 
             this.bajaToolStripMenuItem1.Name = "bajaToolStripMenuItem1";
-            this.bajaToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
+            this.bajaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
             this.bajaToolStripMenuItem1.Text = "Baja";
             // 
             // busquedaToolStripMenuItem1
             // 
             this.busquedaToolStripMenuItem1.Name = "busquedaToolStripMenuItem1";
-            this.busquedaToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
+            this.busquedaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
             this.busquedaToolStripMenuItem1.Text = "Búsqueda";
             // 
             // presupuestosToolStripMenuItem
@@ -131,58 +136,89 @@
             this.recorrerUnoAUnoToolStripMenuItem,
             this.listarTodosLosPresupuestosToolStripMenuItem});
             this.presupuestosToolStripMenuItem.Name = "presupuestosToolStripMenuItem";
-            this.presupuestosToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.presupuestosToolStripMenuItem.Size = new System.Drawing.Size(109, 24);
             this.presupuestosToolStripMenuItem.Text = "Presupuestos";
             // 
             // altaPresupuesto
             // 
             this.altaPresupuesto.Name = "altaPresupuesto";
-            this.altaPresupuesto.Size = new System.Drawing.Size(180, 22);
+            this.altaPresupuesto.Size = new System.Drawing.Size(283, 26);
             this.altaPresupuesto.Text = "Alta";
             this.altaPresupuesto.Click += new System.EventHandler(this.altaPresupuesto_Click);
-            // 
-            // configuraciónToolStripMenuItem
-            // 
-            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.configuraciónToolStripMenuItem.Text = "Configuración";
             // 
             // búsquedaPorClienteToolStripMenuItem
             // 
             this.búsquedaPorClienteToolStripMenuItem.Name = "búsquedaPorClienteToolStripMenuItem";
-            this.búsquedaPorClienteToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.búsquedaPorClienteToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
             this.búsquedaPorClienteToolStripMenuItem.Text = "Búsqueda por Cliente";
             this.búsquedaPorClienteToolStripMenuItem.Click += new System.EventHandler(this.búsquedaPorClienteToolStripMenuItem_Click);
             // 
             // búsquedaPorVehiculoToolStripMenuItem
             // 
             this.búsquedaPorVehiculoToolStripMenuItem.Name = "búsquedaPorVehiculoToolStripMenuItem";
-            this.búsquedaPorVehiculoToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.búsquedaPorVehiculoToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
             this.búsquedaPorVehiculoToolStripMenuItem.Text = "Búsqueda por Vehiculo";
             this.búsquedaPorVehiculoToolStripMenuItem.Click += new System.EventHandler(this.búsquedaPorVehiculoToolStripMenuItem_Click);
             // 
             // recorrerUnoAUnoToolStripMenuItem
             // 
             this.recorrerUnoAUnoToolStripMenuItem.Name = "recorrerUnoAUnoToolStripMenuItem";
-            this.recorrerUnoAUnoToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.recorrerUnoAUnoToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
             this.recorrerUnoAUnoToolStripMenuItem.Text = "Recorrer uno a uno";
             this.recorrerUnoAUnoToolStripMenuItem.Click += new System.EventHandler(this.recorrerUnoAUnoToolStripMenuItem_Click);
             // 
             // listarTodosLosPresupuestosToolStripMenuItem
             // 
             this.listarTodosLosPresupuestosToolStripMenuItem.Name = "listarTodosLosPresupuestosToolStripMenuItem";
-            this.listarTodosLosPresupuestosToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.listarTodosLosPresupuestosToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
             this.listarTodosLosPresupuestosToolStripMenuItem.Text = "Listar todos los presupuestos";
             this.listarTodosLosPresupuestosToolStripMenuItem.Click += new System.EventHandler(this.listarTodosLosPresupuestosToolStripMenuItem_Click);
             // 
+            // configuraciónToolStripMenuItem
+            // 
+            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
+            this.configuraciónToolStripMenuItem.Text = "Configuración";
+            // 
+            // verTotalToolStripMenuItem
+            // 
+            this.verTotalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmListas,
+            this.tsmDesplegable,
+            this.tsmUnoAUno});
+            this.verTotalToolStripMenuItem.Name = "verTotalToolStripMenuItem";
+            this.verTotalToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.verTotalToolStripMenuItem.Text = "Ver total";
+            // 
+            // tsmListas
+            // 
+            this.tsmListas.Name = "tsmListas";
+            this.tsmListas.Size = new System.Drawing.Size(224, 26);
+            this.tsmListas.Text = "Listas";
+            this.tsmListas.Click += new System.EventHandler(this.tsmListas_Click);
+            // 
+            // tsmDesplegable
+            // 
+            this.tsmDesplegable.Name = "tsmDesplegable";
+            this.tsmDesplegable.Size = new System.Drawing.Size(224, 26);
+            this.tsmDesplegable.Text = "Desplegable";
+            this.tsmDesplegable.Click += new System.EventHandler(this.tsmDesplegable_Click);
+            // 
+            // tsmUnoAUno
+            // 
+            this.tsmUnoAUno.Name = "tsmUnoAUno";
+            this.tsmUnoAUno.Size = new System.Drawing.Size(224, 26);
+            this.tsmUnoAUno.Text = "Paso uno a uno";
+            this.tsmUnoAUno.Click += new System.EventHandler(this.tsmUnoAUno_Click);
+            // 
             // FormPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormPrincipal";
             this.Text = "FormPrincipal";
             this.menuStrip1.ResumeLayout(false);
@@ -210,5 +246,9 @@
         private System.Windows.Forms.ToolStripMenuItem búsquedaPorVehiculoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recorrerUnoAUnoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listarTodosLosPresupuestosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verTotalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmListas;
+        private System.Windows.Forms.ToolStripMenuItem tsmDesplegable;
+        private System.Windows.Forms.ToolStripMenuItem tsmUnoAUno;
     }
 }

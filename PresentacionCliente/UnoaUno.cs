@@ -21,6 +21,7 @@ namespace PresentacionCliente
             this.log = ln;
             this.lista = log.totalClientes();
             InitializeComponent();
+         
         }
 
         private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)

@@ -23,7 +23,7 @@ namespace PresentacionCliente
             InitializeComponent();
             diccio = ln.OrdenarCliente(LogicaNegocioCliente.ComparadoresCliente.ComparaDNI);
             BindingSource bd = new BindingSource();
-            bd.DataSource = diccio;
+            bd.DataSource = diccio.ToList();
             this.lbDNI.DisplayMember = "DNI";
             this.lbNombre.DataSource = bd;
             this.lbNombre.DisplayMember = "Nombre";
