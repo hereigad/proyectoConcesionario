@@ -173,7 +173,7 @@ namespace PersistenciaPresupuesto
         }
 
         /// <summary>
-        /// pre: p distinto de null y existente en la base de datos; los vehiculos pueden existir o no en la base de datos
+        /// pre: p distinto de null y existente en la base de datos; los vehiculos existen en la base de datos
         /// post: añade el listado de vehiculos al presupuesto p y devuelve TRUE; FALSE en caso contrario
         /// </summary>
         /// <param name="p"></param>
@@ -184,10 +184,6 @@ namespace PersistenciaPresupuesto
             bool anadidos = false;
             foreach(Vehiculo v in vehiculos)
             {
-                /*if(!BD.EXISTE_Vehiculo(v))
-                {
-                    BD.INSERT_Vehiculo(v);
-                }*/
                 BD.INSERT_PresupuestoVehiculos(p, v);
                 anadidos = true;
             }
