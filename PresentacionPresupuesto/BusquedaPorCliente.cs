@@ -39,6 +39,7 @@ namespace PresentacionPresupuesto
             {
                 this.listPresupuestos.Items.Add(p.ID);
             }
+            this.listPresupuestos.SelectedIndex = 0;
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -48,8 +49,9 @@ namespace PresentacionPresupuesto
 
         private void listPresupuestos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Presupuesto p = this.presupuestos.ElementAt(this.listPresupuestos.SelectedIndex);
-            this.vistaPresupuesto = new VistaPresupuesto(p);
+            int i = this.listPresupuestos.SelectedIndex;
+            Presupuesto p = this.presupuestos.ElementAt(i);
+            this.vistaPresupuesto.rellenarDatos(p);
         }
     }
 }
