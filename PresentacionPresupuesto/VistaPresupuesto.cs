@@ -31,6 +31,8 @@ namespace PresentacionPresupuesto
         /// </summary>
         public void rellenarDatos(Presupuesto p1)
         {
+            this.listVehiculos.Items.Clear();
+            this.listVehiculos.Refresh();
             this.presupuesto = p1;
             this.txtId.Text = this.presupuesto.ID;
             this.txtFecha.Text = this.presupuesto.FechaRealizacion.ToString();

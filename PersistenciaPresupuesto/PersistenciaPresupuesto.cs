@@ -24,7 +24,7 @@ namespace PersistenciaPresupuesto
             Comercial comercial = BD.SELECT_Comercial(new ModeloDominio.Comercial(pd.Codigo, "","",null)).PasoAComercial();
             Cliente cliente = BD.SELECT_Cliente(new Cliente(pd.DNI, "", "", Categoria.A)).PasoACliente();
             List<Vehiculo> vehiculos = new List<Vehiculo>();
-            List<Presupuesto_VehiculosDato> tabla = BD.SELECT_ALL_PresupuestoVehiculos();
+            List<Presupuesto_VehiculosDato> tabla = BD.SELECT_ALL_PresupuestoVehiculos(p);
             foreach(Presupuesto_VehiculosDato pvd in tabla)
             {
                 Vehiculo v = BD.SELECT_Vehiculo(new Vehiculo(pvd.NumBastidor, "", "", "", 0.0f)).PasoAVehiculo();
@@ -90,7 +90,7 @@ namespace PersistenciaPresupuesto
                     }
                 }
 
-                List<Presupuesto_VehiculosDato> presupuesto_Vehiculos = BD.SELECT_ALL_PresupuestoVehiculos();
+                List<Presupuesto_VehiculosDato> presupuesto_Vehiculos = BD.SELECT_ALL_PresupuestoVehiculos(p);
                 foreach (Presupuesto_VehiculosDato pvd in presupuesto_Vehiculos)
                 {
                     if (pvd.Clave.Item1.Equals(p.ID))
@@ -137,14 +137,17 @@ namespace PersistenciaPresupuesto
         public static List<Vehiculo> seleccionarVehiculosPresupuesto(Presupuesto p)
         {
             List<Vehiculo> listado = new List<Vehiculo>();
-            List<Presupuesto_VehiculosDato> tabla = BD.SELECT_ALL_PresupuestoVehiculos();
-            foreach (Presupuesto_VehiculosDato pvd in tabla)
+            if(BD.EXISTE_Presupuesto(p))
             {
-                if(pvd.Clave.Item1.Equals(p.ID))
+                List<Presupuesto_VehiculosDato> tabla = BD.SELECT_ALL_PresupuestoVehiculos(p);
+                foreach (Presupuesto_VehiculosDato pvd in tabla)
                 {
-                    string claveVehiculo = pvd.Clave.Item2;
-                    Vehiculo v = BD.SELECT_Vehiculo(new Vehiculo(claveVehiculo, "", "", "", 0.0f)).PasoAVehiculo();
-                    listado.Add(v);
+                    if (pvd.Clave.Item1.Equals(p.ID))
+                    {
+                        string claveVehiculo = pvd.Clave.Item2;
+                        Vehiculo v = BD.SELECT_Vehiculo(new Vehiculo(claveVehiculo, "", "", "", 0.0f)).PasoAVehiculo();
+                        listado.Add(v);
+                    }
                 }
             }
             return listado;
@@ -159,14 +162,17 @@ namespace PersistenciaPresupuesto
         public static List<Presupuesto> seleccionarPresupuestosVehiculo(Vehiculo v)
         {
             List<Presupuesto> lista = new List<Presupuesto>();
-            List<Presupuesto_VehiculosDato> tabla = BD.SELECT_ALL_PresupuestoVehiculos();
-            foreach (Presupuesto_VehiculosDato pvd in tabla)
+            if(BD.EXISTE_Vehiculo(v))
             {
-                if (pvd.Clave.Item2.Equals(v.NumBastidor))
+                List<Presupuesto_VehiculosDato> tabla = BD.SELECT_ALL_VehiculoPresupuestos(v);
+                foreach (Presupuesto_VehiculosDato pvd in tabla)
                 {
-                    string id = pvd.Clave.Item1;
-                    Presupuesto p = seleccionarPresupuesto(new Presupuesto(id, DateTime.Now, EstadoPresupuesto.Aceptado, null, null, null));
-                    lista.Add(p);
+                    if (pvd.Clave.Item2.Equals(v.NumBastidor))
+                    {
+                        string id = pvd.Clave.Item1;
+                        Presupuesto p = seleccionarPresupuesto(new Presupuesto(id, DateTime.Now, EstadoPresupuesto.Aceptado, null, null, null));
+                        lista.Add(p);
+                    }
                 }
             }
             return lista;

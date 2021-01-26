@@ -525,10 +525,38 @@ namespace Persistencia
             return Presupuesto_Vehiculos[clave];
         }
 
-        public static List<Presupuesto_VehiculosDato> SELECT_ALL_PresupuestoVehiculos() {
+        /// <summary>
+        /// pre: el presupuesto p existe en la base de datos
+        /// post: devuleve una coleccion de datos de vehiculos del presupuesto dado
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static List<Presupuesto_VehiculosDato> SELECT_ALL_PresupuestoVehiculos(Presupuesto p) {
             List<Presupuesto_VehiculosDato> presupuesto_vehiculos = new List<Presupuesto_VehiculosDato>();
             foreach (Presupuesto_VehiculosDato n in Presupuesto_Vehiculos) {
-                presupuesto_vehiculos.Add(n);
+                if (n.Clave.Item1.Equals(p.ID))
+                {
+                    presupuesto_vehiculos.Add(n);
+                }
+            }
+            return presupuesto_vehiculos;
+        }
+
+        /// <summary>
+        /// pre: el vehiculo v distinto de null y existente en la base de datos
+        /// post: devuelve una coleccion de datos de presupuestos del vehiculo v dado
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static List<Presupuesto_VehiculosDato> SELECT_ALL_VehiculoPresupuestos(Vehiculo v)
+        {
+            List<Presupuesto_VehiculosDato> presupuesto_vehiculos = new List<Presupuesto_VehiculosDato>();
+            foreach (Presupuesto_VehiculosDato n in Presupuesto_Vehiculos)
+            {
+                if (n.Clave.Item2.Equals(v.NumBastidor))
+                {
+                    presupuesto_vehiculos.Add(n);
+                }
             }
             return presupuesto_vehiculos;
         }
