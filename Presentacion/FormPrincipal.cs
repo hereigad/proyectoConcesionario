@@ -19,7 +19,7 @@ namespace Presentacion
     {
         private Comercial com;
        
-        private PresentacionPresupuesto.PresentacionPresupuesto presPresupuesto;
+        //private PresentacionPresupuesto.PresentacionPresupuesto presPresupuesto;
         private LogicaCliente lnc;
         private LogicaPresupuesto lnp;
         public FormPrincipal()
@@ -30,7 +30,7 @@ namespace Presentacion
             InitializeComponent();
             lnc  = new LogicaCliente(com);
             this.lnp = new LogicaPresupuesto(this.com);
-            this.presPresupuesto = new PresentacionPresupuesto.PresentacionPresupuesto(this.lnp, new LogicaVehiculo(), this.lnc);
+            //this.presPresupuesto = new PresentacionPresupuesto.PresentacionPresupuesto(this.lnp, new LogicaVehiculo(), this.lnc);
         }
 
 
@@ -197,7 +197,8 @@ namespace Presentacion
 
         private void altaPresupuesto_Click(object sender, EventArgs e)
         {
-            this.presPresupuesto.altaPresupuesto();
+            AltaPresupuesto ap = new AltaPresupuesto(this.lnp);
+            ap.ShowDialog();
         }
 
         private void búsquedaPorClienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -221,17 +222,17 @@ namespace Presentacion
 
         private void búsquedaPorVehiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.presPresupuesto.busquedaPorVehiculo();
+
         }
 
         private void recorrerUnoAUnoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.presPresupuesto.recorridoUnoAUno();
+
         }
 
         private void listarTodosLosPresupuestosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.presPresupuesto.listarTodosLosPresupuestos();
+
         }
 
        
