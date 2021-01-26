@@ -29,5 +29,9 @@ namespace LogicaNegocioVehiculo
         public static List<Vehiculo> obtenerVehiculosSegundaMano() {
             return PersistenciaVehiculo.PersistenciaVehiculo.obtenerVehiculosSegundaMano();
         }
+
+        public static List<Extra> obtenerExtras() {
+            return PersistenciaExtras.obtenerTodosExtras();
+        }
     }
 }
