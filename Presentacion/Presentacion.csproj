@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{AFC514E6-67D7-4CF6-A328-C4B744DBDC96}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Presentacion</RootNamespace>
     <AssemblyName>Presentacion</AssemblyName>
@@ -29,6 +29,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -55,6 +58,7 @@
     <Compile Include="FormPrincipal.Designer.cs">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +85,10 @@
     <ProjectReference Include="..\PresentacionPresupuesto\PresentacionPresupuesto.csproj">
       <Project>{ea9f6fb3-992c-48dc-825b-41fa81d29c81}</Project>
       <Name>PresentacionPresupuesto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PresentacionVehiculo\PresentacionVehiculo.csproj">
+      <Project>{c1fea080-0e08-4d5a-babc-dedc9a058fb2}</Project>
+      <Name>PresentacionVehiculo</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
