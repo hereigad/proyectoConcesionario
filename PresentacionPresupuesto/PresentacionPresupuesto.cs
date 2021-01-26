@@ -39,7 +39,7 @@ namespace PresentacionPresupuesto
                 string dni = ic.Clave;
                 if(this.logicaC.existe(new Cliente(dni, "", "", Categoria.A)))
                 {
-                    BusquedaPorCliente bc = new BusquedaPorCliente(this.logicaP, this.logicaC, dni);
+                    BusquedaPorCliente bc = new BusquedaPorCliente(this.logicaP, dni);
                     bc.ShowDialog();
                 }
                 else
