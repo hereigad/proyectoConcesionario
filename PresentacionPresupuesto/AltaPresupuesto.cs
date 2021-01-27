@@ -108,20 +108,35 @@ namespace PresentacionPresupuesto
 
                 Cliente c = this.lnc.selCliente(new Cliente(dniCliente, "", "", Categoria.A));
 
-                Random r = new Random();
-                string[] letra = { "A", "B", "C", "D", "E", "F", "G", "H" };
-                int num1 = r.Next(0, 100);
-                int num2 = r.Next(0, 50);
-                string l = letra[r.Next(0, letra.Length)];
-                string l1 = letra[r.Next(0, letra.Length)];
-                // this.comercial.Codigo+"-"+c.DNI+"-"+vehiculos.Count()
-                string id = num1 + l + num2 + l1;
 
+                string id = this.generarID();
+                while(this.lnp.existePresupuesto(new Presupuesto(id, DateTime.Now, EstadoPresupuesto.Aceptado, null, null, null)))
+                {
+                    id = this.generarID();
+                }
 
                 Presupuesto p = new Presupuesto(id, DateTime.Now, EstadoPresupuesto.Pendiente, this.comercial, c, vehiculos);
                 this.lnp.altaPresupuesto(p);
                 this.Close();
             }
+        }
+
+        /// <summary>
+        /// pre: -
+        /// post: genera un identificador alfanumerico
+        /// </summary>
+        /// <returns></returns>
+        private string generarID()
+        {
+            Random r = new Random();
+            string[] letra = { "A", "B", "C", "D", "E", "F", "G", "H" };
+            int num1 = r.Next(0, 100);
+            int num2 = r.Next(0, 50);
+            string l = letra[r.Next(0, letra.Length)];
+            string l1 = letra[r.Next(0, letra.Length)];
+            // this.comercial.Codigo+"-"+c.DNI+"-"+vehiculos.Count()
+            string id = num1 + l + num2 + l1;
+            return id;
         }
     }
 }

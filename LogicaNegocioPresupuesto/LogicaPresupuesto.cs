@@ -150,5 +150,10 @@ namespace LogicaNegocioPresupuesto
             lista = PersistenciaPresupuesto.PersistenciaPresupuesto.seleccionarTODOS_Presupuestos();
             return lista;
         }
+
+        public bool existePresupuesto(Presupuesto p)
+        {
+            return PersistenciaPresupuesto.PersistenciaPresupuesto.existePresupuesto(p);
+        }
     }
 }
