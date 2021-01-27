@@ -102,7 +102,17 @@ namespace PresentacionPresupuesto
 
             Cliente c = this.lnc.selCliente(new Cliente(dniCliente, "", "", Categoria.A));
 
-            Presupuesto p = new Presupuesto(this.comercial.Codigo+"-"+c.DNI+"-"+vehiculos.Count(), DateTime.Now, EstadoPresupuesto.Pendiente, this.comercial, c, vehiculos);
+            Random r = new Random();
+            string[] letra = { "A", "B", "C", "D", "E", "F", "G", "H" };
+            int num1 = r.Next(0, 100);
+            int num2 = r.Next(0, 50);
+            string l = letra[r.Next(0, letra.Length)];
+            string l1 = letra[r.Next(0, letra.Length)];
+            // this.comercial.Codigo+"-"+c.DNI+"-"+vehiculos.Count()
+            string id = num1 + l + num2 + l1;
+            
+            
+            Presupuesto p = new Presupuesto(id, DateTime.Now, EstadoPresupuesto.Pendiente, this.comercial, c, vehiculos);
             this.lnp.altaPresupuesto(p);
             this.Close();
         }
