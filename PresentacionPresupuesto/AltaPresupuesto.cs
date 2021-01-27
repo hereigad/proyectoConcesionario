@@ -85,36 +85,43 @@ namespace PresentacionPresupuesto
         private void btnAlta_Click(object sender, EventArgs e)
         {
             string dniCliente = this.comboDNI.SelectedItem as string;
-            List<string> numBastidores = new List<string>();
-            foreach(string s in this.listPresupuesto.Items)
+            if(dniCliente == null)
             {
-                numBastidores.Add(s);
+                MessageBox.Show("Elige un DNI de cliente de la lista");
             }
-
-            List<Vehiculo> vehiculos = new List<Vehiculo>();
-            foreach(Vehiculo v in this.vehiculosDisponibles)
+            else
             {
-                if (numBastidores.Contains(v.NumBastidor))
+                List<string> numBastidores = new List<string>();
+                foreach (string s in this.listPresupuesto.Items)
                 {
-                    vehiculos.Add(v);
+                    numBastidores.Add(s);
                 }
+
+                List<Vehiculo> vehiculos = new List<Vehiculo>();
+                foreach (Vehiculo v in this.vehiculosDisponibles)
+                {
+                    if (numBastidores.Contains(v.NumBastidor))
+                    {
+                        vehiculos.Add(v);
+                    }
+                }
+
+                Cliente c = this.lnc.selCliente(new Cliente(dniCliente, "", "", Categoria.A));
+
+                Random r = new Random(4253);
+                string[] letra = { "A", "B", "C", "D", "E", "F", "G", "H" };
+                int num1 = r.Next(0, 100);
+                int num2 = r.Next(0, 50);
+                string l = letra[r.Next(0, letra.Length)];
+                string l1 = letra[r.Next(0, letra.Length)];
+                // this.comercial.Codigo+"-"+c.DNI+"-"+vehiculos.Count()
+                string id = num1 + l + num2 + l1;
+
+
+                Presupuesto p = new Presupuesto(id, DateTime.Now, EstadoPresupuesto.Pendiente, this.comercial, c, vehiculos);
+                this.lnp.altaPresupuesto(p);
+                this.Close();
             }
-
-            Cliente c = this.lnc.selCliente(new Cliente(dniCliente, "", "", Categoria.A));
-
-            Random r = new Random();
-            string[] letra = { "A", "B", "C", "D", "E", "F", "G", "H" };
-            int num1 = r.Next(0, 100);
-            int num2 = r.Next(0, 50);
-            string l = letra[r.Next(0, letra.Length)];
-            string l1 = letra[r.Next(0, letra.Length)];
-            // this.comercial.Codigo+"-"+c.DNI+"-"+vehiculos.Count()
-            string id = num1 + l + num2 + l1;
-            
-            
-            Presupuesto p = new Presupuesto(id, DateTime.Now, EstadoPresupuesto.Pendiente, this.comercial, c, vehiculos);
-            this.lnp.altaPresupuesto(p);
-            this.Close();
         }
     }
 }
