@@ -74,6 +74,12 @@
       <DependentUpon>NumBastidorVehiculo.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VehiculosUnoAUno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehiculosUnoAUno.Designer.cs">
+      <DependentUpon>VehiculosUnoAUno.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BusquedaVehiculo.resx">
       <DependentUpon>BusquedaVehiculo.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,6 +101,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VehiculosUnoAUno.resx">
+      <DependentUpon>VehiculosUnoAUno.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
