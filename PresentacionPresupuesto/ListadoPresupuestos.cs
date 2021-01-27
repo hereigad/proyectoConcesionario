@@ -23,7 +23,14 @@ namespace PresentacionPresupuesto
         {
             this.lnp = lp;
             List<Presupuesto> presupuestos = this.lnp.obtenerTodosPresupuestos();
-            this.dataGridView.DataSource = presupuestos;
+            List<object> listado = new List<object>();
+            foreach(Presupuesto p in presupuestos)
+            {
+                object fila = new { p.ID, p.Cliente.DNI, p.Comercial.Codigo, p.FechaRealizacion, p.Estado};
+                listado.Add(fila);
+            }
+
+            this.dataGridView.DataSource = listado;
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
