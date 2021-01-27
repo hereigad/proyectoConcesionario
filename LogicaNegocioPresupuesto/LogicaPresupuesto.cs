@@ -18,8 +18,6 @@ namespace LogicaNegocioPresupuesto
             this.comercial = com;
         }
 
-        public Comercial Comercial { get { return this.comercial; } }
-
         /// <summary>
         /// pre: presupuesto p distinto de null
         /// post: da de alta un nuevo presupuesto

@@ -23,6 +23,7 @@ namespace PresentacionPresupuesto
         private LogicaCliente lnc;
         private LogicaPresupuesto lnp;
         private LogicaVehiculo lnv;
+        private Comercial comercial;
 
 
         public AltaPresupuesto()
@@ -30,11 +31,12 @@ namespace PresentacionPresupuesto
             InitializeComponent();
         }
 
-        public AltaPresupuesto(LogicaPresupuesto l, LogicaCliente lc, LogicaVehiculo lv): this()
+        public AltaPresupuesto(LogicaPresupuesto l, LogicaCliente lc, LogicaVehiculo lv, Comercial com): this()
         {
             this.lnp = l;
             this.lnc = lc;
             this.lnv = lv;
+            this.comercial = com;
             this.rellenarComboDNI();
             this.rellenarListVehiculosDisponibles();
         }
@@ -106,7 +108,7 @@ namespace PresentacionPresupuesto
 
             Cliente c = this.lnc.selCliente(new Cliente(dniCliente, "", "", Categoria.A));
 
-            Presupuesto p = new Presupuesto(this.lnp.Comercial.Codigo+"-"+c.DNI+"-"+vehiculos.Count(), DateTime.Now, EstadoPresupuesto.Pendiente, this.lnp.Comercial, c, vehiculos);
+            Presupuesto p = new Presupuesto(this.comercial.Codigo+"-"+c.DNI+"-"+vehiculos.Count(), DateTime.Now, EstadoPresupuesto.Pendiente, this.comercial, c, vehiculos);
             this.lnp.altaPresupuesto(p);
             this.Close();
         }
