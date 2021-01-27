@@ -222,6 +222,7 @@ namespace Presentacion
                 }
             }
         }
+
         private void bajaVehiculo_Click(object sender, EventArgs e) {
             NumBastidorVehiculo nb = new NumBastidorVehiculo();
             nb.ShowDialog();
@@ -236,6 +237,28 @@ namespace Presentacion
                     DialogResult result = MessageBox.Show("El vehiculo no existe", "Vehiculo inexistente", MessageBoxButtons.OK);
                     if (result == DialogResult.OK) {
                         nb.Close();
+                    }
+                }
+            }
+        }
+
+        private void busquedaVehiculo_Click(object sender, EventArgs e) {
+            NumBastidorVehiculo nb = new NumBastidorVehiculo();
+            nb.ShowDialog();
+            if (nb.DialogResult == DialogResult.OK) {
+                Vehiculo v = lv.obtenerVehiculo(nb.NumBastidor);
+                if (v == null) {
+                    DialogResult result = MessageBox.Show("El vehiculo no existe", "Vehiculo inexistente", MessageBoxButtons.OK);
+                    if (result == DialogResult.OK) {
+                        nb.Close();
+                    }
+                } else {
+                    BusquedaVehiculo busqueda = new BusquedaVehiculo(lv, nb.NumBastidor);
+                    Vehiculo vehiculo = null;
+                    busqueda.ShowDialog();
+                    nb.Close();
+                    if (busqueda.DialogResult == DialogResult.OK) {
+                        busqueda.Close();
                     }
                 }
             }

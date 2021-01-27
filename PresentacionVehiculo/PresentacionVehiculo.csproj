@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusquedaVehiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusquedaVehiculo.Designer.cs">
+      <DependentUpon>BusquedaVehiculo.cs</DependentUpon>
+    </Compile>
     <Compile Include="AltaVehiculo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
       <DependentUpon>NumBastidorVehiculo.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BusquedaVehiculo.resx">
+      <DependentUpon>BusquedaVehiculo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AltaVehiculo.resx">
       <DependentUpon>AltaVehiculo.cs</DependentUpon>
     </EmbeddedResource>

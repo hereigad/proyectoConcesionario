@@ -80,21 +80,21 @@
             // BTaltaCliente
             // 
             this.BTaltaCliente.Name = "BTaltaCliente";
-            this.BTaltaCliente.Size = new System.Drawing.Size(180, 22);
+            this.BTaltaCliente.Size = new System.Drawing.Size(126, 22);
             this.BTaltaCliente.Text = "Alta";
             this.BTaltaCliente.Click += new System.EventHandler(this.BTaltaCliente_Click);
             // 
             // BTbajaCliente
             // 
             this.BTbajaCliente.Name = "BTbajaCliente";
-            this.BTbajaCliente.Size = new System.Drawing.Size(180, 22);
+            this.BTbajaCliente.Size = new System.Drawing.Size(126, 22);
             this.BTbajaCliente.Text = "Baja";
             this.BTbajaCliente.Click += new System.EventHandler(this.BTbajaCliente_Click);
             // 
             // BTbusquedaCliente
             // 
             this.BTbusquedaCliente.Name = "BTbusquedaCliente";
-            this.BTbusquedaCliente.Size = new System.Drawing.Size(180, 22);
+            this.BTbusquedaCliente.Size = new System.Drawing.Size(126, 22);
             this.BTbusquedaCliente.Text = "Búsqueda";
             this.BTbusquedaCliente.Click += new System.EventHandler(this.BTbusquedaCliente_Click);
             // 
@@ -105,7 +105,7 @@
             this.tsmDesplegable,
             this.tsmUnoAUno});
             this.verTotalToolStripMenuItem.Name = "verTotalToolStripMenuItem";
-            this.verTotalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verTotalToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.verTotalToolStripMenuItem.Text = "Ver total";
             // 
             // tsmListas
@@ -158,6 +158,7 @@
             this.busquedaToolStripMenuItem1.Name = "busquedaToolStripMenuItem1";
             this.busquedaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.busquedaToolStripMenuItem1.Text = "Búsqueda";
+            this.busquedaToolStripMenuItem1.Click += new System.EventHandler(this.busquedaVehiculo_Click);
             // 
             // presupuestosToolStripMenuItem
             // 
@@ -219,7 +220,7 @@
             this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormPrincipal";
             this.Text = "FormPrincipal";
             this.menuStrip1.ResumeLayout(false);
