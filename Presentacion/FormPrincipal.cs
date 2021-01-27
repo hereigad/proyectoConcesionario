@@ -313,7 +313,7 @@ namespace Presentacion
         /// <param name="e"></param>
         private void búsquedaPorVehiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Clave clave = new Clave("Numero de Bastidor");
+            Clave clave = new Clave("NumeroBastidor");
             clave.ShowDialog();
             if(clave.DialogResult == DialogResult.OK)
             {
