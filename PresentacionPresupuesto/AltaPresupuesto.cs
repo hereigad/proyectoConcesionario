@@ -66,14 +66,20 @@ namespace PresentacionPresupuesto
 
         private void btnAnadir_Click(object sender, EventArgs e)
         {
-            this.listPresupuesto.Items.Add(this.listDisponibles.SelectedItem);
-            this.listDisponibles.Items.Remove(this.listDisponibles.SelectedItem);
+            if(this.listDisponibles.Items.Count > 0 && this.listDisponibles.SelectedItem != null)
+            {
+                this.listPresupuesto.Items.Add(this.listDisponibles.SelectedItem);
+                this.listDisponibles.Items.Remove(this.listDisponibles.SelectedItem);
+            }
         }
 
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-            this.listDisponibles.Items.Add(this.listPresupuesto.SelectedItem);
-            this.listPresupuesto.Items.Remove(this.listPresupuesto.SelectedItem);
+            if(this.listPresupuesto.Items.Count > 0 && this.listPresupuesto.SelectedItem != null)
+            {
+                this.listDisponibles.Items.Add(this.listPresupuesto.SelectedItem);
+                this.listPresupuesto.Items.Remove(this.listPresupuesto.SelectedItem);
+            }
         }
 
         private void btnAlta_Click(object sender, EventArgs e)
