@@ -313,7 +313,22 @@ namespace Presentacion
         /// <param name="e"></param>
         private void búsquedaPorVehiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Clave clave = new Clave("Numero de Bastidor");
+            clave.ShowDialog();
+            if(clave.DialogResult == DialogResult.OK)
+            {
+                string numBastidor = clave.ClaveO;
+                Vehiculo v = this.lv.obtenerVehiculo(numBastidor);
+                if(v != null)
+                {
+                    BusquedaPorVehiculo bv = new BusquedaPorVehiculo(numBastidor, this.lnp);
+                    bv.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("El vehiculo con el numero de bastidor " + numBastidor + " no existe!");
+                }
+            }
         }
 
         /// <summary>
