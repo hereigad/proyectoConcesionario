@@ -263,6 +263,10 @@ namespace Presentacion
                 }
             }
         }
+        private void listadoToolStripMenuItem_Click(object sender, EventArgs e) {
+            ListadoVehiculos listado = new ListadoVehiculos(lv);
+            listado.ShowDialog();
+        }
 
         /// <summary>
         /// pre: -

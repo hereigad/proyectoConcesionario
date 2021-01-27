@@ -61,6 +61,12 @@
     <Compile Include="AltaVehiculo.Designer.cs">
       <DependentUpon>AltaVehiculo.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListadoVehiculos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoVehiculos.Designer.cs">
+      <DependentUpon>ListadoVehiculos.cs</DependentUpon>
+    </Compile>
     <Compile Include="NumBastidorVehiculo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AltaVehiculo.resx">
       <DependentUpon>AltaVehiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoVehiculos.resx">
+      <DependentUpon>ListadoVehiculos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NumBastidorVehiculo.resx">
       <DependentUpon>NumBastidorVehiculo.cs</DependentUpon>

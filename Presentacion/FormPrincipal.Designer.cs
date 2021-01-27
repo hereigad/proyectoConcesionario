@@ -48,6 +48,7 @@
             this.recorrerUnoAUnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listarTodosLosPresupuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -134,7 +135,8 @@
             this.vehículosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaToolStripMenuItem1,
             this.bajaToolStripMenuItem1,
-            this.busquedaToolStripMenuItem1});
+            this.busquedaToolStripMenuItem1,
+            this.listadoToolStripMenuItem});
             this.vehículosToolStripMenuItem.Name = "vehículosToolStripMenuItem";
             this.vehículosToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.vehículosToolStripMenuItem.Text = "Vehículos";
@@ -213,6 +215,13 @@
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
             // 
+            // listadoToolStripMenuItem
+            // 
+            this.listadoToolStripMenuItem.Name = "listadoToolStripMenuItem";
+            this.listadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listadoToolStripMenuItem.Text = "Listado";
+            this.listadoToolStripMenuItem.Click += new System.EventHandler(this.listadoToolStripMenuItem_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,5 +261,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmListas;
         private System.Windows.Forms.ToolStripMenuItem tsmDesplegable;
         private System.Windows.Forms.ToolStripMenuItem tsmUnoAUno;
+        private System.Windows.Forms.ToolStripMenuItem listadoToolStripMenuItem;
     }
 }
