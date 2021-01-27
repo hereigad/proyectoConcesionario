@@ -38,14 +38,14 @@
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView.Location = new System.Drawing.Point(8, 12);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(776, 401);
+            this.dataGridView.Size = new System.Drawing.Size(638, 339);
             this.dataGridView.TabIndex = 0;
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(713, 419);
+            this.btnCerrar.Location = new System.Drawing.Point(575, 357);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 23);
             this.btnCerrar.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(658, 382);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.dataGridView);
             this.Name = "ListadoPresupuestos";
