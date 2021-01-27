@@ -149,8 +149,10 @@ namespace Presentacion
                     Cliente aux = this.lnc.selCliente(new Cliente(f.ClaveO, null, null, Categoria.A));
                     dc.Nombre = aux.Nombre;
                     dc.Tfno = aux.Telefono;
-                    dc.Categoria = aux.Categoria;
                     dc.todoReadOnly();
+
+                    dc.Categoria = aux.Categoria;
+                   
                     dc.botonesCambio();
                     f.Close();
                     dc.ShowDialog();

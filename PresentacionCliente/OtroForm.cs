@@ -22,9 +22,14 @@ namespace PresentacionCliente
             this.log = ln;
             InitializeComponent();
             todos = log.totalClientes();
-            comboBox1.DataSource = todos;
-            comboBox1.DisplayMember = "DNI";
-                }
+           
+            foreach (Cliente c in todos) {
+                this.comboBox1.Items.Add(c.DNI);
+            }
+            this.comboBox1.SelectedIndex = 0;
+
+
+       }
 
 
         /// <summary>
@@ -48,8 +53,11 @@ namespace PresentacionCliente
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selec = comboBox1.SelectedIndex;
-            this.lbApellidos.Text = todos.ElementAt(selec).Nombre.Substring(0, todos.ElementAt(selec).Nombre.IndexOf(','));
-            this.tbNombre.Text = todos.ElementAt(selec).Nombre.Substring(todos.ElementAt(selec).Nombre.IndexOf(','), todos.ElementAt(selec).Nombre.Length);
+            String nombre = todos.ElementAt(selec).Nombre;
+            this.tbApellidos.Text = todos.ElementAt(selec).Nombre.Substring(0, todos.ElementAt(selec).Nombre.IndexOf(','));
+            this.tbNombre.Text = nombre.Remove(0, todos.ElementAt(selec).Nombre.IndexOf(',')+1);
+
+           
         }
     }
 }

@@ -97,17 +97,21 @@ namespace PresentacionCliente
                     this.rbA.Enabled = true;
                     this.rbB.Enabled = false;
                     this.rbC.Enabled = false;
+                   
                 
                 }
                 if (c == Categoria.B)
                 {
+
                     this.rbA.Enabled = false;
                     this.rbB.Enabled = true;
                     this.rbC.Enabled = false;
 
+
                 }
                 if (c == Categoria.C)
                 {
+
                     this.rbA.Enabled = false;
                     this.rbB.Enabled = false;
                     this.rbC.Enabled = true;
@@ -126,7 +130,9 @@ namespace PresentacionCliente
         public void todoReadOnly() {
             tbNombre.ReadOnly = true;
             tbTfno.ReadOnly = true;
-            gbCategoria.Enabled = false;
+            rbA.Enabled = false;
+            rbB.Enabled = false;
+            rbC.Enabled = false;
         
         }
 
