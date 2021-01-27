@@ -108,7 +108,7 @@ namespace PresentacionPresupuesto
 
                 Cliente c = this.lnc.selCliente(new Cliente(dniCliente, "", "", Categoria.A));
 
-                Random r = new Random(4253);
+                Random r = new Random();
                 string[] letra = { "A", "B", "C", "D", "E", "F", "G", "H" };
                 int num1 = r.Next(0, 100);
                 int num2 = r.Next(0, 50);
