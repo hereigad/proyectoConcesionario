@@ -50,6 +50,7 @@
             this.listarTodosLosPresupuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presupuestosEnEstadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.obtenerDatosClienteDelPresupuestoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -178,7 +179,8 @@
             this.búsquedaPorVehiculoToolStripMenuItem,
             this.recorrerUnoAUnoToolStripMenuItem,
             this.listarTodosLosPresupuestosToolStripMenuItem,
-            this.presupuestosEnEstadoToolStripMenuItem});
+            this.presupuestosEnEstadoToolStripMenuItem,
+            this.obtenerDatosClienteDelPresupuestoToolStripMenuItem});
             this.presupuestosToolStripMenuItem.Name = "presupuestosToolStripMenuItem";
             this.presupuestosToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
             this.presupuestosToolStripMenuItem.Text = "Presupuestos";
@@ -231,6 +233,13 @@
             this.presupuestosEnEstadoToolStripMenuItem.Text = "Presupuestos en estado";
             this.presupuestosEnEstadoToolStripMenuItem.Click += new System.EventHandler(this.presupuestosEnEstadoToolStripMenuItem_Click);
             // 
+            // obtenerDatosClienteDelPresupuestoToolStripMenuItem
+            // 
+            this.obtenerDatosClienteDelPresupuestoToolStripMenuItem.Name = "obtenerDatosClienteDelPresupuestoToolStripMenuItem";
+            this.obtenerDatosClienteDelPresupuestoToolStripMenuItem.Size = new System.Drawing.Size(295, 22);
+            this.obtenerDatosClienteDelPresupuestoToolStripMenuItem.Text = "Obtener datos del Cliente del presupuesto";
+            this.obtenerDatosClienteDelPresupuestoToolStripMenuItem.Click += new System.EventHandler(this.obtenerDatosClienteDelPresupuestoToolStripMenuItem_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,5 +281,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmUnoAUno;
         private System.Windows.Forms.ToolStripMenuItem listadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem presupuestosEnEstadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem obtenerDatosClienteDelPresupuestoToolStripMenuItem;
     }
 }

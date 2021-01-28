@@ -61,6 +61,12 @@
     <Compile Include="BusquedaPorVehiculo.Designer.cs">
       <DependentUpon>BusquedaPorVehiculo.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatosClientePresupuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatosClientePresupuesto.Designer.cs">
+      <DependentUpon>DatosClientePresupuesto.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListadoPresupuestos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,10 @@
       <Project>{8b9d1548-d3de-4376-8f52-ce6ec669e77c}</Project>
       <Name>ModeloDominio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PresentacionCliente\PresentacionCliente.csproj">
+      <Project>{976c4667-3974-4d07-b0ec-a3552867aed9}</Project>
+      <Name>PresentacionCliente</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AltaPresupuesto.resx">
@@ -114,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BusquedaPorVehiculo.resx">
       <DependentUpon>BusquedaPorVehiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatosClientePresupuesto.resx">
+      <DependentUpon>DatosClientePresupuesto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoPresupuestos.resx">
       <DependentUpon>ListadoPresupuestos.cs</DependentUpon>

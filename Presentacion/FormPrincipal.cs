@@ -387,5 +387,11 @@ namespace Presentacion
             PresupuestosEnEstado pee = new PresupuestosEnEstado(this.lnp);
             pee.ShowDialog();
         }
+
+        private void obtenerDatosClienteDelPresupuestoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DatosClientePresupuesto dcp = new DatosClientePresupuesto(this.lnp);
+            dcp.ShowDialog();
+        }
     }
 }
