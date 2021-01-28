@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Persistencia;
 using PersistenciaPresupuesto;
+using System.Data.SqlClient;
 
 namespace PersistenciaCliente
 {
@@ -19,11 +20,41 @@ namespace PersistenciaCliente
         /// <param name="c"></param>
         /// <returns></returns>
         public static bool anadirCliente(Cliente c) {
-            BD.INSERT_Cliente(c);
-            if (BD.EXISTE_Cliente(c)) {
-                return true;
+            string conexion = "Data Source=localhost;  User ID=sa ;Password=sasa;  Initial Catalog=ConcesionarioTOO";
+            SqlConnection sqlc = null;
+            SqlCommand com = null;
+            bool exito = false;
+            try
+            {
+                sqlc = new SqlConnection(conexion);
+                sqlc.Open();
+                com = new SqlCommand("INSERT INTO clientes VALUES (@DNI, @Nombre, @Telefono, @Categoria)", sqlc);
+                com.Parameters.AddWithValue("@DNI", c.DNI);
+                com.Parameters.AddWithValue("@Nombre", c.Nombre);
+                com.Parameters.AddWithValue("@Telefono", c.Telefono);
+                com.Parameters.AddWithValue("@Categoria", c.Categoria.ToString());
+                com.ExecuteNonQuery();
+                exito = true;
             }
-            return false;
+            catch(SqlException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                try
+                {
+                    if (sqlc != null)
+                    {
+                        sqlc.Close();
+                    }
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+            return exito;
         }
 
         /// <summary>
@@ -33,18 +64,56 @@ namespace PersistenciaCliente
         /// <param name="c"></param>
         /// <returns></returns>
         public static Cliente seleccionarCliente(Cliente c) {
-            ClienteDatos cd = BD.SELECT_Cliente(c);
-            if (cd.CategoriaCliente == 5) {
-                return new Cliente(cd.DNI, cd.NombreCliente, cd.TlfCliente,Categoria.A);
+            string conexion = "Data Source=localhost;  User ID=sa ;Password=sasa;  Initial Catalog=ConcesionarioTOO";
+            Cliente cliente = null;
+            SqlConnection sqlc = null;
+            SqlCommand com = null;
+            SqlDataReader reader = null;
+            Categoria cat = Categoria.A;
+            try
+            {
+                sqlc = new SqlConnection(conexion);
+                sqlc.Open();
+                com = new SqlCommand("SELECT * FROM clientes WHERE DNI = @DNI", sqlc);
+                com.Parameters.AddWithValue("@DNI", c.DNI);
+                reader = com.ExecuteReader();
+                while(reader.Read())
+                {
+                    if(reader [3].ToString().Equals("A"))
+                    {
+                        cat = Categoria.A;
+                    }
+                    if (reader[3].ToString().Equals("B"))
+                    {
+                        cat = Categoria.B;
+                    }
+                    if (reader[3].ToString().Equals("C"))
+                    {
+                        cat = Categoria.C;
+                    }
+                    cliente = new Cliente(reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), cat);
+                }
             }
-            if (cd.CategoriaCliente == 10) {
-                return new Cliente(cd.DNI, cd.NombreCliente, cd.TlfCliente, Categoria.B);
+            catch(SqlException e)
+            {
+                Console.WriteLine(e.Message);
             }
-            if (cd.CategoriaCliente ==15){
-                return new Cliente(cd.DNI, cd.NombreCliente, cd.TlfCliente, Categoria.C);
+            finally
+            {
+                try
+                {
+                    if (sqlc != null)
+                    {
+                        sqlc.Close();
+                    }
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
+            return cliente;
 
-            return null;
         }
         /// <summary>
         /// pre: c no existe en la base de datos y no es nulo
@@ -67,7 +136,7 @@ namespace PersistenciaCliente
         /// <param name="c"></param>
         /// <returns></returns>
         public static bool existeCliente(Cliente c) {
-            if (BD.EXISTE_Cliente(c)) {
+            if (seleccionarCliente(c) != null) {
                 return true;
             }
             return false;
