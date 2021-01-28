@@ -37,15 +37,15 @@
             // comboEstados
             // 
             this.comboEstados.FormattingEnabled = true;
-            this.comboEstados.Location = new System.Drawing.Point(197, 69);
+            this.comboEstados.Location = new System.Drawing.Point(118, 39);
             this.comboEstados.Name = "comboEstados";
-            this.comboEstados.Size = new System.Drawing.Size(184, 21);
+            this.comboEstados.Size = new System.Drawing.Size(151, 21);
             this.comboEstados.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(107, 72);
+            this.label1.Location = new System.Drawing.Point(28, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 1;
@@ -53,7 +53,7 @@
             // 
             // btnMostrar
             // 
-            this.btnMostrar.Location = new System.Drawing.Point(143, 129);
+            this.btnMostrar.Location = new System.Drawing.Point(58, 97);
             this.btnMostrar.Name = "btnMostrar";
             this.btnMostrar.Size = new System.Drawing.Size(75, 23);
             this.btnMostrar.TabIndex = 2;
@@ -63,7 +63,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(273, 129);
+            this.btnCancelar.Location = new System.Drawing.Point(172, 97);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 3;
@@ -75,7 +75,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(490, 220);
+            this.ClientSize = new System.Drawing.Size(309, 165);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnMostrar);
             this.Controls.Add(this.label1);
