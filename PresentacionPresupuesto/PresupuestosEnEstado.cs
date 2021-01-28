@@ -39,7 +39,6 @@ namespace PresentacionPresupuesto
             List<Presupuesto> presupuestos = this.lnp.obtenerPresupuestosEnEstado(ep);
             ListadoPresupuestos lp = new ListadoPresupuestos(presupuestos);
             lp.ShowDialog();
-            this.Close();
         }
     }
 }
