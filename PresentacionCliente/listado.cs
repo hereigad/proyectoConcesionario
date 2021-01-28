@@ -34,7 +34,12 @@ namespace PresentacionCliente
             this.lbImporte.DisplayMember = "Importe";
 
         }
-
+        /// <summary>
+        /// pre: 
+        /// post: Pasa un diccionario a una lista de Clientes Auxiliares
+        /// </summary>
+        /// <param name="diccio"></param>
+        /// <returns></returns>
         private List<ClienteAux> pasarALista(Dictionary<Cliente, double> diccio)
         {
             List<ClienteAux> solu = new List<ClienteAux>();
@@ -87,7 +92,8 @@ namespace PresentacionCliente
         /// pre: 
         /// post: Ordena la lista por nombre
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         /// <returns></returns>
         private void btNombre_Click(object sender, EventArgs e)
         {
@@ -109,7 +115,8 @@ namespace PresentacionCliente
         /// pre: 
         /// post: Ordena la lista por importe
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         /// <returns></returns>
         private void btImporte_Click(object sender, EventArgs e)
         {

@@ -32,11 +32,13 @@ namespace PresentacionCliente
        }
 
 
+
         /// <summary>
         /// pre: 
         /// post:Cierra el formulario
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         /// <returns></returns>
         private void btCerrar_Click(object sender, EventArgs e)
         {
@@ -48,7 +50,8 @@ namespace PresentacionCliente
         /// pre: 
         /// post: Cambia el Cliente seleccionado
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         /// <returns></returns>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

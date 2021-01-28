@@ -26,7 +26,7 @@ namespace PresentacionCliente
         /// pre: 
         /// post: obtiene o modifica el DNI del cliente
         /// </summary>
-        /// <param name="c"></param>
+        /// <param></param>
         /// <returns></returns>
         public string DNI {
             get {
@@ -43,7 +43,7 @@ namespace PresentacionCliente
         /// pre: 
         /// post: devuelve o actualiza el nombre del cliente
         /// </summary>
-        /// <param name="c"></param>
+        /// <param></param>
         /// <returns></returns>
         public String Nombre {
             get {
@@ -59,7 +59,7 @@ namespace PresentacionCliente
         /// pre: 
         /// post: obtiene o modifica el telefono del cliente
         /// </summary>
-        /// <param name="c"></param>
+        /// <param></param>
         /// <returns></returns>
         public String Tfno {
             get {
@@ -75,7 +75,7 @@ namespace PresentacionCliente
         /// pre: 
         /// post: obtiene o modifica la categoria de un cliente
         /// </summary>
-        /// <param name="c"></param>
+        /// <param></param>
         /// <returns></returns>
         public Categoria Categoria {
             get {
@@ -125,7 +125,7 @@ namespace PresentacionCliente
         /// pre: 
         /// post: pone todos los campos del formulario en modo solo lectura
         /// </summary>
-        /// <param name="c"></param>
+        /// <param></param>
         /// <returns></returns>
         public void todoReadOnly() {
             tbNombre.ReadOnly = true;
@@ -140,7 +140,8 @@ namespace PresentacionCliente
         /// pre:
         /// post: Cierra el formulario
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         /// <returns></returns>
         private void btCancelar_Click(object sender, EventArgs e)
         {
@@ -153,7 +154,8 @@ namespace PresentacionCliente
         /// post: coloca el DialogResult en OK
         /// 
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         /// <returns></returns>
         private void btAceptar_Click(object sender, EventArgs e)
         {
@@ -164,7 +166,7 @@ namespace PresentacionCliente
         /// pre: 
         /// post: Cambia los botones para que seolo quede un unico boton central
         /// </summary>
-        /// <param name="c"></param>
+        /// <param></param>
         /// <returns></returns>
         public void botonesCambio() {
             this.btCancelar.Enabled = false;

@@ -14,7 +14,8 @@ namespace LogicaNegocioCliente
         /// pre: 
         /// post: compara los clientes por su DNI
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="c1"></param>
+        /// <param name="c2"></param>
         /// <returns></returns>
         public static int ComparaDNI(Cliente c1, Cliente c2) {
             return c1.DNI.CompareTo(c2.DNI);
@@ -25,7 +26,8 @@ namespace LogicaNegocioCliente
         /// pre:
         /// post: compara los clientes por su Nombre
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="c1"></param>
+        /// <param name="c2"></param>
         /// <returns></returns>
         public static int ComparaNombre(Cliente c1, Cliente c2) {
             return c1.Nombre.CompareTo(c2.Nombre);
@@ -36,7 +38,8 @@ namespace LogicaNegocioCliente
         /// pre: 
         /// post: compara los clientes por su importe
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="c1"></param>
+        /// <param name="c2"></param>
         /// <returns></returns>
         public static int ComparaImporte(Cliente c1, Cliente c2) {
             return (int)(LogicaCliente.obtieneImporte(c1) - LogicaCliente.obtieneImporte(c2));

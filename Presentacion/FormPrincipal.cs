@@ -41,7 +41,8 @@ namespace Presentacion
         /// pre: 
         /// post: Muestra un formulario para poder añadir un cliente
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         /// <returns></returns>
         private void BTaltaCliente_Click(object sender, EventArgs e)
         {
@@ -79,7 +80,8 @@ namespace Presentacion
         /// pre: 
         /// post: muestra el formulario para poder eliminar un cliente
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         /// <returns></returns>
         private void BTbajaCliente_Click(object sender, EventArgs e)
         {
@@ -136,7 +138,8 @@ namespace Presentacion
         /// pre: 
         /// post: Muestra el cliente en modo solo lectura
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         /// <returns></returns>
         private void BTbusquedaCliente_Click(object sender, EventArgs e)
         {
@@ -179,18 +182,38 @@ namespace Presentacion
 
 
         }
+        /// <summary>
+        /// pre: 
+        /// post: muestra el formulario con la informacion de los clientes ordenada en listas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <returns></returns>
         private void tsmListas_Click(object sender, EventArgs e)
         {
             PresentacionCliente.listado lis = new PresentacionCliente.listado(lnc);
             lis.ShowDialog();
         }
 
+        /// <summary>
+        /// pre: 
+        /// post: muestra el formulario con la informacion de los clientes, con opcion para seleccionar el cliente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <returns></returns>
         private void tsmDesplegable_Click(object sender, EventArgs e)
         {
             PresentacionCliente.OtroForm desp = new PresentacionCliente.OtroForm(lnc);
             desp.ShowDialog();
         }
-
+        /// <summary>
+        /// pre: 
+        /// post: muestra el formulario para ver la informacion de los clientes uno a uno
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <returns></returns>
         private void tsmUnoAUno_Click(object sender, EventArgs e)
         {
             PresentacionCliente.UnoaUno un = new PresentacionCliente.UnoaUno(lnc);

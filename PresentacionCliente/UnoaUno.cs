@@ -34,7 +34,13 @@ namespace PresentacionCliente
                 
             }
         }
-
+        /// <summary>
+        /// pre:
+        /// post: Cambia los datos al hacer click en el siguiente item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <returns></returns>
         private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)
         {
             int i = this.bnCod.BindingSource.IndexOf(this.bnCod.BindingSource.Current);
@@ -45,6 +51,12 @@ namespace PresentacionCliente
             this.tbNombre.Text = c.Nombre.Remove(0, c.Nombre.IndexOf(',') + 1);
             this.tbImporte.Text = "" + LogicaCliente.obtieneImporte(c);
         }
+        /// <summary>
+        /// pre: 
+        /// post: Añade los datos del Cliente c al formulario
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         private void rellenar(Cliente c) {
             this.tbDNI.Text =c.DNI;
             this.tbApellidos.Text = c.Nombre.Substring(0, c.Nombre.IndexOf(','));
