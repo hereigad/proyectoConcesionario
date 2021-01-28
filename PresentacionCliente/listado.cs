@@ -16,6 +16,7 @@ namespace PresentacionCliente
     {
         private Dictionary<Cliente, double> diccio;
         LogicaCliente log;
+        List<ClienteAux> fuente;
         public listado(LogicaNegocioCliente.LogicaCliente ln)
         {
 
@@ -23,8 +24,10 @@ namespace PresentacionCliente
             InitializeComponent();
             diccio = ln.OrdenarCliente(LogicaNegocioCliente.ComparadoresCliente.ComparaDNI);
             BindingSource bd = new BindingSource();
-            bd.DataSource = diccio.ToList();
-            this.lbDNI.DisplayMember = "";
+            fuente = this.pasarALista(diccio);
+            bd.DataSource = fuente;
+            this.lbDNI.DataSource = bd;
+            this.lbDNI.DisplayMember = "DNI";
             this.lbNombre.DataSource = bd;
             this.lbNombre.DisplayMember = "Nombre";
             this.lbImporte.DataSource = bd;
@@ -32,11 +35,24 @@ namespace PresentacionCliente
 
         }
 
+        private List<ClienteAux> pasarALista(Dictionary<Cliente, double> diccio)
+        {
+            List<ClienteAux> solu = new List<ClienteAux>();
+            int i = 0;
+            while (i < diccio.Count()) {
+                Cliente actual=diccio.ToList().ElementAt(i).Key;
+                solu.Add(new ClienteAux(actual.DNI,actual.Nombre,actual.Telefono,actual.Categoria, diccio.ToList().ElementAt(i).Value));
+                i++;
+            }
+            return solu;
+        }
+
         /// <summary>
         /// pre: 
         /// post: Cierra el formulario
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         /// <returns></returns>
         private void btCerrar_Click(object sender, EventArgs e)
         {
@@ -48,14 +64,22 @@ namespace PresentacionCliente
         /// pre: 
         /// post: Ordena la lista por DNI
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         /// <returns></returns>
         private void btDNI_Click(object sender, EventArgs e)
         {
             diccio = log.OrdenarCliente(LogicaNegocioCliente.ComparadoresCliente.ComparaDNI);
+            this.fuente = this.pasarALista(diccio);
+            lbDNI.DataSource = this.fuente;
             lbDNI.Refresh();
+            lbDNI.Update();
+            lbImporte.DataSource = this.fuente;
             lbImporte.Refresh();
+            lbImporte.Update();
+            lbNombre.DataSource = this.fuente;
             lbNombre.Refresh();
+            lbNombre.Update();
         }
 
 
@@ -68,9 +92,16 @@ namespace PresentacionCliente
         private void btNombre_Click(object sender, EventArgs e)
         {
             diccio = log.OrdenarCliente(LogicaNegocioCliente.ComparadoresCliente.ComparaNombre);
+            this.fuente = this.pasarALista(diccio);
+            lbDNI.DataSource = this.fuente;
             lbDNI.Refresh();
+            lbDNI.Update();
+            lbImporte.DataSource = this.fuente;
             lbImporte.Refresh();
+            lbImporte.Update();
+            lbNombre.DataSource = this.fuente;
             lbNombre.Refresh();
+            lbNombre.Update();
 
         }
 
@@ -83,9 +114,32 @@ namespace PresentacionCliente
         private void btImporte_Click(object sender, EventArgs e)
         {
             diccio = log.OrdenarCliente(LogicaNegocioCliente.ComparadoresCliente.ComparaImporte);
+            this.fuente = this.pasarALista(diccio);
+            lbDNI.DataSource = this.fuente;
             lbDNI.Refresh();
+            lbDNI.Update();
+            lbImporte.DataSource = this.fuente;
             lbImporte.Refresh();
+            lbImporte.Update();
+            lbNombre.DataSource = this.fuente;
             lbNombre.Refresh();
+            lbNombre.Update();
+        }
+    }
+
+    public class ClienteAux : Cliente
+    {
+        private double importe;
+        public ClienteAux(String dni, String nombre, String tfno, Categoria cat, double import):base(dni, nombre, tfno, cat) {
+         this.importe=import;   
+        }
+        public double Importe {
+            get {
+                return this.importe;
+            }
+            set {
+                this.importe = value;
+            }
         }
     }
 }
