@@ -13,18 +13,20 @@ namespace PresentacionPresupuesto
 {
     public partial class ListadoPresupuestos : Form
     {
-        private LogicaNegocioPresupuesto.LogicaPresupuesto lnp;
+        //private LogicaNegocioPresupuesto.LogicaPresupuesto lnp;
+        private List<Presupuesto> presupuestos;
         public ListadoPresupuestos()
         {
             InitializeComponent();
         }
 
-        public ListadoPresupuestos(LogicaNegocioPresupuesto.LogicaPresupuesto lp): this()
+        public ListadoPresupuestos(List<Presupuesto> presupuestos): this()
         {
-            this.lnp = lp;
-            List<Presupuesto> presupuestos = this.lnp.obtenerTodosPresupuestos();
+            /*this.lnp = lp;
+            List<Presupuesto> presupuestos = this.lnp.obtenerTodosPresupuestos();*/
+            this.presupuestos = presupuestos;
             List<object> listado = new List<object>();
-            foreach(Presupuesto p in presupuestos)
+            foreach(Presupuesto p in this.presupuestos)
             {
                 object fila = new { p.ID, p.Cliente.DNI, p.Comercial.Codigo, p.FechaRealizacion, p.Estado};
                 listado.Add(fila);

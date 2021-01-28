@@ -67,6 +67,12 @@
     <Compile Include="ListadoPresupuestos.Designer.cs">
       <DependentUpon>ListadoPresupuestos.cs</DependentUpon>
     </Compile>
+    <Compile Include="PresupuestosEnEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresupuestosEnEstado.Designer.cs">
+      <DependentUpon>PresupuestosEnEstado.cs</DependentUpon>
+    </Compile>
     <Compile Include="PresupuestoUnoAUno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoPresupuestos.resx">
       <DependentUpon>ListadoPresupuestos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresupuestosEnEstado.resx">
+      <DependentUpon>PresupuestosEnEstado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PresupuestoUnoAUno.resx">
       <DependentUpon>PresupuestoUnoAUno.cs</DependentUpon>
