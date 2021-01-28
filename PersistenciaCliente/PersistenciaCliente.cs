@@ -38,7 +38,7 @@ namespace PersistenciaCliente
             }
             catch(SqlException e)
             {
-                Console.WriteLine(e.Message);
+                Console.Error.WriteLine(e.Message);
             }
             finally
             {
@@ -51,7 +51,7 @@ namespace PersistenciaCliente
                 }
                 catch (SqlException e)
                 {
-                    Console.WriteLine(e.Message);
+                    Console.Error.WriteLine(e.Message);
                 }
             }
             return exito;
@@ -96,7 +96,7 @@ namespace PersistenciaCliente
             }
             catch(SqlException e)
             {
-                Console.WriteLine(e.Message);
+                Console.Error.WriteLine(e.Message);
             }
             finally
             {
@@ -109,7 +109,7 @@ namespace PersistenciaCliente
                 }
                 catch (SqlException e)
                 {
-                    Console.WriteLine(e.Message);
+                    Console.Error.WriteLine(e.Message);
                 }
             }
             return cliente;
