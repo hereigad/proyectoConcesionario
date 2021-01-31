@@ -18,8 +18,6 @@ namespace LogicaNegocioPresupuesto
             this.comercial = com;
         }
 
-        public Comercial Comercial { get { return this.comercial; } }
-
         /// <summary>
         /// pre: presupuesto p distinto de null
         /// post: da de alta un nuevo presupuesto
@@ -151,6 +149,11 @@ namespace LogicaNegocioPresupuesto
             List<Presupuesto> lista = new List<Presupuesto>();
             lista = PersistenciaPresupuesto.PersistenciaPresupuesto.seleccionarTODOS_Presupuestos();
             return lista;
+        }
+
+        public bool existePresupuesto(Presupuesto p)
+        {
+            return PersistenciaPresupuesto.PersistenciaPresupuesto.existePresupuesto(p);
         }
     }
 }

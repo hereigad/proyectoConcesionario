@@ -1,6 +1,6 @@
 ﻿namespace PresentacionPresupuesto
 {
-    partial class ListadoPresupuestos
+    partial class BusquedaPorVehiculo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,48 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.listPresupuestos = new System.Windows.Forms.ListBox();
+            this.vistaPresupuesto = new PresentacionPresupuesto.VistaPresupuesto();
             this.btnCerrar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView
+            // listPresupuestos
             // 
-            this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(8, 12);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(638, 339);
-            this.dataGridView.TabIndex = 0;
+            this.listPresupuestos.FormattingEnabled = true;
+            this.listPresupuestos.Location = new System.Drawing.Point(12, 12);
+            this.listPresupuestos.Name = "listPresupuestos";
+            this.listPresupuestos.Size = new System.Drawing.Size(269, 329);
+            this.listPresupuestos.TabIndex = 0;
+            this.listPresupuestos.SelectedIndexChanged += new System.EventHandler(this.listPresupuestos_SelectedIndexChanged);
+            // 
+            // vistaPresupuesto
+            // 
+            this.vistaPresupuesto.Location = new System.Drawing.Point(287, 12);
+            this.vistaPresupuesto.Name = "vistaPresupuesto";
+            this.vistaPresupuesto.Size = new System.Drawing.Size(302, 338);
+            this.vistaPresupuesto.TabIndex = 1;
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(575, 357);
+            this.btnCerrar.Location = new System.Drawing.Point(505, 348);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 23);
-            this.btnCerrar.TabIndex = 1;
+            this.btnCerrar.TabIndex = 2;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
-            // ListadoPresupuestos
+            // BusquedaPorVehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 382);
+            this.ClientSize = new System.Drawing.Size(592, 383);
             this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.dataGridView);
-            this.Name = "ListadoPresupuestos";
-            this.Text = "Listado Presupuestos";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.Controls.Add(this.vistaPresupuesto);
+            this.Controls.Add(this.listPresupuestos);
+            this.Name = "BusquedaPorVehiculo";
+            this.Text = "BusquedaPorVehiculo";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.ListBox listPresupuestos;
+        private VistaPresupuesto vistaPresupuesto;
         private System.Windows.Forms.Button btnCerrar;
     }
 }

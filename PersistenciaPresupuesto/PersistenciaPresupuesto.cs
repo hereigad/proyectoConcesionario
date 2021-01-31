@@ -111,15 +111,17 @@ namespace PersistenciaPresupuesto
         /// <returns></returns>
         public static bool anadirPresupuesto(Presupuesto p)
         {
+            string id = p.Cliente.DNI + "-" + p.FechaRealizacion.Ticks;
+            Presupuesto p1 = new Presupuesto(id, p.FechaRealizacion, p.Estado, p.Comercial, p.Cliente, p.Vehiculos);
             bool anadido = false;
-            if(!existePresupuesto(p))
+            if(!existePresupuesto(p1))
             {
-                BD.INSERT_Presupuesto(p);
-                BD.INSERT_ClientePresupuesto(p.Cliente, p);
-                List<Vehiculo> v = p.Vehiculos;
+                BD.INSERT_Presupuesto(p1);
+                BD.INSERT_ClientePresupuesto(p1.Cliente, p1);
+                List<Vehiculo> v = p1.Vehiculos;
                 foreach(Vehiculo v1 in v)
                 {
-                    BD.INSERT_PresupuestoVehiculos(p, v1);
+                    BD.INSERT_PresupuestoVehiculos(p1, v1);
                 }
                 anadido = true;
             }

@@ -101,7 +101,7 @@ namespace LogicaNegocioCliente
         /// pre: 
         /// post: devuelve la lista de los clientes con la categoria "categoria"
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="categoria"></param>
         /// <returns></returns>
         public static List<Cliente> clientePorCategoria(String categoria) {
             if (categoria.Equals("A")) {
@@ -123,7 +123,7 @@ namespace LogicaNegocioCliente
         /// pre: 
         /// post: devuelve todos los cientes del concesionario
         /// </summary>
-        /// <param name="c"></param>
+        /// <param></param>
         /// <returns></returns>
         public List<Cliente> totalClientes() {
             return PersistenciaCliente.PersistenciaCliente.clientesConcesionario();

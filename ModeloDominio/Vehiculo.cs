@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class Vehiculo
+    public class Vehiculo: IEquatable<Vehiculo>
     {
         private string numBastidor;
         private string marca;
@@ -64,6 +64,18 @@ namespace ModeloDominio
             set
             {
                 this.pvp = value;
+            }
+        }
+
+        public bool Equals(Vehiculo v)
+        {
+            if(this.numBastidor.Equals(v.NumBastidor))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

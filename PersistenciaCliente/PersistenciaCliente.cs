@@ -120,7 +120,7 @@ namespace PersistenciaCliente
         /// pre: 
         /// post: devuelve una lista con todos los clientes pertenecientes a la categoria cat
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="cat"></param>
         /// <returns></returns>
         public static List<Cliente> clientesCategoria(Categoria cat) {
             List<Cliente> lista = new List<Cliente>();
@@ -140,7 +140,7 @@ namespace PersistenciaCliente
         /// pre:
         /// post: devuelve una lista con todos los clientes del concesionario
         /// </summary>
-        /// <param name="c"></param>
+        /// <param></param>
         /// <returns></returns>
         public static List<Cliente> clientesConcesionario()
         {

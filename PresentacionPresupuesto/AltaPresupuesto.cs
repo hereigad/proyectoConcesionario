@@ -23,6 +23,7 @@ namespace PresentacionPresupuesto
         private LogicaCliente lnc;
         private LogicaPresupuesto lnp;
         private LogicaVehiculo lnv;
+        private Comercial comercial;
 
 
         public AltaPresupuesto()
@@ -30,11 +31,12 @@ namespace PresentacionPresupuesto
             InitializeComponent();
         }
 
-        public AltaPresupuesto(LogicaPresupuesto l, LogicaCliente lc, LogicaVehiculo lv): this()
+        public AltaPresupuesto(LogicaPresupuesto l, LogicaCliente lc, LogicaVehiculo lv, Comercial com): this()
         {
             this.lnp = l;
             this.lnc = lc;
             this.lnv = lv;
+            this.comercial = com;
             this.rellenarComboDNI();
             this.rellenarListVehiculosDisponibles();
         }
@@ -51,18 +53,6 @@ namespace PresentacionPresupuesto
         private void rellenarListVehiculosDisponibles()
         {
             this.vehiculosDisponibles = this.lnv.obtenerTodosVehiculos();
-
-            /*///prueba
-            for(int i=0; i<10; i++)
-            {
-                Random r = new Random();
-                int j = r.Next(0, 50);
-                Vehiculo v = new Vehiculo("v" + j, "m" + j, "modelo" + j, "pot", j);
-                this.lnv.altaVehiculo(v);
-                this.vehiculosDisponibles.Add(v);
-            }
-            ///prueba*/
-
             foreach(Vehiculo v in this.vehiculosDisponibles)
             {
                 this.listDisponibles.Items.Add(v.NumBastidor);
@@ -76,39 +66,52 @@ namespace PresentacionPresupuesto
 
         private void btnAnadir_Click(object sender, EventArgs e)
         {
-            this.listPresupuesto.Items.Add(this.listDisponibles.SelectedItem);
-            this.listDisponibles.Items.Remove(this.listDisponibles.SelectedItem);
+            if(this.listDisponibles.Items.Count > 0 && this.listDisponibles.SelectedItem != null)
+            {
+                this.listPresupuesto.Items.Add(this.listDisponibles.SelectedItem);
+                this.listDisponibles.Items.Remove(this.listDisponibles.SelectedItem);
+            }
         }
 
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-            this.listDisponibles.Items.Add(this.listPresupuesto.SelectedItem);
-            this.listPresupuesto.Items.Remove(this.listPresupuesto.SelectedItem);
+            if(this.listPresupuesto.Items.Count > 0 && this.listPresupuesto.SelectedItem != null)
+            {
+                this.listDisponibles.Items.Add(this.listPresupuesto.SelectedItem);
+                this.listPresupuesto.Items.Remove(this.listPresupuesto.SelectedItem);
+            }
         }
 
         private void btnAlta_Click(object sender, EventArgs e)
         {
             string dniCliente = this.comboDNI.SelectedItem as string;
-            List<string> numBastidores = new List<string>();
-            foreach(string s in this.listPresupuesto.Items)
+            if(dniCliente == null)
             {
-                numBastidores.Add(s);
+                MessageBox.Show("Elige un DNI de cliente de la lista");
             }
-
-            List<Vehiculo> vehiculos = new List<Vehiculo>();
-            foreach(Vehiculo v in this.vehiculosDisponibles)
+            else
             {
-                if (numBastidores.Contains(v.NumBastidor))
+                List<string> numBastidores = new List<string>();
+                foreach (string s in this.listPresupuesto.Items)
                 {
-                    vehiculos.Add(v);
+                    numBastidores.Add(s);
                 }
+
+                List<Vehiculo> vehiculos = new List<Vehiculo>();
+                foreach (Vehiculo v in this.vehiculosDisponibles)
+                {
+                    if (numBastidores.Contains(v.NumBastidor))
+                    {
+                        vehiculos.Add(v);
+                    }
+                }
+
+                Cliente c = this.lnc.selCliente(new Cliente(dniCliente, "", "", Categoria.A));
+
+                Presupuesto p = new Presupuesto("", DateTime.Now, EstadoPresupuesto.Pendiente, this.comercial, c, vehiculos);
+                this.lnp.altaPresupuesto(p);
+                this.Close();
             }
-
-            Cliente c = this.lnc.selCliente(new Cliente(dniCliente, "", "", Categoria.A));
-
-            Presupuesto p = new Presupuesto(this.lnp.Comercial.Codigo+"-"+c.DNI+"-"+vehiculos.Count(), DateTime.Now, EstadoPresupuesto.Pendiente, this.lnp.Comercial, c, vehiculos);
-            this.lnp.altaPresupuesto(p);
-            this.Close();
         }
     }
 }
