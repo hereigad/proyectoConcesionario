@@ -164,7 +164,16 @@ namespace LogicaNegocioCliente
 
                 }
             }
-            return dineros;
+            Cliente cli = PersistenciaCliente.PersistenciaCliente.seleccionarCliente(c);
+            if (cli.Categoria == Categoria.A)
+            {
+                return dineros * 0.95;
+            }
+            if (cli.Categoria == Categoria.B) { return dineros * 0.9; }
+            if (cli.Categoria== Categoria.C) { return dineros * 0.85; }
+
+            return 0;
+
         }
         
     }

@@ -58,8 +58,20 @@ namespace Presentacion
                     dc.ShowDialog();
                     if (dc.DialogResult == DialogResult.OK)
                     {
-                        lnc.addCliente(new Cliente(dc.DNI, dc.Nombre, dc.Tfno, dc.Categoria));
-                        dc.Close();
+                        if (dc.Nombre.Contains(","))
+                        {
+                            lnc.addCliente(new Cliente(dc.DNI, dc.Nombre, dc.Tfno, dc.Categoria));
+                            dc.Close();
+                        }
+                        else {
+                            DialogResult dr = MessageBox.Show("Introduce un nombre con el formato apellido,nombre", "Nombre no valido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            if (dr == DialogResult.OK)
+                            {
+                                f.Close();
+                                this.BTaltaCliente.PerformClick();
+
+                            }
+                        }
                     }
 
                 }
