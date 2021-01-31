@@ -20,7 +20,7 @@ namespace ModeloDominio
             this.marca = marca;
             this.modelo = modelo;
             this.potencia = potencia;
-            this.pvp = pvp * 1.21;
+            this.pvp = pvp;
         }
 
         public string NumBastidor

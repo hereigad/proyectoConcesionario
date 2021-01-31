@@ -15,8 +15,16 @@ namespace ModeloDominio
             this.extras = extras;
             foreach(Extra e in extras)
             {
-                base.Pvp = base.Pvp + e.Pvp;
+                base.Pvp = base.Pvp * 1.1 + e.Pvp;
             }
+        }
+
+        public void anadirExtra(Extra e) {
+            this.extras.Add(e);
+        }
+
+        public bool quitarExtra(Extra e) {
+            return this.extras.Remove(e);
         }
 
         public List<Extra> Extras
