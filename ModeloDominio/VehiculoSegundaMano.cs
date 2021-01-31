@@ -15,6 +15,7 @@ namespace ModeloDominio
         {
             this.matricula = matricula;
             this.fechaMatricula = fechaMatricula;
+            base.Pvp = base.Pvp * 1.21;
         }
 
         public string Matricula
