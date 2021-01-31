@@ -40,6 +40,22 @@ namespace LogicaNegocioPresupuesto
         }
 
         /// <summary>
+        /// pre: c distinto de null
+        /// post: devuelve TRUE si existe el comercial c; FALSE en caso contrario
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public bool existeComercial(Comercial c)
+        {
+            bool existe = false;
+            if(PersistenciaPresupuesto.PersistenciaPresupuesto.existeComercial(c))
+            {
+                existe = true;
+            }
+            return existe;
+        }
+
+        /// <summary>
         /// pre: p distinto de null; basta solo con la clave del presupuesto
         /// post: devuelve el cliente del presupuesto dado o null si no existe el presupuesto
         /// </summary>

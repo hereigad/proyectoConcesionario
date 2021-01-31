@@ -30,7 +30,10 @@ namespace Presentacion
             
             InitializeComponent();
             this.lnp = new LogicaPresupuesto(this.com);
-            this.lnp.altaComercial(this.com);
+            if(!this.lnp.existeComercial(this.com))
+            {
+                this.lnp.altaComercial(this.com);
+            }
             lnc  = new LogicaCliente(com);
             lv = new LogicaVehiculo(com);
         }

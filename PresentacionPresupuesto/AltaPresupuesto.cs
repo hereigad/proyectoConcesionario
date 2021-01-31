@@ -55,7 +55,11 @@ namespace PresentacionPresupuesto
             this.vehiculosDisponibles = this.lnv.obtenerTodosVehiculos();
             foreach(Vehiculo v in this.vehiculosDisponibles)
             {
-                this.listDisponibles.Items.Add(v.NumBastidor);
+                if(v!=null)
+                {
+                    this.listDisponibles.Items.Add(v.NumBastidor);
+                }
+                
             }
         }
 

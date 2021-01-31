@@ -277,6 +277,12 @@ namespace PersistenciaPresupuesto
             return anadido;
         }
 
+        /// <summary>
+        /// pre: c distinto de null
+        /// post: borra el comercial c de la base de datos si existe y devuelve TRUE; FALSE en caso contrario
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public static bool borrarComercial(Comercial c)
         {
             bool borrado = false;
@@ -288,6 +294,12 @@ namespace PersistenciaPresupuesto
             return borrado;
         }
 
+        /// <summary>
+        /// pre: c distinto de null
+        /// post: devuelve TRUE si existe el comercial c; FALSE en caso contrario
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public static bool existeComercial(Comercial c)
         {
             return BD.EXISTE_Comercial(c);
