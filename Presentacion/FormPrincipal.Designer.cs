@@ -51,6 +51,7 @@
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presupuestosEnEstadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.obtenerDatosClienteDelPresupuestoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unoAUnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,7 +139,8 @@
             this.altaToolStripMenuItem1,
             this.bajaToolStripMenuItem1,
             this.busquedaToolStripMenuItem1,
-            this.listadoToolStripMenuItem});
+            this.listadoToolStripMenuItem,
+            this.unoAUnoToolStripMenuItem});
             this.vehículosToolStripMenuItem.Name = "vehículosToolStripMenuItem";
             this.vehículosToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.vehículosToolStripMenuItem.Text = "Vehículos";
@@ -164,13 +166,20 @@
             this.busquedaToolStripMenuItem1.Text = "Búsqueda";
             this.busquedaToolStripMenuItem1.Click += new System.EventHandler(this.busquedaVehiculo_Click);
             // 
+            // unoAUnoToolStripMenuItem
+            // 
+            this.unoAUnoToolStripMenuItem.Name = "unoAUnoToolStripMenuItem";
+            this.unoAUnoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.unoAUnoToolStripMenuItem.Text = "Uno a uno";
+            this.unoAUnoToolStripMenuItem.Click += new System.EventHandler(this.unoAUnoVehiculos_Click);
+            //
             // listadoToolStripMenuItem
             // 
             this.listadoToolStripMenuItem.Name = "listadoToolStripMenuItem";
-            this.listadoToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.listadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.listadoToolStripMenuItem.Text = "Listado";
-            this.listadoToolStripMenuItem.Click += new System.EventHandler(this.listadoToolStripMenuItem_Click);
-            // 
+            this.listadoToolStripMenuItem.Click += new System.EventHandler(this.listadoVehiculos_Click);
+            //
             // presupuestosToolStripMenuItem
             // 
             this.presupuestosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -282,5 +291,6 @@
         private System.Windows.Forms.ToolStripMenuItem listadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem presupuestosEnEstadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem obtenerDatosClienteDelPresupuestoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem unoAUnoToolStripMenuItem;
     }
 }
