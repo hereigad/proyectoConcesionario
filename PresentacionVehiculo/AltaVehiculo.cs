@@ -74,7 +74,7 @@ namespace PresentacionVehiculo {
 
         public double PVP {
             get {
-                return Double.Parse(this.textBox5.Text);
+                return (Double)this.numericUpDown1.Value;
             }
         }
 
